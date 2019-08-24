@@ -23,6 +23,13 @@
 .sidebar{
     padding-top:100px;
 }
+.sidebar .app-name{
+    display: none;
+}
+.sidebar .app-name .app-name-link img{
+    width: 80px;
+    height: 80px;
+}
 .sidebar .sidebar-nav > ul > li{
     font-size: 28px;
     font-weight: bold;
@@ -34,4 +41,18 @@
 }
 .content{
     padding-top:100px;
+}
+@media screen and (max-width: 980px) {
+   .app-nav{
+       display: none;
+   }
+   .sidebar{
+    padding-top:0px;
+}
+   .content{
+    padding-top:0px;
+}
+    .sidebar .app-name{
+        display: block;
+    }
 }
