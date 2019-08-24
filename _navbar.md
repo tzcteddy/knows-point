@@ -1,4 +1,5 @@
-* ![描述 | left | 30x30](../static/logo.png)
+* ![对点](../static/logo.png)
+* ![对点儿](../static/logo_text.png)
 * [ES6](ES6/简介)
 * [VUE](vue/)
 * [React](vue/)
