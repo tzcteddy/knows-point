@@ -6,8 +6,6 @@
     * [面向对象](javascript/面向对象)
     * [AJAX](javascript/AJAX)
 * [ES6](ES6/)
-    * [let和const命令](ES6/let和const命令)
-    * [变量的解构赋值](ES6/变量的解构赋值)
 * [VUE](vue/)
     * [init](vue/init)
 * [React](react/)
@@ -16,3 +14,4 @@
 * [NodeJs](node/)
 * [TypeScript](typescript/)
 * [Canvas](canvas/)
+* [面试](面试/)

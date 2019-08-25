@@ -24,9 +24,9 @@
 |canvas||
 |fillStyle||
 |strokeStyle||
-|font|![font属性](./image/fontAttribut.png)|
+|font|![font属性](../static/images/canvas/fontAttribut.png)|
 |globalAlpha||
-|globalCompositeOperation|改变默认的图片合成行为，圆(源物体)，正方形(目标物体)![图片合成](./image/globalCompositeOperation.png)|
+|globalCompositeOperation|改变默认的图片合成行为，圆(源物体)，正方形(目标物体)![图片合成](../static/images/canvas/globalCompositeOperation.png)|
 |lineCap||
 |lineWidth||
 |lineJoin||
