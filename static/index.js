@@ -18,10 +18,14 @@ window.onload=function(){
             }
         }
     }
+    var count=0;
     var timer=setInterval(function(){
+        count+=1;
         if(document.getElementsByClassName('sidebar-nav')[0]&&document.getElementsByClassName('sidebar-nav')[0].getElementsByTagName('ul')[0]){
-           clearInterval(timer)
+           clearInterval(timer);
            scret();
+        }else if(count==5){
+            clearInterval(timer);
         }
     },200)
 }
