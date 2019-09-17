@@ -15,7 +15,7 @@
     * [预处理器](webpack/预处理器)
     * [样式处理](webpacl/样式处理)
 * [NodeJs](node/)
-* [TypeScript](typescript/ts简介)
+* [TypeScript](typescript/ts-简介)
     * [基础](typescript/ts-基础)
     * [进阶](typescript/ts-进阶)
 * [Canvas](canvas/)
