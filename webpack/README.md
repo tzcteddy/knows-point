@@ -12,3 +12,8 @@ webpack 是一个开源的JavaScript模块打包工具，最核心的功能是�
 2、webpack有完备的代码分割
 3、webpack可以处理各种类型的资源
 4、webpack拥有庞大的社区支持
+
+文档整理主要参照：
+
+* [Webpack官方文档](https://www.webpackjs.com/)
+* 《Webpack实战：入门、进阶与调优》  —— 居玉皓 著
