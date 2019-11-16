@@ -7,3 +7,9 @@
 三、ES6和TypeScript目前提供了链接
 
 [查看地址](https://tzcteddy.github.io/knows-point/)
+
+http、html、js、css、
+vue、react
+weex、react-native 移动原生应用
+electron、nw 桌面应用
+nuxt.js 编写ssr
