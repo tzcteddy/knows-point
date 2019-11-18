@@ -314,6 +314,25 @@ class RouterClass{
     }
 }
 ```
+## 获取对象层级的值 obj.key.key
+```js
+const bailRE = /[^\w.$]/;
+function parsePath (path: string): any {
+  if (bailRE.test(path)) {
+    return
+  }
+  const segments = path.split('.')
+  return function (obj) {
+    for (let i = 0; i < segments.length; i++) {
+      if (!obj) return
+      obj = obj[segments[i]]
+    }
+    return obj
+  }
+}
+
+```
+
 ## 几种设计模式
 
 ### 工厂模式  可以创建多个相似对象，但是不能识别，不知道对象的类型
