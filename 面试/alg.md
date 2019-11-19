@@ -130,3 +130,48 @@ function isPalindrom(x){
     return false;
 }
 ```
+
+### 结构化数据
+```js
+    var data=[
+        {id:1,pid:null,name:'a'},
+        {id:2,pid:1,name:'a-2'},
+        {id:3,pid:1,name:'a-3'},
+        {id:4,pid:2,name:'a-2-4'},
+        {id:5,pid:null,name:'b'},
+        {id:6,pid:5,name:'b-6'},
+        {id:7,pid:5,name:'b-7'},
+        {id:8,pid:7,name:'b-7-8'},
+    ]
+    //数组=>树
+    function getTree(data, pid) {
+    let result = []
+    let temp
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].pid == pid) {
+            temp = getTree(data, data[i].id)
+            if (temp.length > 0) {
+                data[i].children = temp
+            }
+            result.push(data[i])
+        }
+    }
+    return result
+}
+//树=>数组
+function readTree(data, val) {
+    val.push({
+        id: data.id,
+        name: data.name,
+        pid: data.pid
+    })
+    if (data.children) {
+        for (let i = 0; i < data.children.length; i++) {
+            readTree(data.children[i], val)
+        }
+        return val
+    }
+
+}
+console.log(readTree(getTree(data)[0],[]))
+```
