@@ -443,3 +443,26 @@ function Child(){
 
 
 ```
+```
+### html 转译
+
+```js
+// 转义
+        Vue.prototype.encodeHtml = function(str){
+          if(str){
+            return str.replace(/[<>&"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];});
+          }
+        }
+        // 反转义
+        Vue.prototype.decodeHtml = function(str){
+          if(str){
+            var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+            return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+          }
+        }
+        // 去掉HTML标签
+        Vue.prototype.removeHtmlTag = function(str){
+          return str.replace(/<\/?.+?>/g,"")
+        }
+
+```
