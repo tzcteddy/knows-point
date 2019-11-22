@@ -28,20 +28,38 @@
   </ul></nav> -->
   <div id="app">Please wait...</div>
   <script>
+
     window.$docsify = {
-       
+      coverpage: true,
       // repo: '',
       loadSidebar:true,
      // loadNavbar:true,
       //autoHeader:true,
-      logo:'./static/logo.png',
-      name: '对点儿',
+      // logo:'./static/logo.png',
+      // name: '对点儿',
       themeColor: '#e60000',
       subMaxLevel:2,
-      onlyCover: true
+      onlyCover: true,
+      search: {
+        paths: 'auto',
+        placeholder: '🔍 Type to search ',
+        noData: '😞 No Results! ',
+        depth: 6
+      },
+      pagination: {
+        previousText: 'PREVIOUS',
+        nextText: 'NEXT',
+        crossChapter: true
+      }
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
   <script src='./static/index.js'></script>
 </body>
 </html>
