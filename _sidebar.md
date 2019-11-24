@@ -17,11 +17,12 @@
     * [样式处理](webpacl/样式处理)
     * [代码分片](webpack/代码分片)
 * [NodeJs](node/)
-   
 * [TypeScript](typescript/ts-简介)
     * [基础](typescript/ts-基础)
     * [进阶](typescript/ts-进阶)
-* 
+* [杂谈](杂谈/)
+    * [谈谈flex中的direction](杂谈/谈谈flex中的direction)
+    * [margin重合和塌陷](杂谈/margin重合和塌陷)
 * [读记](读记/)
     * [http](读记/http)
     * [优化](读记/优化)
