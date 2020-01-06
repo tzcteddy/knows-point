@@ -6,6 +6,12 @@
     * [面向对象](javascript/面向对象)
     * [AJAX](javascript/AJAX)
     * [Canvas](javascript/canvas/)
+    * [模式](javascript/模式/)
+        * [单例模式](javascript/模式/单例模式)
+        * [策略模式](javascript/模式/策略模式)
+        * [代理模式](javascript/模式/代理模式)
+        * [迭代模式](javascript/模式/迭代模式)
+        * [发布订阅模式](javascript/模式/发布订阅模式)
 * [ES6](ES6/)
 * [VUE](vue/)
     <!-- * [init](vue/init) -->
