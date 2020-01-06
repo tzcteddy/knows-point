@@ -10,7 +10,7 @@
         * [单例模式](javascript/模式/单例模式)
         * [策略模式](javascript/模式/策略模式)
         * [代理模式](javascript/模式/代理模式)
-        * [迭代模式](javascript/模式/迭代器模式)
+        * [迭代器模式](javascript/模式/迭代器模式)
         * [发布订阅模式](javascript/模式/发布订阅模式)
 * [ES6](ES6/)
 * [VUE](vue/)
