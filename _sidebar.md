@@ -12,6 +12,7 @@
         * [代理模式](javascript/模式/代理模式)
         * [迭代器模式](javascript/模式/迭代器模式)
         * [发布订阅模式](javascript/模式/发布订阅模式)
+        * [命令模式](javascript/模式/命令模式)
 * [ES6](ES6/)
 * [VUE](vue/)
     <!-- * [init](vue/init) -->
