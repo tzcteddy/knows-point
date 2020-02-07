@@ -1,0 +1,1 @@
+# script标签defer和async的区别
