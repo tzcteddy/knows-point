@@ -42,6 +42,7 @@
     * [script标签defer和async的区别](杂谈/script标签defer和async的区别)
     * [在浏览器输入URL回车之后发生了什么](杂谈/在浏览器输入URL回车之后发生了什么)
     * [浏览器与Node的事件循环(EventLoop)有何区别](杂谈/浏览器与Node的事件循环(EventLoop)有何区别)
+    * [graphql](杂谈/graphql)
 * [读记](读记/)
     * [数据结构与算法](读记/数据结构与算法/)
         * [基础篇](读记/数据结构与算法/基础篇)
