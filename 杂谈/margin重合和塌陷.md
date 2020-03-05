@@ -4,14 +4,14 @@
 发生场景
 + 两个元素是兄弟关系
 
-![合并](../../static/images/zatan/margin/margin-merge.jpg)
+![合并](../static/images/zatan/margin/margin-merge.jpg)
 
 + 两个元素是父子关系(没有内边距或边框把外边距分隔开)
-![塌陷](../../static/images/zatan/margin/margin-taxian1.jpg)
+![塌陷](../static/images/zatan/margin/margin-taxian1.jpg)
 
 + 一个空元素，没有边框和填充
 
-![塌陷](../../static/images/zatan/margin/margin-ctn.jpg)
+![塌陷](../static/images/zatan/margin/margin-ctn.jpg)
 
 ## 解决办法
 
@@ -20,7 +20,7 @@
  - 将兄弟元素设置display:inline-block
  - 使用float
 
- ![解决](../../static/images/zatan/margin/merge-plan.jpg)
+ ![解决](../static/images/zatan/margin/merge-plan.jpg)
 
 + 父子关系
 
@@ -35,4 +35,4 @@
 - display：inline-block/table-cells/flex
 - overflow：除了visible以外的值（hidden/auto/scroll)
 
-![解决](../../static/images/zatan/margin/merge-outer.jpg)
+![解决](../static/images/zatan/margin/merge-outer.jpg)
