@@ -1,5 +1,5 @@
 # 浏览器与Node的事件循环(EventLoop)有何区别
-
+> [阮一峰老师的详解](http://www.ruanyifeng.com/blog/2013/10/event_loop.html)
 ## 一、线程与进程
 
 #### 1、概念
