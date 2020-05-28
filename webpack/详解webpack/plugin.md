@@ -1,0 +1,20 @@
+## 本章介绍常用的webpack外部插件(使用new)
+
+
++ [copy-webpack-plugin]
++ [clean-webpack-plugin]
++ [compression-webpack-plugin]
++ [html-webpack-plugin]
++ [happypack]
++ [mini-css-extract-plugin\extract-text-webpack-plugin]
++ [optimize-css-assets-plugin]
++ [optimize-css-assets-webpack-plugin]
++ [progress-bar-webpack-plugin]
++ [peed-measure-webpack-plugin]
++ [sw-precache-webpack-plugin]
++ [terser-webpack-plugin]
++ [uglifyjs-webpack-plugin]
++ [webpack-dll-plugin]
++ [webpack-dashboard]
++ [webpack-build-notifier]
++ [webpack-bundle-analyzer]
