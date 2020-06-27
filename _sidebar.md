@@ -30,7 +30,7 @@
         * [output](webpack/详解webpack/output)
         * [resolve](webpack/详解webpack/resolve)
         * [externals](webpack/详解webpack/externals)
-        * [rules](webpack/详解webpack/rules)
+        * [module](webpack/详解webpack/module)
         * [optimization](webpack/详解webpack/optimization)
         * [devServer](webpack/详解webpack/devServer)
         * [performance](webpack/详解webpack/performance)
