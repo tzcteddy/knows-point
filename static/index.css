@@ -1,3 +1,7 @@
+section.cover{
+    position: relative;
+    z-index: 20;
+}
 .app-nav{
     position: fixed;
     top: 0;
@@ -12,14 +16,22 @@
     align-items: center;
 
 }
+.app-nav .logo{
+    width: 50px;
+    height: 50px;
+    object-position: center;
+    object-fit: contain;
+}
 .app-nav ul{
     display: flex;
     align-items: center;
 }
 .app-nav ul li:nth-child(1){padding: 0;margin-right: 0;}
 .app-nav ul li:nth-child(1) img:nth-child(1){
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
+    object-position: center;
+    object-fit: contain;
 }
 .app-nav ul li:nth-child(2){
     margin-right: 60px;
@@ -40,7 +52,7 @@
     color: #FFF;
 }
 .sidebar{
-    padding-top:100px;
+    padding-top:100px !important;
 }
 .sidebar .app-name{
     display: none;
@@ -68,17 +80,29 @@
 .content{
     padding-top:100px;
 }
-@media screen and (max-width: 1122px) {
+ul.app-sub-sidebar{
+    position: fixed;
+    top: 110px;
+    right: 10px;
+}
+.markdown-section{
+    margin-left: 100px;
+    max-width: 70%;
+}
+@media screen and (max-width: 980px) {
    .app-nav{
        display: none;
    }
    .sidebar{
-    padding-top:0px;
+    padding-top:0px !important;
 }
    .content{
     padding-top:0px;
 }
     .sidebar .app-name{
         display: block;
+    }
+    .ul.app-sub-sidebar{
+        display: none;
     }
 }

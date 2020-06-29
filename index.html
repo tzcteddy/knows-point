@@ -7,25 +7,29 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/buble.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css"> -->
+<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/pure.css"> -->
+<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css"> -->
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="./static/index.css">
 </head>
 <body>
-    <!-- <nav class="app-nav no-badge"><ul><li>
-        <img src="./static/logo.png" data-origin="static/logo.png" alt="对点">
+    <nav class="app-nav no-badge"><ul><li>
+        <img class="logo" src="./static/knows-point.png" data-origin="static/logo.png" alt="对点">
     </li>
-    <li>
+    <!-- <li>
         <img src="./static/logo_text.png" data-origin="static/logo_text.png" alt="对点儿">
-    </li>
-    <li><a href="#/javascript/">JavaScript</a></li>
+    </li> -->
+    <!-- <li><a href="#/javascript/">JavaScript</a></li>
     <li><a href="#/ES6/">ES6</a></li>
     <li><a href="#/vue/">VUE</a></li>
     <li><a href="#/react/">React</a></li>
     <li><a href="#/webpack/">WebPack</a></li>
     <li><a href="#/node/">NodeJs</a></li>
     <li><a href="#/typescript/">TypeScript</a></li>
-    <li><a href="#/canvas/">Canvas</a></li>
-  </ul></nav> -->
+    <li><a href="#/canvas/">Canvas</a></li> -->
+  </ul></nav>
   <div id="app">Please wait...</div>
   <script>
 
@@ -34,10 +38,10 @@
       coverpage: true,
       // repo: '',
       loadSidebar:true,
-     // loadNavbar:true,
-      //autoHeader:true,
-      // logo:'./static/logo.png',
-      // name: '对点儿',
+    //   loadNavbar:false,
+    //   autoHeader:true,
+    //   logo:'./static/logo.png',
+    //   name: '对点儿',
       themeColor: '#e60000',
       subMaxLevel:2,
       onlyCover: true,
@@ -53,6 +57,9 @@
         crossChapter: true
       }
     }
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('sw.js')
+  }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
