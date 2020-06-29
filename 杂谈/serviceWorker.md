@@ -66,9 +66,11 @@ Service worker运行在worker上下文，因此它`不能访问DOM`。相对于�
 
 #### 属性
 + `InstallEvent.activeWorker` 返回当前处于激活状态，控制页面的ServiceWorker
+
 #### 方法 继承ExtendableEvent
 
 **提示：** 只有当全局范围是 ServiceWorkerGlobalScope 时，此接口才可用。当它是一个 Window 或其他类型 worker 的作用域时，它不可用。
+
 + `ExtendableEvent.waitUntil()`方法扩展了事件的生命周期。在服务工作线程中，延长事件的寿命从而阻止浏览器在事件中的异步操作完成之前终止服务工作线程。它将在service worker 的 install 和 activate 事件中被调用。
 
 使用：`event.waitUntil(promise)`
