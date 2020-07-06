@@ -67,6 +67,7 @@
     * [web worker](杂谈/webWorker)
     * [docker](杂谈/docker)
     * [web components](杂谈/webComponents)
+    * [history记录](杂谈/history记录)
 * [读记](读记/)
     * [数据结构与算法](读记/数据结构与算法/)
         * [基础篇](读记/数据结构与算法/基础篇)
