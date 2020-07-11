@@ -30,6 +30,7 @@
 #### 六、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
 + [Break易站](https://www.breakyizhan.com/)
++ [ECMAScript® 2015 Language Specification](https://www.ecma-international.org/ecma-262/6.0/#sec-properties-of-the-date-prototype-object)
 http、html、js、css、
 vue、react
 weex、react-native 移动原生应用
