@@ -12,22 +12,11 @@
 
 [查看地址](https://tzcteddy.github.io/knows-point/)
 
-#### 三、vue ui
-+ [Ant Design](https://www.antdv.com/docs/vue/introduce-cn/)
-+ [ElementUI](https://element.eleme.cn/#/zh-CN)
-+ [View UI](https://www.iviewui.com/)
-+ [Vant Weapp](https://youzan.github.io/vant-weapp/#/intro)
-+ [UView](https://uviewui.com/)
-
-#### 四、Vue Design
-
-+ (http://hcysun.me/vue-design/zh/)
-
-#### 五、数学公式
+#### 三、数学公式
 
 + [katex](https://katex.org/)
 
-#### 六、集成文档
+#### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
 + [Break易站](https://www.breakyizhan.com/)
 + [ECMAScript® 2015 Language Specification](https://www.ecma-international.org/ecma-262/6.0/#sec-properties-of-the-date-prototype-object)
