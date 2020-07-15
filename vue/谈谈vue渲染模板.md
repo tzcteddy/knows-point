@@ -41,7 +41,7 @@ export function cached<F: Function> (fn: F): F {
 + {{#prop-name}}{{/prop-name}}用作for循环渲染，当prop-name的值为非空数组时，mustach会遍历该数组，渲染出个数和该数组长度相等的DOM元素
 + 也可以用作if-else判断。{{#prop-name}}{{/prop-name}}和{{prop-name}}{{/prop-name}}两组标签结合使用，当prop-name的值存在且不为false时，会渲染{{#prop-name}}{{/prop-name}}的内容，否则渲染{{prop-name}}{{/prop-name}}的内容。
 
-####$ 使用方法
+#### 使用方法
 用一个唯一id的script标签包裹模板内容，type类型为text/template
 ```js
 <script id="template" type="text/template"></script>
