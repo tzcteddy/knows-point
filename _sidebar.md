@@ -18,6 +18,7 @@
 * [VUE](vue/)
     <!-- * [init](vue/init) -->
     * [说说vue中公共组件的使用](vue/说说vue中公共组件的使用)
+    * [谈谈vue渲染模板](vue/谈谈vue渲染模板)
 * [React](react/)
 * [WebPack](webpack/)
     * [模块打包](webpack/模块打包)
