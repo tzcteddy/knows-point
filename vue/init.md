@@ -24,18 +24,38 @@
         
 
 + vue中data的属性可以和methods中的方法同名吗？为什么？，一样会出现什么问题
+    不能重名  出现覆盖情况
 + 怎么给vue定义全局的方法？
 + vue2.0不再支持v-html中使用过滤器了怎么办？
+    - 使用methods方法
+    - 使用computed
 + 怎么解决vue打包后静态资源图片失效的问题？
 + 怎么解决vue动态设置img的src不生效的问题？
+    使用require
 + 使用vue后怎么针对搜索引擎做SEO优化？
+    - ssr,即单页面后台渲染
+    - vue-meta-info 与prerender-spa-plugin 预渲染
+    - nuxt
+    - phantomjs
 + 如果现在让你从vue/react/angularjs三个中选择一个，你会选哪个？说说你的理由
 + 你知道vue2.0兼容IE哪个版本以上吗？
 + 使用vue开发一个todo小应用，谈下你的思路
+    - 引用
+    - 全局注册组件
+    - vue-cli
 + 你有看过vue推荐的风格指南吗？列举出你知道的几条
+    - 组件名定义多个单词 避免和原生冲突
+    - data必须是一个函数
+    - props定义要详细
+    - v-for设置键值
+    - v-if和v-for不共用
+    - 设置样式作用域
 + 你知道vue中key的原理吗？说说你对它的理解
 + vue中怎么重置data？
+    - this.$data当前状态下
+    - this.$options.data()获取初始默认值
 + vue渲染模板时怎么保留模板中的HTML注释呢？
+    `<template comments></template>`
 + Vue.observable你有了解过吗？说说看
 + 你知道style加scoped属性的用途和原理吗？
 + 你期待vue3.0有什么功能或者改进的地方？

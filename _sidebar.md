@@ -19,6 +19,7 @@
     <!-- * [init](vue/init) -->
     * [说说vue中公共组件的使用](vue/说说vue中公共组件的使用)
     * [谈谈vue渲染模板](vue/谈谈vue渲染模板)
+    * [怎么给vue定义全局方法](vue/怎么给vue定义全局方法)
 * [React](react/)
 * [WebPack](webpack/)
     * [模块打包](webpack/模块打包)
@@ -75,6 +76,8 @@
     * [自定义事件的触发window.dispatchEvent](杂谈/自定义事件的触发window.dispatchEvent)
     * [eslint的使用](杂谈/eslint的使用)
     * [iphone问题](杂谈/iphone问题)
+    * [浏览器隐身非隐身判断](杂谈/浏览器隐身非隐身判断)
+    * [对象恒定](杂谈/对象恒定)
 * [读记](读记/)
     * [数据结构与算法](读记/数据结构与算法/)
         * [基础篇](读记/数据结构与算法/基础篇)
