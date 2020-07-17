@@ -1,12 +1,20 @@
 # vue
 
 #### Vue UI
+**PC**
 + [Ant Design](https://www.antdv.com/docs/vue/introduce-cn/)
 + [ElementUI](https://element.eleme.cn/#/zh-CN)
 + [View UI](https://www.iviewui.com/)
++ [material](https://material-ui.com/zh/)
++ [vue-beauty](https://fe-driver.github.io/vue-beauty/#/components/tree)
+
+**移动**
 + [Vant Weapp](https://youzan.github.io/vant-weapp/#/intro)
-+ [UView](https://uviewui.com/)
++ [VUX](https://vux.li/)
 + [mint-ui](https://mint-ui.github.io/docs/#/zh-cn2/infinite-scroll)
++ [UView](https://uviewui.com/)
+
+[more](https://www.bidianer.com/site/5126)
 
 #### Vue Design
 
