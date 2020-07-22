@@ -4,6 +4,11 @@
 + [掘金](https://juejin.im/)
 + [CSDN](https://www.csdn.net/)
 + [博客园](https://www.cnblogs.com/)
++ [美团前端](https://tech.meituan.com/tags/%E5%89%8D%E7%AB%AF.html)
++ [腾讯IM前端](https://imweb.io/)
++ [淘宝前端](https://fed.taobao.org/)
++ [凹凸实验室](https://aotu.io/)
++ [大前端](http://www.daqianduan.com/front/javascript)
 
 #### 二、对点隧道
 + [阮一峰老师](http://www.ruanyifeng.com/home.html)
