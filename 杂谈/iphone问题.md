@@ -19,3 +19,6 @@ min-height:101%;
 如果使用微信API存在使用icloud云上的图片，需要用户先下载
 
 【IOS  fixed定位问题】
+
+【IOS】axios请求兼容
++ get：使用简单请求，避免option请求后不在发送数据请求 例如（iphone7p）
