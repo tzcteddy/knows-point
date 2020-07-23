@@ -37,6 +37,8 @@
         * [devServer](webpack/详解webpack/devServer)
         * [performance](webpack/详解webpack/performance)
         * [plugin](webpack/详解webpack/plugin)
+    * [源码解读](webpack/源码解读/)
+        * [核心模块tapable](webpack/源码解读/核心模块tapable)
 * [NodeJs](node/)
 * [TypeScript](typescript/ts-简介)
     * [基础](typescript/ts-基础)
