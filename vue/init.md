@@ -60,26 +60,49 @@
 + 你知道style加scoped属性的用途和原理吗？
 + 你期待vue3.0有什么功能或者改进的地方？
 + vue边界情况有哪些？
+[vue边界情况](https://cn.vuejs.org/v2/guide/components-edge-cases.html)
 + 如何在子组件中访问父组件的实例？
-+ watch的属性用箭头函数定义结果会怎么样？
-+ 在vue项目中如果methods的方法用箭头函数定义结果会怎么样？
++ watch的属性用箭头函数定义结果会怎么样？在vue项目中如果methods的方法用箭头函数定义结果会怎么样？
+    - 箭头函数会改变this的指向,不再指向Vue实例
 + 在vue项目中如何配置favicon？
+[在vue项目中如何配置favicon](https://www.cnblogs.com/chinabin1993/p/8509743.html)
 + 你有使用过babel-polyfill模块吗？主要是用来做什么的？
 + 说说你对vue的错误处理的了解？
+    - errorCaptured是组件内部钩子，可捕捉本组件与子孙组件抛出的错误，接收error、vm、info三个参数，return false后可以阻止错误继续向上抛出。
+    - errorHandler为全局钩子，使用Vue.config.errorHandler配置，接收参数与errorCaptured一致，2.6后可捕捉v-on与promise链的错误，可用于统一错误处理与错误兜底。
 + 在vue事件中传入$event，使用e.target和e.currentTarget有什么区别？
+    - event.currentTarget始终指向事件所绑定的元素，而event.target指向事件发生时的元素。
 + 在.vue文件中style是必须的吗？那script是必须的吗？为什么？
 + vue怎么实现强制刷新组件？
 + vue自定义事件中父组件怎么接收子组件的多个参数？
+    - parent`<child v-for="(item, index) in data" @custom="parentMethod(index, $1, $2)"></child>`
+    - child`this.$emit('custom', arg1, arg2);`
+
 + 实际工作中，你总结的vue最佳实践有哪些？
 + vue给组件绑定自定义事件无效怎么解决？
+    - 1、组件外部加修饰符.navtive
+    - 2、组件内部声明$emit('自定义事件')
 + vue变量名如果以_、$开头的属性会发生什么问题？怎么访问到它们的值？
+    - 以 _ 或 $ 开头**的属性不会被 Vue 实例代理，因为可能和 Vue 内置的属性、API 方法冲突。可以使用例如 **vm.$data._property
 + vue使用v-for遍历对象时，是按什么顺序遍历的？如何保证顺序？
+    - 1、会先判断是否有iterator接口，如果有循环执行next()方法
+    - 2、没有iterator的情况下，会调用Object.keys()方法，在不同浏览器中，JS引擎不能保证输出顺序一致
+    - 3、保证对象的输出顺序可以把对象放在数组中，作为数组的元素
 + vue如果想扩展某个现有的组件时，怎么做呢？
+    - 1.使用Vue.extend直接扩展 
+    - 2.使用Vue.mixin全局混入 
+    - 3.HOC封装 
+    - 4.加slot扩展
 + 分析下vue项目本地开发完成后部署到服务器后报404是什么原因呢？
 + v-once的使用场景有哪些？
+    - v-once 只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过
 + 说说你对vue的表单修饰符.lazy的理解
+    - v-model默认的触发条件是input事件,加了.lazy修饰符之后,v-model会在change事件触发的时候去监听
 + vue为什么要求组件模板只能有一个根元素？
+    - 从效率上，如果多个根，那么就会产生多个入口（遍历、查找）从效率上来说都不方便;如果一个组件有多个根，说明你可以把这个组件拆开成两个组件，这样既进行了解耦，也会为后续的维护和迭代提供方便
 + EventBus注册在全局上时，路由切换时会重复触发事件，如何解决呢？
+    - 建议在created里注册，在beforeDestory移出
+    - 在组件内的beforeRouteLeave中移除事件监听
 + 怎么修改vue打包后生成文件路径？
 + 你有使用做过vue与原生app交互吗？说说vue与ap交互的方法
 + 使用vue写一个tab切换

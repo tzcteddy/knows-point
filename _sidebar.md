@@ -20,6 +20,7 @@
     * [说说vue中公共组件的使用](vue/说说vue中公共组件的使用)
     * [谈谈vue渲染模板](vue/谈谈vue渲染模板)
     * [怎么给vue定义全局方法](vue/怎么给vue定义全局方法)
+    * [style加scoped属性的用途和原理](vue/style加scoped属性的用途和原理)
 * [React](react/)
 * [WebPack](webpack/)
     * [模块打包](webpack/模块打包)
