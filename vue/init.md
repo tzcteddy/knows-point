@@ -105,16 +105,28 @@
     - 在组件内的beforeRouteLeave中移除事件监听
 + 怎么修改vue打包后生成文件路径？
 + 你有使用做过vue与原生app交互吗？说说vue与ap交互的方法
+    - jsBridge,建立连接，然后相互调用
 + 使用vue写一个tab切换
+    - v-for循环list，根据索引值设置active的样式和显示内容 
 + vue中什么是递归组件？举个例子说明下？
+    - 当前注册一个vue组件定义 name 为 'node-tree' ，在组件 template 内部调用 实现递归
 + 怎么访问到子组件的实例或者子元素？
+    - `this.$children/this.$refs.xxx`
 + 在子组件中怎么访问到父组件的实例？
+    - `this.$parent`
 + 在组件中怎么访问到根实例？
+    - `this.$root`
+    - 无限循环调用$parent直到没有这个属性为止
 + 说说你对Object.defineProperty的理解
 + vue组件里写的原生addEventListeners监听事件，要手动去销毁吗？为什么？
+    - 肯定要，一方面是绑定多次，另一方面是函数没释放会内存溢出 
 + vue组件里的定时器要怎么销毁？
+    - 可以在`beforeDestroy`里写清除函数 `const timer = setInterval(() =>{ // 某些定时器操作 }, 500)`; // 通过`$once`来监听定时器，在`beforeDestroy`钩子可以被清除。
 + vue组件会在什么时候下被销毁？
+    - 没有使用keep-alive时的路由切换。
 + 使用vue渲染大量数据时应该怎么优化？说下你的思路！
+    - 1.如果需要响应式，考虑使用虚表（只渲染要显示的数据）； 
+    - 2.如果不考虑响应式，变量在beforeCreated或created中声明（Object.freeze会导致列表无法增加数据）
 + 在vue中使用this应该注意哪些问题？
 + 你有使用过JSX吗？说说你对JSX的理解
 + 说说组件的命名规范
