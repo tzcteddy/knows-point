@@ -3,6 +3,18 @@ window.onload=function(){
         var t = document.cookie.match(new RegExp("(^| )" + e + "=([^;]*)(;|$)"));
         return null != t ? unescape(t[2]) : null
     }
+    function hideVueInit(){
+        let aList=document.getElementsByTagName("a");
+        let li;
+        for(var i=0;i<aList.length;i++){
+            if(aList[i].href.indexOf('#/vue/init')>=0){
+                li=aList[i].parentNode;
+                li.style.display="none"
+                break
+            }
+        }
+    }
+    hideVueInit()
 }
 
 // * ![对点](static/logo.png)

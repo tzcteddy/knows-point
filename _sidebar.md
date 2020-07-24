@@ -16,7 +16,7 @@
         * [组合模式](javascript/模式/组合模式)
 * [ES6](ES6/)
 * [VUE](vue/)
-    <!-- * [init](vue/init) -->
+    * [init](vue/init)
     * [说说vue中公共组件的使用](vue/说说vue中公共组件的使用)
     * [谈谈vue渲染模板](vue/谈谈vue渲染模板)
     * [怎么给vue定义全局方法](vue/怎么给vue定义全局方法)
