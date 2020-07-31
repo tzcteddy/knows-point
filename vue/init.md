@@ -500,10 +500,33 @@
         2.es6的import方法：（）=>import(需要异步加载的组件) 
         3.webpack的 require.ensure： r => require.ensure([],()=>r( require(需要异步加载的组件))，chunkName)
 + 如果让你从零开始写一个vue路由，说说你的思路
+        1.为了方便后期维护，建议独立出一个 router.js 文件 
+        2.npm install vue-router 
+        3.引入注册 import Router from 'vue-router'; Vue.user(Router); 
+        4.向外暴露出一个router实例 export default new Router({ mode: '', path: '', name: '', ... }); 
 + 说说vue-router完整的导航解析流程是什么？
+        1.导航被触发；
+        2.在失活的组件里调用beforeRouteLeave守卫； 
+        3.调用全局beforeEach守卫； 
+        4.在复用组件里调用beforeRouteUpdate守卫； 
+        5.调用路由配置里的beforeEnter守卫； 
+        6.解析异步路由组件； 
+        7.在被激活的组件里调用beforeRouteEnter守卫； 
+        8.调用全局beforeResolve守卫； 
+        9.导航被确认； 
+        10..调用全局的afterEach钩子； 
+        11.DOM更新； 
+        12.用创建好的实例调用beforeRouteEnter守卫中传给next的回调函数
 + 路由之间是怎么跳转的？有哪些方式？
+        1.在vue中引入vue-router模块 2.定义路由跳转规则
+        有以下方式： 1.在页面使用来定义导航链接 2.使用编程式导航，push，replace，go
 + 如果vue-router使用history模式，部署时要注意什么？
+        服务器的404页面需要重定向到index.html
+        nginx
+        try_files $uri $uri/ /index.html;
 + route和router有什么区别？
+        route：代表当前路由信息对象，可以获取到当前路由的信息参数 
+        router：代表路由实例的对象，包含了路由的跳转方法，钩子函数等
 + vue-router钩子函数有哪些？都有哪些参数？
         全局的：beforeEach、beforeResolve、afterEach
         路由的：beforeEnter
@@ -515,18 +538,55 @@
 
 # vuex
 + 你有写过vuex中store的插件吗？
+        Vuex 的 store 接受 plugins 选项，这个选项暴露出每次 mutation 的钩子。Vuex 插件就是一个函数，它接收 store 作为唯一参数：
+        const myPlugin = store => { // 当 store 初始化后调用 store.subscribe((mutation, state) => { // 每次 mutation 之后调用 // mutation 的格式为 { type, payload } }); }; 然后像这样使用：
+        const store = new Vuex.Store({ // ... plugins: [myPlugin] });
 + 你有使用过vuex的module吗？主要是在什么场景下使用？
+        把状态全部集中在状态树上，非常难以维护。 按模块分成多个module，状态树延伸多个分支，模块的状态内聚，主枝干放全局共享状态
 + vuex中actions和mutations有什么区别？
+        mutations可以直接修改state，但只能包含同步操作，同时，只能通过提交commit调用(尽量通过Action或mapMutation调用而非直接在组件中通过this.$store.commit()提交) actions是用来触发mutations的，它无法直接改变state，它可以包含异步操作，它只能通过store.dispatch触发
 + vuex使用actions时不支持多参数传递怎么办？
+        一个Object解决所有问题
 + 你觉得vuex有什么缺点？
+        工具都是用来提高工作效率的，如果不能，那就说明工具用的不对。如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。比如就几个状态的话 不用比较好
 + 你觉得要是不用vuex的话会带来哪些问题？
+        1.传参数时对于多层嵌套的组件将会非常繁琐，对于兄弟组件更是无法传递 
+        2.当不同视图的行为需要去修改数据时，无法追踪到数据的变更方向，导致无法维护代码 
 + vuex怎么知道state是通过mutation修改还是外部直接修改的？
+        通过$watch监听mutation的commit函数中_committing是否为true 
 + 请求数据是写在组件的methods中还是在vuex的action中？
+        根据业务场景划分，如果该请求数据的方法是多个视图共享的话，则写在action中，如果是当前视图所用，则写在组件的methods中
 + 怎么监听vuex数据的变化？
+        //利用计算属性
+        computed: {
+                nowData() {
+                return this.$store.state.nowData;
+                }
+        },
+
+        //监听执行
+        watch: {
+            nowData(val) {
+                // doSomeThing
+            }
+        },
 + vuex的action和mutation的特性是什么？有什么区别？
+        action： 通过执行 commit()来触发mutation的调用, 间接更新state ，组件中通过$store.dispatch('action名称') 触发action，可以包含异步代码(定时器, ajax) 
+        mutation:是一个对象 包含多个直接更新state的方法(回调函数) ，只能包含同步的代码, 不能写异步代码
 + 页面刷新后vuex的state数据丢失怎么解决？
+        首先要搞清楚为什么state数据会丢失。 通常情况state里的初始数据是空，通过mutation或者action的方法获取实际数据后存放在state中。这些方法往往是在某个组件（组件A）的生命周期或者事件中调用。如果在刷新页面的时候这些方法没有被调用（例如此时页面中没有组件A，或组件A的对应事件没有被触发），那么就没有获取实际数据，state的数据就是初始的空。 对症下药，就是要确保刷新页面以后调用对应的获取数据方法。 最万金油的解决是在App.vue的mounted生命周期中去调用这些方法。不管在哪个路由下刷新页面，总会执行。
 + vuex的state、getter、mutation、action、module特性分别是什么？
+        state, 状态初始化, 并实施观察 
+        getter, 获取数据用于view或data中使用 
+        mutation: 内部处理state变化 
+        action: 处理外部交互 
+        module: 模块化以上四个
 + vuex的store有几个属性值？分别讲讲它们的作用是什么？
+        state:存贮公共数据的地方 
+        Getters：获取公共数据的地方 
+        mutations：放的是同步的操作和reducer有点像 通过store的commit方法来让mutations执行 
+        action：放的是异步的操作 通过dispatch的方法让action里面的方法执行 context是store的一个副本 Vuex就是提供一个仓库，store仓库里面放了很多对象其中state即使数据源存放地
 + 你理解的vuex是什么呢？哪些场景会用到？不用会有问题吗？有哪些特性？
+        长期维护的项目，因为长期维护的项目不能保证3层组件设计。肯定会有第4层，依次类推项目越来越难维护。从4层调第一层的方法太困难，中间有夹杂着其他的逻辑耦合。所有这个是我用vuex的目的，抽离公共的东西，到vuex方便维护
 + 使用vuex的优势是什么？
-+ 有用过vuex吗？它主要解决的是什么问题？推荐在哪些场景用？
+        便于进行全局或者局部的状态管理. 便于组件/插件/混合之间的联系
