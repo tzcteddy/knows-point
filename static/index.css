@@ -78,8 +78,24 @@ section.cover {
 ul.app-sub-sidebar li:before {
   content: "·";
 }
+#TOPBANNER {
+    display: none;
+    height: 80px;
+    line-height: 80px;
+    z-index: 100;
+ 
+}
+#TOPBANNER p{
+   
+}
+#TOPBANNER p a{
+    
+}
 
 @media screen and (max-width: 980px) {
+    #TOPBANNER{
+        display: none;
+    }
   .app-nav {
     display: none;
   }
@@ -92,4 +108,7 @@ ul.app-sub-sidebar li:before {
   .sidebar .app-name {
     display: block;
   }
+}
+@keyframes topbanner{
+
 }

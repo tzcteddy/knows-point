@@ -1,0 +1,1 @@
+## 作用域(Scope)和作用域链(Scope-Chain)
