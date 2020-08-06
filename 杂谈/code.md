@@ -40,6 +40,26 @@ function clone(obj){
 }
 ```
 
+```js
+export function deepclone(obj, hash = new WeakMap()){
+  if(obj == null) return obj; // undefind派生于null 所以这里null和undefind都会被返回
+  if(typeof obj !== 'object') return obj; // 简单数据类型直接返回
+  if(obj instanceof Date) return new Date(obj); // 日期就返回一个新的日期
+  if(obj instanceof RegExp) return new RegExp(obj); // 正则就返回一个新的正则
+  if(hash.has(obj)){
+    return hash.get(obj); // WeakMap解决循环引用的问题(市面上的深度克隆都是有缺陷的没有考虑循环引用)
+  }
+  const instance = new obj.constructor(); // 数组和对象的构造函数实例化后能得到一个空的数组和对象，这里就不用再去判断是数组还是对象了
+  hash.set(obj, instance); // 制作一个映射表
+  for(const key in obj){ // for in 可以遍历数组也可以遍历对象
+    if(obj.hasOwnProperty(key)){ // 不拷贝原型链上的属性
+      instance[key] = deepclone(obj[key], hash); // 递归拷贝
+    }
+  }
+  return instance;
+}
+```
+
 ## 去重
 
 ```js
