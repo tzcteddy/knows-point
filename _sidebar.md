@@ -10,6 +10,8 @@
     * [JSBridge通信机制和底层原理](javascript/JSBridge通信机制和底层原理)
     * [高阶编程](javascript/高阶编程)
     * [作用域(Scope)和作用域链(Scope-Chain)](javascript/作用域(Scope)和作用域链(Scope-Chain))
+    * [ES6 Class和Function Class](javascript/class和function)
+    * [深入js继承原理](javascript/深入js继承原理)
     * [DOM](javascript/DOM)
     * [BOM](javascript/BOM)
     * [Event](javascript/Event)
