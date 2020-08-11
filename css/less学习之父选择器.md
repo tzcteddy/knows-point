@@ -55,3 +55,5 @@
 .header .menu{}
 .memu-item .header .menu{}
 ```
+
+[Extend继承](https://less.bootcss.com/features/#extend)
