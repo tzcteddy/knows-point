@@ -486,3 +486,14 @@ function Child(){
         }
 
 ```
+
+### Promise链式调用
+```js
+Promise.resolve().then(()=>fn1()).then(()=>fn2());
+function chainPromise(fns){
+  fns=Array.isArray(fns)?fns:[fns];
+  return (props)=>{
+    fns.reduce((p,fn)=>{p.then(()=>fn(props))},Promise.resolve())
+  }
+}
+```

@@ -42,6 +42,7 @@
     * [vue配置](vue/vue配置)
     * [vue使用技巧](vue/vue使用技巧)
 * [React](react/)
+    * [从0到1实现虚拟dom](react/从0到1实现虚拟dom)
 * [WebPack](webpack/)
     * [模块打包](webpack/模块打包)
     * [资源输入输出](webpack/资源输入输出)
