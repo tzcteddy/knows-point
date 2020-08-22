@@ -49,6 +49,7 @@
     * [预处理器](webpack/预处理器)
     * [样式处理](webpack/样式处理)
     * [代码分片](webpack/代码分片)
+    * [揭秘webpack之loader](webpack/揭秘webpack之loader)
     * [详解webpack](webpack/详解webpack/)
         * [entry](webpack/详解webpack/entry)
         * [output](webpack/详解webpack/output)
