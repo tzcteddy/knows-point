@@ -26,6 +26,7 @@ section.cover {
   display: flex;
   align-items: center;
 }
+
 .app-nav ul li:nth-child(1) {
   padding: 0;
   margin-right: 0;
@@ -52,6 +53,27 @@ section.cover {
 .app-nav ul > li > a.active {
   background: #e60000;
   color: #fff;
+}
+.app-nav .app-name{
+    display: flex;
+    align-items: center;
+}
+.app-nav .app-name .name{
+    position: relative;
+    margin-left: 10px;
+    color: #e60000;
+    font-size: 38px;
+}
+.app-nav .app-name .name::before{
+    content: "对点"; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    color:white; 
+    overflow: hidden; 
+    animation: appNameAnimate 6s infinite; 
 }
 .sidebar {
   padding-top: 100px !important;
@@ -112,3 +134,20 @@ ul.app-sub-sidebar li:before {
 @keyframes topbanner{
 
 }
+@keyframes appNameAnimate { 
+    0% { 
+    height: 25%; 
+    } 
+    25% { 
+    height: 50%; 
+    } 
+    50% { 
+    height: 65%; 
+    } 
+    75% { 
+    height: 40%; 
+    } 
+    100% { 
+    height: 25%; 
+    } 
+} 
