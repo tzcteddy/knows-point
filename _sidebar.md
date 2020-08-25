@@ -41,6 +41,7 @@
     * [style加scoped属性的用途和原理](vue/style加scoped属性的用途和原理)
     * [vue配置](vue/vue配置)
     * [vue使用技巧](vue/vue使用技巧)
+    * [vue+axios下载excel](vue/vue+axios下载excel)
 * [React](react/)
     * [从0到1实现虚拟dom](react/从0到1实现虚拟dom)
 * [WebPack](webpack/)
