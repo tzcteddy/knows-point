@@ -64,6 +64,7 @@
     * [源码解读](webpack/源码解读/)
         * [核心模块tapable](webpack/源码解读/核心模块tapable)
 * [NodeJs](node/)
+    * [聊聊npm](node/聊聊npm)
 * [TypeScript](typescript/ts-简介)
     * [基础](typescript/ts-基础)
     * [进阶](typescript/ts-进阶)

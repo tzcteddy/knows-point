@@ -417,3 +417,96 @@ this.$watch('count', function(){
     immediate: true // 立即执行watch
 })
 ```
+
+> 补充:watch多handler
+
+实际上watch可以设置为数组，支出String,Function,Object,触发后，注册的watch处理程序将被一一调用
+
+```js
+watch:{
+  value:[
+    'fn1',
+    function(newVal,oldVal){},
+    {
+      handler:'fn1',
+      deep:true
+    }
+  ]
+}
+```
+
+### 路由解耦
+一般我们处理组件中路由参数是这种方式
+```js
+export default{
+  methods:{
+    getIdParams(){
+      return this.$route.params.id
+    }
+  }
+}
+```
+但是在组件内部使用`$route`会对URL产生强耦合，限制了组件的灵活。
+
+我们可以向路由对象添加props,如：
+```js
+const router=new VueRouter({
+  routes:[{
+    path:'/:id',
+    component:Component,
+    ptops:true
+  }]
+})
+```
+组件可以直接从props获取参数
+```js
+export default{
+  props:['id'],
+  methods:{
+    getIdParams(){
+      return this.id
+    }
+  }
+}
+```
+
+还可以传一个函数，返回一个自定义的内容
+```js
+const router=new VueRouter({
+  routes:[{
+    path:'/:id',
+    component:Component,
+    ptops:router=>({id:router.query.id})
+  }]
+})
+```
+
+### 组件生命周期
+我们可以监听子组建的生命周期，如：
+```js
+//Child
+export default{
+  mounted(){
+    this.$emit('onMounted')
+  }
+}
+```
+```vue
+<!--Parent-->
+<template>
+    <Child @hook:mounted="handlerMounted">
+</template>
+```
+
+### 编程模式挂载组件
+Element UI是一个良好的例子
+
+```js
+import Vue from 'vue'
+import Alert from '../alert'
+const AlertCtro=Vue.extend(Alert)
+const AlertInstance=new AlertCtro()
+AlertInstance.$mount()
+document.body.append(AlertInstance.#el)
+Vue.prototype.$alert=Vue.$alert=function(){AlertInstance.open()}
+```
