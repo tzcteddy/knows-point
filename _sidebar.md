@@ -27,6 +27,7 @@
         * [命令模式](javascript/模式/命令模式)
         * [组合模式](javascript/模式/组合模式)
 * [ES6](ES6/)
+    * [深入babel](ES6/深入babel)
 * [CSS](css/)
     * [less学习之变量](css/less学习之变量)
     * [less学习之父选择器](css/less学习之父选择器)
