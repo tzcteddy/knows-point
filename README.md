@@ -21,6 +21,7 @@
 
 + [katex](https://katex.org/)
 + [正则可视化工具](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
++ [飞冰](https://ice.work/)
 
 #### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
