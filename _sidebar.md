@@ -43,6 +43,7 @@
     * [vue配置](vue/vue配置)
     * [vue使用技巧](vue/vue使用技巧)
     * [vue+axios下载excel](vue/vue+axios下载excel)
+    * [浅谈vuex](vue/浅谈vuex)
 * [React](react/)
     * [从0到1实现虚拟dom](react/从0到1实现虚拟dom)
 * [WebPack](webpack/)
