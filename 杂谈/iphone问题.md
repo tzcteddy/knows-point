@@ -20,5 +20,32 @@ min-height:101%;
 
 【IOS  fixed定位问题】
 
+唤起键盘后 IOS的可视窗口变小 ，导致元素偏移
+```js
+Vue.directive('title', {
+  inserted: (el, binding) => {
+    document.title = binding.value
+  },
+  update: (el, binding) => {
+    document.title = binding.value
+  }
+})
+Vue.directive('focus',{
+    inserted:(el)=>{
+        el.onfocus=function(){
+            if(el.timer){
+                clearTimeout(el.timer)
+            }
+        }
+        el.onblur=function(){
+            clearTimeout(el.timer)
+            el.timer = setTimeout(function() {
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+      }, 200)
+        }
+    }
+})
+```
+
 【IOS】axios请求兼容
 + get：使用简单请求，避免option请求后不在发送数据请求 例如（iphone7p）
