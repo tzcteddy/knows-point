@@ -65,7 +65,236 @@ let install = function(Vue){
 
 可以得到，在执行子组件的beforeCreate的时候，父组件已经执行完beforeCreate了，那理所当然父组件已经有$store了。
 
-### 
+### 四、Store
 
+
+```vue
+<p>{{this.$store.state.num}}</p>
+```
+既然再模板中可以通过这个`this.$store.state.num`拿到state的值
+```js
+{
+    state,
+    mutations,
+    actions,
+    getters,
+    modules
+}
+```
+上面我们是把这个对象传给Store类的
+
+```js
+class Store{
+    constructor(options){
+        this.state=options.state||{}
+    }
+}
+```
+>注意：Vuex和全局变量的区别——响应式
+
+我们优化下
+```js
+class Store{
+    constructor(options){
+        this.vm=new Vue({
+            data:{
+                state:options.state
+            }
+        })
+    }
+}
+```
+现在实现响应式了，但是我们如何获取到state呢？`this.$store.vm.state`？
+
+继续
+```js
+class Store{
+    constructor(options){
+        this.vm=new Vue({
+            data:{
+                state:options.state
+            }
+        })
+    }
+    get state(){
+        return this.vm.state
+    }
+}
+
+```
+
+### 五、getters
+
+```js
+class Store{
+    constructor(options){
+        this.vm=new Vue({
+            data:{
+                state:options.state
+            }
+        })
+        let getters=options.getters||{}
+        this.getters = {}
+        Object.keys(getters).forEach(getterName=>{
+            Object.defineProperty(this.getters,getterName,{
+                get:()=>{
+                    return getters[getterName](this.state)
+                }
+            })
+        })
+    }
+    get state(){
+        return this.vm.state
+    }
+}
+```
+这里使用了`Object.defineProperty的get接口`
+
+### 六、mutations
+
+```js
+class Store{
+    constructor(options){
+        this.vm=new Vue({
+            data:{
+                state:options.state
+            }
+        })
+
+        let getters=options.getters||{}
+        this.getters = {}
+        Object.keys(getters).forEach(getterName=>{
+            Object.defineProperty(this.getters,getterName,{
+                get:()=>{
+                    return getters[getterName](this.state)
+                }
+            })
+        })
+
+        let mutations = options.mutations || {}
+        this.mutations = {}
+        Object.keys(mutations).forEach(mutationName=>{
+            this.mutations[mutationName] = (arg)=> {
+                mutations[mutationName](this.state,arg)
+            }
+        })
+
+    }
+    get state(){
+        return this.vm.state
+    }
+}
+```
+触发mutations,我们使用`this.$store.commit('add',1)`,继续添加commit方法
+
+```js
+class Store{
+    constructor(options){
+        this.vm=new Vue({
+            data:{
+                state:options.state
+            }
+        })
+
+        let getters=options.getters||{}
+        this.getters = {}
+        Object.keys(getters).forEach(getterName=>{
+            Object.defineProperty(this.getters,getterName,{
+                get:()=>{
+                    return getters[getterName](this.state)
+                }
+            })
+        })
+
+        let mutations = options.mutations || {}
+        this.mutations = {}
+        Object.keys(mutations).forEach(mutationName=>{
+            this.mutations[mutationName] = (arg)=> {
+                mutations[mutationName](this.state,arg)
+            }
+        })
+
+    }
+    commit:(method,arg)=>{
+        this.mutations[method](arg)
+    }
+    get state(){
+        return this.vm.state
+    }
+}
+```
+### 七、actions
+
+```js
+class Store{
+    constructor(options){
+        this.vm=new Vue({
+            data:{
+                state:options.state
+            }
+        })
+
+        //实现getters
+        let getters=options.getters||{}
+        this.getters = {}
+        Object.keys(getters).forEach(getterName=>{
+            Object.defineProperty(this.getters,getterName,{
+                get:()=>{
+                    return getters[getterName](this.state)
+                }
+            })
+        })
+
+        //实现mutations
+        let mutations = options.mutations || {}
+        this.mutations = {}
+        Object.keys(mutations).forEach(mutationName=>{
+            this.mutations[mutationName] = (arg)=> {
+                mutations[mutationName](this.state,arg)
+            }
+        })
+
+        //实现actions
+        let actions = options.actions
+        this.actions = {}
+        Object.keys(actions).forEach(actionName=>{
+            this.actions[actionName] = (arg)=>{
+                actions[actionName](this,arg)
+            }
+        })
+
+    }
+    dispatch(method,arg){
+        this.actions[method](arg)
+    }
+    commit:(method,arg)=>{
+        this.mutations[method](arg)
+    }
+    get state(){
+        return this.vm.state
+    }
+}
+```
+和mutations看似一样，但是有个地方不同，actions中接受的是`this`
+
+使用actions
+```js
+actions: {
+    asyncIncre({commit},arg){
+        setTimeout(()=>{
+          commit('incre',arg)
+        },1000)
+    }
+  },
+```
+
+
+细心的同学会发现，commit方法使用的时箭头函数
+
+我们执行`this.$store.commit()`的时候，`this`指向`$store`
+
+但是执行`this.$store.dispatch('asyncIncre')`的时候，this的指向就发生变化了。
+
+好了，到这一个简单的vuex就实现啦！
 
 
