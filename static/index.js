@@ -14,7 +14,9 @@ window.onload=function(){
             }
         }
     }
-    setTimeout(()=>{hideVueInit()},0)
+    setTimeout(()=>{
+        hideVueInit()
+    },0)
 }
 
 // * ![对点](static/logo.png)

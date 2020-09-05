@@ -44,7 +44,11 @@
     </nav>
     <div id="app">Please wait...</div>
     <script>
-
+        // document.onreadystatechange=function(event){
+        //     if(document.readyState==='interactive'&&hrefQuery(window.location.href).code!=='hello'){
+        //         window.location.href='/error.html'
+        //     }
+        // }
         window.$docsify = {
             //maxLevel: 6,
             coverpage: true,
@@ -78,6 +82,19 @@
                 textAlign: "center"
             },
         }
+        function hrefQuery(href) {
+        var reg = /([^?=#&]+)=([^?=#&]+)/g,
+            obj = {};
+            href.replace(reg, function () {
+            obj[arguments[1]] = arguments[2];
+        });
+        //->GET HASH
+        reg = /#([^?=#&]+)/;
+        href.replace(reg, function () {
+            obj['HASH'] = arguments[1];
+        });
+        return obj;
+    }
 //   if (typeof navigator.serviceWorker !== 'undefined') {
 //     navigator.serviceWorker.register('sw.js')
 //   }
