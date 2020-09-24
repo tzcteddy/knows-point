@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='referrer' content='always'>
+    <meta name='author' content='qiphon'>
+    <meta name='robots' content='none'>
+    <meta name='keywords' content=''>
+    <meta name='description' content=''>
+    <meta name='renderer' content='webkit'>
+    <meta name='revisit-after' content='7 days'>
+    <meta http-equiv=widow-target Content=_top>
+    <meta name='viewport'
+        content='width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no, shrink-to-fit=no'
+        viewport-fit=cover />
+    <meta http-equiv='X-UA-Compatible' content='ie=edge,chrome=1'>
+    <title></title>
+    <script src="lib/react.development.js"></script>
+    <script src="lib/react-dom.development.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            margin: auto;
+            width: 1200px;
+            padding: 20px 0;
+            box-sizing: border-box;
+        } */
+
+        /* h1,
+        h2,
+        h3,
+        h4 {
+            margin: auto;
+            width: 1200px;
+        } */
+
+        .box {
+            margin: auto;
+            /* width: 1200px; */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+        }
+
+        .mb20 {
+            margin-bottom: 20px;
+        }
+
+        .mb10 {
+            margin-bottom: 10px;
+        }
+
+        .bg {
+            background: linear-gradient(to right, rgb(23, 233, 145), rgb(8, 213, 240));
+        }
+
+        .code {
+            margin-right: 20px;
+            width: 300px;
+        }
+
+        pre {
+            background: #000;
+            color: #fff;
+            border-radius: 8px;
+            white-space: pre;
+            line-height: 20px;
+        }
+
+        pre code {
+            display: block;
+            width: 100%;
+            
+
+        }
+
+        .container {
+            width: 600px;
+            background: rgb(4, 136, 141);
+            box-shadow: 0 4px 18px 0 rgba(0, 0, 0, .1);
+            border-radius: 8px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, rgb(23, 233, 145), rgb(8, 213, 240));
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+            border-radius: 50%;
+        }
+
+        .line1 {
+            width: 200px;
+            height: 30px;
+            border-radius: 8px;
+            background: linear-gradient(to right, rgb(23, 233, 145), rgb(8, 213, 240));
+            ;
+        }
+
+        .line2 {
+            width: 150px;
+            height: 30px;
+            border-radius: 8px;
+            background: linear-gradient(to right, rgb(23, 233, 145), rgb(8, 213, 240));
+            ;
+        }
+
+        .header,
+        .footer {
+            width: 100%;
+            height: 60px;
+            background: #4b3a96;
+        }
+
+        .main {
+            width: 100%;
+            background: #f9f8fc;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>水平垂直居中</h2>
+    <h3>flex</h3>
+    <!-- 单元素水平垂直居中 -->
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+
+                <code>
+<span>.flex_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+        <div class="container flex_container">
+            <div class="avatar"></div>
+        </div>
+    </div>
+    <!-- ========= -->
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+
+                    <code>
+<span>
+.flex_container{
+    display: flex;
+    justify-content: center;
+}
+.flex_item{
+    align-self:center;
+}
+</span>
+                    </code>
+                </pre>
+        </div>
+        <style>
+            .flex_container-1 {
+                display: flex;
+                justify-content: center;
+            }
+
+            .flex_item {
+                align-self: center;
+            }
+        </style>
+        <div class="container flex_container-1">
+            <div class="avatar flex_item"></div>
+        </div>
+    </div>
+    <!-- ======== -->
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+
+                    <code>
+<span>
+ .flex_container{
+     display: flex;
+     place-content: center;
+     place-items: center;
+ }
+</span>
+                    </code>
+                </pre>
+        </div>
+        <style>
+            .flex_container-2 {
+                display: flex;
+                place-content: center;
+                place-items: center;
+            }
+        </style>
+        <div class="container flex_container-2">
+            <div class="avatar"></div>
+        </div>
+    </div>
+    <!-- ======== -->
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                    <code>
+<span>
+ .flex_container{
+     display: flex;
+ }
+ .flex_item{
+     margin:auto;
+ }
+</span>
+                    </code>
+                </pre>
+        </div>
+        <style>
+            .flex_container-3 {
+                display: flex;
+            }
+
+            .flex_item-1 {
+                margin: auto;
+            }
+        </style>
+        <div class="container flex_container-3">
+            <div class="avatar flex_item-1"></div>
+        </div>
+    </div>
+    <!-- 多元素水平垂直居中 -->
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+
+                <code>
+<span>
+ .flex_container{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_container-4 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+        <div class="container flex_container-4">
+            <div class="avatar mb10"></div>
+            <div class="line1 mb10"></div>
+            <div class="line2"></div>
+        </div>
+    </div>
+    <h3>gird</h3>
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+
+                <code>
+<span>
+ .grid__container {
+     display: grid;  /*或 inline-grid*/
+     place-items: center
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .grid__container-1 {
+                display: grid;
+                /*或 inline-grid*/
+                place-items: center
+            }
+        </style>
+        <div class="container grid__container-1">
+            <div class="avatar"></div>
+        </div>
+    </div>
+    <!-- 多元素水平垂直居中 -->
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+
+                <code>
+<span>
+ .grid__container{
+     display: grid;
+     place-items: center;
+     place-content:center;
+ }
+ .grid__item {
+     display: grid;
+     place-items: center;
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .grid__container-2 {
+                display: grid;
+                place-items: center;
+                place-content: center;
+            }
+
+            .grid__item-2 {
+                display: grid;
+                place-items: center;
+            }
+        </style>
+        <div class="container grid__container-2">
+            <div class="avatar mb10"></div>
+            <div class="line1 mb10"></div>
+            <div class="line2 grid__item-2">123</div>
+        </div>
+    </div>
+
+
+    <h2>等高布局</h2>
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .flex_container{
+     display: flex;
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_container-5 {
+                padding: 5px;
+                display: flex;
+            }
+
+            .left {
+                width: 20%;
+            }
+
+            .mid {
+                margin: 0 5px;
+                width: 60%;
+            }
+
+            .right {
+                width: 20%;
+            }
+        </style>
+        <div class="container flex_container-5">
+            <div class="bg left"></div>
+            <div class="bg mid"></div>
+            <div class="bg right"></div>
+        </div>
+    </div>
+    <!-- 如果需求有所调整，比如在Flex项目 或 Grid项目的子元素高度和容器高度相同。 -->
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .flex__container {
+     display: flex;
+ }
+ .flex_item_content {
+     height: 100%
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_container-6 {
+                padding: 5px;
+                display: flex;
+            }
+
+            .mid {
+                margin: 0 5px;
+                width: 60%;
+            }
+        </style>
+        <div class="container flex_container-6">
+            <div class="bg mid">
+                <div class="flex_item_content"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .grid__container {
+     display: grid;
+     grid-auto-flow: column;
+ }
+ 
+ .grid_item_content {
+     height: 100%;
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .grid__container-3 {
+                padding: 5px 0;
+                display: grid;
+                grid-auto-flow: column;
+            }
+
+            .grid__container-3 .grid_item_content {
+                height: 100%;
+            }
+
+            .mid {
+                margin: 0 5px;
+                width: 60%;
+            }
+        </style>
+        <div class="container grid__container-3">
+            <div class="bg mid">
+                <div class="grid_item_content"></div>
+            </div>
+        </div>
+    </div>
+    <h2>Sticky Footer</h2>
+    <img style="display: block; width: 920px;margin: auto;"
+        src="https://intranetproxy.alipay.com/skylark/lark/0/2020/png/34229/1594137747412-cc7d511e-ce94-48f6-af87-d7df677e3f97.png#alt=undefined"
+        alt="">
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .flex_body {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .footer {
+     margin-top: auto;
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_body-1 {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .flex_body-1 .footer {
+                margin-top: auto;
+            }
+
+            .main_full {
+                width: 100%;
+
+            }
+        </style>
+        <div class="container flex_body-1">
+            <div class="header">
+                <div style="text-align: center;color: #fff;">header</div>
+            </div>
+            <div class="main main_full">
+                <div style="text-align: center;">main</div>
+            </div>
+            <div class="footer">
+                <div style="text-align: center;color: #fff;">footer</div>
+            </div>
+        </div>
+    </div>
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .flex_body {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .main {
+     flex: 1 0 auto;
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_body-1 {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .flex_main {
+                flex: 1 0 auto;
+            }
+        </style>
+        <div class="container flex_body-1">
+            <div class="header">
+                <div style="text-align: center;color: #fff;">header</div>
+            </div>
+            <div class="main flex_main">
+                <div style="text-align: center;">main</div>
+            </div>
+            <div class="footer">
+                <div style="text-align: center;color: #fff;">footer</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>均分列</h2>
+
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .flex_container{
+     inline-size: 50vw;
+     min-inline-size: 320px;
+     display: flex-row;
+ }
+ .column {
+     float: left;
+     width: calc(100% / 3);
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_container-7 {
+                /* inline-size: 50vw;
+                min-inline-size: 320px; */
+                display: flex-row;
+            }
+
+            .flex_container-7 .column {
+                float: left;
+                width: calc(100% / 3);
+                text-align: center;
+            }
+
+            .flex_container-7 .column span {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 50%;
+                color: #fff;
+                background: rgb(177, 4, 39);
+            }
+        </style>
+        <div class="container flex_container-7">
+            <div class="column"><span class="icon">九</span></div>
+            <div class="column"><span class="icon">月</span></div>
+            <div class="column"><span class="icon">九</span></div>
+        </div>
+    </div>
+
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .flex_container{
+     inline-size: 50vw;
+     display: flex;
+ }
+ .flex__item {
+     flex: 1;
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_container-8 {
+                /* inline-size: 50vw; */
+                display: flex;
+                flex-direction: row;
+            }
+
+            .flex_container-8 .flex_item-8 {
+                flex: 1;
+                text-align: center;
+            }
+
+            .flex_container-8 .flex_item-8 span {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 50%;
+                color: #fff;
+                background: rgb(177, 4, 39);
+            }
+        </style>
+        <div class="container flex_container-8">
+            <div class="flex_item-8 bg"><span class="icon">九</span></div>
+            <div class="flex_item-8 bg"><span class="icon">月</span></div>
+            <div class="flex_item-8 bg"><span class="icon">九</span></div>
+        </div>
+    </div>
+
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .grid__container {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr); 
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .grid_container-4 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid_container-4 .grid_item {
+                text-align: center;
+            }
+
+            .grid_container-4 .grid_item span {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 50%;
+                color: #fff;
+                background: rgb(177, 4, 39);
+            }
+        </style>
+        <div class="container grid_container-4">
+            <div class="grid_item bg"><span class="icon">九</span></div>
+            <div class="grid_item bg"><span class="icon">月</span></div>
+            <div class="grid_item bg"><span class="icon">九</span></div>
+        </div>
+    </div>
+
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .flex__container {
+     display: flex;
+     flex-wrap: wrap;
+ }
+ 
+ .flex__item {
+     flex: 0 1 calc((100vw - 18vh) / 4); 
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex__container-9 {
+                display: flex;
+                flex-wrap: wrap;
+                /* min-inline-size: 600px; */
+            }
+
+            .flex__container-9 .flex__item-9 {
+                flex: 0 1 calc((100vw - 112vh) / 3);
+                /* calc(100vw -18vh) / 4 是flex-basis的基准值 */
+                text-align: center;
+            }
+
+            .flex__container-9 .flex__item-9 span {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 50%;
+                color: #fff;
+                background: rgb(177, 4, 39);
+            }
+        </style>
+        <div class="container flex__container-9">
+            <div class="flex__item-9 bg"><span class="icon">九</span></div>
+            <div class="flex__item-9 bg"><span class="icon">月</span></div>
+            <div class="flex__item-9 bg"><span class="icon">九</span></div>
+        </div>
+    </div>
+
+    <h2>圣杯布局</h2>
+    <img style="display: block; width: 920px;margin: auto;"
+        src="https://intranetproxy.alipay.com/skylark/lark/0/2020/png/34229/1594138332145-7c2f63e0-2a1e-41d8-a080-3641fd12ca12.png#alt=undefined"
+        alt="">
+    <div class="box mb20">
+        <div class="code">
+            <pre>
+                <code>
+<span>
+ .body {
+     display: flex;
+     flex-direction: column;
+ }
+ .body .main {
+     flex: 1;
+     min-height: 0;
+     display: flex;
+     align-items: stretch;
+     width: 100%;
+ }
+ .body footer {
+     margin-top: auto;
+ }
+ .body nav {
+     width: 220px;
+     order: -1;
+ }
+ .body article {
+     flex: 1;
+ }
+ .body aside {
+     width: 220px;
+ }
+ @media screen and (max-width: 800px) {
+     .main {
+         flex-direction: column;
+     }
+     nav, aside {
+         width: 100%;
+     }
+ }
+</span>
+                </code>
+            </pre>
+        </div>
+        <style>
+            .flex_body-2 {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .flex_body-2 .main {
+                flex: 1;
+                min-height: 0;
+
+                display: flex;
+                align-items: stretch;
+                width: 100%;
+            }
+
+            .flex_body-2 footer {
+                margin-top: auto;
+            }
+
+            .flex_body-2 nav {
+                width: 120px;
+                order: -0;
+            }
+
+            .flex_body-2 article {
+                flex: 1;
+            }
+
+            .flex_body-2 aside {
+                width: 120px;
+                order: -1;
+            }
+
+            @media screen and (max-width: 800px) {
+                .flex_body-2 .main {
+                    flex-direction: column;
+                }
+
+                .flex_body-2 nav,
+                .flex_body-2 aside {
+                    width: 100%;
+                }
+            }
+        </style>
+        <div class="container flex_body-2">
+            <div class="header">
+                <div style="text-align: center;color: #fff;">header</div>
+            </div>
+            <div class="main ">
+                <article class="bg">article</article>
+                <nav >nav</nav>
+                <aside>aside</aside>
+            </div>
+            <div class="footer">
+                <div style="text-align: center;color: #fff;">footer</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+</script>
