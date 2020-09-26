@@ -21,6 +21,7 @@
 #### 三、数学公式
 
 + [katex](https://katex.org/)
++ [数学公式编辑器](http://www.wiris.com/editor/demo/en/developers#mathml-latex)
 + [正则可视化工具](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
 + [飞冰](https://ice.work/)
 
@@ -37,6 +38,7 @@
 + 从2020年6月30日起,新更新的密码为20202020
 
 [看云](https://www.kancloud.cn/search?q=javascript)
+
 http、html、js、css、
 vue、react
 weex、react-native 移动原生应用
