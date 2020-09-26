@@ -1,5 +1,6 @@
 * [目录.....](README.md)
 * [JavaScript](javascript/)
+    * [运算符](javascript/运算符)
     * [词法解析和变量提升](javascript/词法解析和变量提升)
     * [堆栈内存及垃圾回收机制](javascript/堆栈内存及垃圾回收机制)
     * [JS底层运行机制](javascript/JS底层运行机制)
