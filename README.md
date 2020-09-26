@@ -38,6 +38,7 @@
 + 从2020年6月30日起,新更新的密码为20202020
 
 [看云](https://www.kancloud.cn/search?q=javascript)
+[力扣](https://leetcode-cn.com/)
 
 http、html、js、css、
 vue、react
