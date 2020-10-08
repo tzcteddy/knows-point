@@ -29,25 +29,25 @@
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
 + [Break易站](https://www.breakyizhan.com/)
 + [ECMAScript® 2015 Language Specification](https://www.ecma-international.org/ecma-262/6.0/#sec-properties-of-the-date-prototype-object)
+
 #### 五、网络资料
 
-[52官网](http://www.52download.cn/wpcourse/)
-+ 课程的密码: 20181111
-+ 自2018年5月12日起,新增的课程密码:20181999
-+ 从2019年6月24日起,新更新的密码为20196240
-+ 从2020年6月30日起,新更新的密码为20202020
++ [52官网](http://www.52download.cn/wpcourse/)
+    - 课程的密码: 20181111
+    - 自2018年5月12日起,新增的课程密码:20181999
+    - 从2019年6月24日起,新更新的密码为20196240
+    - 从2020年6月30日起,新更新的密码为20202020
 
-[看云](https://www.kancloud.cn/search?q=javascript)
-[力扣](https://leetcode-cn.com/)
++ [看云](https://www.kancloud.cn/search?q=javascript)
++ [力扣](https://leetcode-cn.com/)
 
 #### 六、表单相关
-[UFrom](https://uformjs.org/#/MpI2Ij/dNFzFyTb)
 
-[form-render](https://github.com/alibaba/form-render)
++ [UFrom](https://uformjs.org/#/MpI2Ij/dNFzFyTb)
++ [form-render](https://github.com/alibaba/form-render)
++ [json-editor](https://github.com/jdorn/json-editor)
++ [云凤蝶](https://www.yunfengdie.com/doc/dev-guide/package-schema)
 
-[json-editor](https://github.com/jdorn/json-editor)
-
-[云凤蝶](https://www.yunfengdie.com/doc/dev-guide/package-schema)
 http、html、js、css、
 vue、react
 weex、react-native 移动原生应用
