@@ -18,12 +18,13 @@
 
 [查看地址](https://tzcteddy.github.io/knows-point/)
 
-#### 三、数学公式
+#### 三、工具
 
 + [katex](https://katex.org/)
 + [数学公式编辑器](http://www.wiris.com/editor/demo/en/developers#mathml-latex)
 + [正则可视化工具](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
 + [飞冰](https://ice.work/)
++ [再见excel,在线表格](https://mengshukeji.gitee.io/luckysheetdocs/zh/)
 
 #### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
