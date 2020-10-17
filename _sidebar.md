@@ -69,6 +69,7 @@
         * [plugin](webpack/详解webpack/plugin)
     * [源码解读](webpack/源码解读/)
         * [核心模块tapable](webpack/源码解读/核心模块tapable)
+        * [实现一个简易的webpack](webpack/源码解读/实现一个简易的webpack)
 * [NodeJs](node/)
     * [聊聊npm](node/聊聊npm)
 * [TypeScript](typescript/ts-简介)
