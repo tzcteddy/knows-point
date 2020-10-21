@@ -49,3 +49,48 @@ axios.get('/statistic/export',{responseType: 'blob'}).then(res=>{})
 **解决**
 `download`方法的filename加上`.xls`强制转换
 
+
+### 原生实现下：
+```js
+function downloadFile(url, filename) {
+  const xhr = new XMLHttpRequest()
+  xhr.open('GET', url, true)
+  xhr.responseType = 'blob'
+  // xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.setRequestHeader('token', token)
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // const data = xhr.response;
+      // const blob = new Blob([data]);
+      // const blobUrl = window.URL.createObjectURL(blob);
+      download(xhr.response, filename)
+    }
+  }
+  xhr.send()
+}
+//实现 download方法
+function download(blob, filename) {
+  if (window.navigator.msSaveOrOpenBlob) {
+    navigator.msSaveBlob(blob, filename)
+  } else {
+    var link = document.createElement('a')
+    var body = document.querySelector('body')
+    window.URL = window.URL || window.webkitURL;
+    link.href = window.URL.createObjectURL(blob)
+    link.download = filename
+    // fix Firefox
+    link.style.display = 'none'
+    body.appendChild(link)
+    link.click()
+    body.removeChild(link)
+    window.URL.revokeObjectURL(link.href)
+  }
+}
+```
+
+`Internet Explorer 10` 的 `msSaveBlob` 和 `msSaveOrOpenBlob` 方法允许用户在客户端上保存文件，方法如同从 Internet 下载文件，这是此类文件保存到“下载”文件夹的原因。
++ msSaveBlob：保存
++ msSaveOrOpenBlob：保存打开
+
+
+

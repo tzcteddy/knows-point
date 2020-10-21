@@ -30,5 +30,6 @@
 + 【vue-quill-editor】
 + 【vuedraggable】
 + 【vue-video-player】
++ 【vuex-persist】
 
 [more](https://www.jianshu.com/p/0ef292736c9b)
