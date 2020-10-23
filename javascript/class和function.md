@@ -85,3 +85,38 @@ isES6Class(FunPerson) // false
 isES6Class(EsPerson) // true
 ```
 
+面试题：
+```js
+class Parent{}
+
+class Child extends Parent{constructor(){super()}}
+
+Child.__proto__===Parent
+//true
+Child.prototype.__proto__===Parent.prototype
+//true
+Child.__proto__.prototype===Parent.prototype
+//true
+```
+
+原理：
+```js
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+var Parent = function Parent() {};
+
+var Child = /*#__PURE__*/ (function(_Parent) {
+  _inheritsLoose(Child, _Parent);
+
+  function Child() {
+    return _Parent.call(this) || this;
+  }
+
+  return Child;
+})(Parent);
+```
+
