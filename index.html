@@ -19,6 +19,7 @@
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dolphin.css"> -->
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-top-banner-plugin@latest/dist/style.css" />
+    <link rel="stylesheet" href="./static/css/swiper.css">
     <link rel="stylesheet" href="./static/index.css">
 </head>
 
@@ -29,18 +30,15 @@
                 <img class="logo" src="./static/knows-point.png" data-origin="static/logo.png" alt="对点">
                 <h2 class="name">对点</h2>
             </li>
-            <!-- <li>
-        <img src="./static/logo_text.png" data-origin="static/logo_text.png" alt="对点儿">
-    </li> -->
-            <!-- <li><a href="#/javascript/">JavaScript</a></li>
-    <li><a href="#/ES6/">ES6</a></li>
-    <li><a href="#/vue/">VUE</a></li>
-    <li><a href="#/react/">React</a></li>
-    <li><a href="#/webpack/">WebPack</a></li>
-    <li><a href="#/node/">NodeJs</a></li>
-    <li><a href="#/typescript/">TypeScript</a></li>
-    <li><a href="#/canvas/">Canvas</a></li> -->
         </ul>
+        <div class="news swiper-container">
+            <span class="news-icon">news:</span>
+            <div class="swiper-wrapper">
+                <p class="swiper-slide news-item">是时候了解WebIDL</p>
+                <p class="swiper-slide news-item">基于WASM的文件上传</p>
+                <p class="swiper-slide news-item">关于WEBRCT</p>
+            </div>
+        </div>
     </nav>
     <div id="app">Please wait...</div>
     <script>
@@ -106,8 +104,7 @@
     <script src="./static/lib/zoom-image.js" defer></script>
     <script src="./static/lib/prism-bash.js" defer></script>
     <script src="./static/lib/prism-javascript.min.js" defer></script>
+    <script src="./static/lib/swiper.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-top-banner-plugin@latest/dist/index.js"></script>
     <script src='./static/index.js'></script>
-</body>
-
 </html>

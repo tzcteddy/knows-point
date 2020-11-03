@@ -17,6 +17,16 @@ window.onload=function(){
     setTimeout(()=>{
         hideVueInit()
     },0)
+    var swiper = new Swiper('.swiper-container', {
+            autoplay:true,
+            delay:1000,
+            loop:true,
+            speed:300,
+            direction:'vertical',
+            pagination: {
+                el: '.swiper-pagination',
+            },
+      });
 }
 
 // * ![对点](static/logo.png)

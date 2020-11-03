@@ -75,6 +75,35 @@ section.cover {
     overflow: hidden; 
     animation: appNameAnimate 6s infinite; 
 }
+.app-nav .news{
+    padding: 0 10px 0 50px;
+    position: absolute;
+    right: 0;
+    bottom: -30px;
+    width: 260px;
+    height: 30px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    box-sizing: border-box;
+}
+.app-nav .news .news-icon{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -8px;
+    width: 20px;
+    line-height: 16px;
+    color: orange;
+    font-size: 12px;
+}
+.app-nav .news .news-item{
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .sidebar {
   padding-top: 100px !important;
 }
