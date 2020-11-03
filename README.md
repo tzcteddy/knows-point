@@ -16,11 +16,9 @@
 + [阮一峰老师](http://www.ruanyifeng.com/home.html)
 + [馒头加梨子](https://www.cnblogs.com/yangzhou33/)
 + [Bigben](https://www.cnblogs.com/bigben0123/)
-
-[查看地址](https://tzcteddy.github.io/knows-point/)
++ [开发博客](http://caibaojian.com/)
 
 #### 三、工具
-
 + [katex](https://katex.org/)
 + [数学公式编辑器](http://www.wiris.com/editor/demo/en/developers#mathml-latex)
 + [正则可视化工具](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
@@ -29,6 +27,7 @@
 + [贝塞尔曲线](https://cubic-bezier.com/#.17,.67,.83,.67)
 + [自定义字体](https://fontello.com/) [源码](https://github.com/fontello/fontello)
 + [可视化工具](https://grafana.com/grafana/download)
+
 #### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
 + [Break易站](https://www.breakyizhan.com/)
