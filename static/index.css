@@ -84,6 +84,7 @@ section.cover {
     height: 30px;
     box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
     box-sizing: border-box;
+    background: #ffffff;
 }
 .app-nav .news .news-icon{
     position: absolute;
