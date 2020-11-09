@@ -205,7 +205,7 @@ class ExpriesCache {
     // 默认存储20分钟
     static set(name, data, timeout = 1200) {
         // 设置 itemCache
-        const itemCache = mew ItemCache(data, timeout)
+        const itemCache = new ItemCache(data, timeout)
         //缓存
         ExpriesCache.cacheMap.set(name, itemCache)
     }
