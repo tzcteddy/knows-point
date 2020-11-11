@@ -16,6 +16,8 @@ window.onload=function(){
     }
     setTimeout(()=>{
         hideVueInit()
+        console.clear();
+        console.log('%c 对点','color:#e60000;font-size:32px;text-shadow:2px 2px orange;')
     },0)
     var swiper = new Swiper('.swiper-container', {
             autoplay:true,
