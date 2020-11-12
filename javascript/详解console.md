@@ -1,6 +1,6 @@
 ## 详解console
 
-onsole 的功能主要在于控制台打印，它可以打印任何字符、对象、甚至 DOM 元素和系统信息，下面一一介绍。
+console 的功能主要在于控制台打印，它可以打印任何字符、对象、甚至 DOM 元素和系统信息，下面一一介绍。
 
 #### console.log()|info()|debug()|warn()|error()
 ![console](../static/images/javascript/console/base.png)
