@@ -16,7 +16,7 @@ window.onload=function(){
     }
     setTimeout(()=>{
         hideVueInit()
-        console.clear();
+        // console.clear();
         console.log('%c 对点','color:#e60000;font-size:32px;text-shadow:2px 2px orange;')
     },0)
     var swiper = new Swiper('.swiper-container', {
@@ -29,6 +29,17 @@ window.onload=function(){
                 el: '.swiper-pagination',
             },
       });
+      window.onpopstate=function(){
+        if (document.readyState === "complete") {
+          setTimeout(()=>{
+            var script=document.getElementById('built-in');
+          if(script){
+            eval(console.log('内置页面js执行'))
+            eval(script.innerText)
+          }
+          },0)
+        }
+      }
 }
 
 // * ![对点](static/logo.png)
