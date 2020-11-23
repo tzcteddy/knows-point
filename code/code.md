@@ -497,3 +497,40 @@ function chainPromise(fns){
   }
 }
 ```
+
+### 函数柯理化
+```js
+const curring=(fn,arr=[])=>{
+  let len=fn.length;
+  return function(...args){
+    let newArgs=[...arr,...args];
+    if(newArgs.length==len){
+      return fn(...newArgs)
+    }else{
+      return curring(fn,newArgs)
+    }
+  }
+};
+function sum(a,b,c,d,e,f,g){
+  return a+b+c+d+e+f+g
+}
+let s=curring(sum)
+s(1)(2,3,4,5,6)(7)
+```
+
+### 函数执行前
+
+```js
+Function.prototype.before=function(callback){
+  return (...args)=>{
+      callback();
+      this(...args)
+  }
+}
+function fn(...args){
+  console.log('fn',...args)
+};
+fn.before(()=>{
+  console.log('before fn')
+})
+```
