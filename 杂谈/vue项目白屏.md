@@ -171,3 +171,35 @@ module.exports = {
   }
 }
 ```
+
+### 代码友好处理
+```js
+ // 监听 window.onload 是否执行，用于组件中执行 onload 后续事件
+       window.addEventListener('load', function() {
+        try {
+          // 移动端开启
+          var isMobile = navigator.userAgent.toLowerCase().match(/iphone|ipad|android|micromessenger/i);
+          if (isMobile) {
+            var rootNode = document.querySelector('#app');
+            if (rootNode && !rootNode.innerHTML) {
+              // ready 3s 后节点内容为空，展示友好报错
+              setTimeout(function() {
+                // 插入节点前再次检查是否白屏
+                if (!rootNode.innerHTML) {
+                  var html = '<div>';
+                  html += '<h3 style="margin-top: 45%;text-align: center;">页面打不开？快来找开发 GG 帮忙</h3>';
+                  if (window.appData && window.appData.traceId) {
+                    html += '<p style="padding: 10px 30px;">反馈信息: ' + window.appData.traceId + '</p>';
+                  }
+                  html += '<p style="padding: 10px 30px;">截图或复制反馈信息到: <a target="_blank" href=""></a></p>'
+                  html += '</div>';
+                  rootNode.innerHTML = html;
+                }
+              }, 3000);
+            }
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }, false);
+```
