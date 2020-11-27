@@ -31,14 +31,22 @@
                 <h2 class="name">对点</h2>
             </li>
         </ul>
-        <div class="news swiper-container">
-            <span class="news-icon">news:</span>
+        <!-- <div class="news swiper-container">
+            <span class="news-icon">热搜:</span>
             <div class="swiper-wrapper">
                 <p class="swiper-slide news-item">是时候了解WebIDL</p>
                 <p class="swiper-slide news-item">基于WASM的文件上传</p>
                 <p class="swiper-slide news-item">关于WEBRCT</p>
             </div>
-        </div>
+        </div> -->
+        <div class="news swiper-container ">
+          <span class="news-icon">技术:</span>
+          <div class="swiper-wrapper">
+              <p class="swiper-slide news-item">是时候了解WebIDL</p>
+              <p class="swiper-slide news-item">基于WASM的文件上传</p>
+              <p class="swiper-slide news-item">关于WEBRCT</p>
+          </div>
+      </div>
     </nav>
     <div id="app">Please wait...</div>
     <script>
@@ -97,6 +105,7 @@
 //     navigator.serviceWorker.register('sw.js')
 //   }
     </script>
+    <script src="./static/lib/jquery.min.js" defer></script>
     <script src="./static/lib/docsify.min.js" defer></script>
     <script src="./static/lib/gitalk.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js" defer></script>
