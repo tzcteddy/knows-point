@@ -215,5 +215,18 @@ function toTreeData(data) {
 	return tree;
 }
 
-
+function lookupPath(all, func, path = []) {
+      if (!all) return [];
+      for (const item of all) {
+        path.push(item);
+        if (func(item)) return path;
+        if (item.children) {
+          const findChildren = this.getNavs(item.children, func, path);
+          if (findChildren.length) return findChildren;
+        }
+        path.pop();
+      }
+      return [];
+    }
+lookupPath(tree,(data)=>data.name==='b-7-8')
 ```
