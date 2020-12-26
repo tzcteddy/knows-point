@@ -42,7 +42,6 @@ window.onload=function(){
       KnowsPoint[fn]()
     }
   })
- 
   window.onpopstate=function(){
     if (document.readyState === "complete") {
       setTimeout(()=>{
