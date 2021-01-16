@@ -10,9 +10,12 @@ Express / Fastify 之上的抽象
 + Interface segregation principle(接口分离原则)
 + Dependency inversion principle(依赖倒置原则)
 
-## TypeORM
+## [TypeORM](https://typeorm.biunav.com/zh/#%E5%AE%89%E8%A3%85)
 > 一个ORM (对象关系映射：Object Relational Mapping)框架
-## Rxjs
+
+## [Prisma](https://prisma.yoga/)
+
+## [Rxjs](https://cn.rx.js.org/)
 
 ## class-validator
 
