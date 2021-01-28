@@ -56,6 +56,8 @@
     * [vue使用技巧](vue/vue使用技巧)
     * [vue+axios下载excel](vue/vue+axios下载excel)
     * [浅谈vuex](vue/浅谈vuex)
+    * [transition组件原理](vue/transition组件原理)
+    
 * [React](react/)
     * [创建项目](react/创建项目)
     * [从0到1实现虚拟dom](react/从0到1实现虚拟dom)
@@ -103,6 +105,7 @@
     * [script标签defer和async的区别](杂谈/script标签defer和async的区别)
     * [在浏览器输入URL回车之后发生了什么](杂谈/在浏览器输入URL回车之后发生了什么)
     * [浏览器与Node的事件循环(EventLoop)有何区别](杂谈/浏览器与Node的事件循环(EventLoop)有何区别)
+    * [了解回流和重绘](杂谈/了解回流和重绘)
     * [graphql](杂谈/graphql)
     * [CDN加速原理](杂谈/CDN加速原理)
     * [打包文件过大](杂谈/打包文件过大)
@@ -111,6 +114,7 @@
     * [meta标签](杂谈/meta标签)
     * [h5复制文本](杂谈/h5复制文本功能)
     * [css动画与display](杂谈/css动画与display)
+    * [为什么CSS动画应用到新创建dom不起作用](杂谈/为什么CSS动画应用到新创建dom不起作用)
     * [实现网页加载进度条](杂谈/实现网页加载进度条)
     * [axios请求status为0](杂谈/axios请求status为0)
     * [vue项目白屏](杂谈/vue项目白屏)
@@ -140,6 +144,7 @@
     * [js现代的ObserverAPI](杂谈/js现代的ObserverAPI)
     * [前端API缓存方案](杂谈/前端API缓存方案)
     * [mysql使用基础](杂谈/mysql使用基础)
+    
 * [读记](读记/)
     * [数据结构与算法](读记/数据结构与算法/)
         * [基础篇](读记/数据结构与算法/基础篇)
