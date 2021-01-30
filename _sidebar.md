@@ -118,6 +118,7 @@
     * [实现网页加载进度条](杂谈/实现网页加载进度条)
     * [axios请求status为0](杂谈/axios请求status为0)
     * [vue项目白屏](杂谈/vue项目白屏)
+    * [indexedDb](杂谈/indexedDb)
     * [service worker](杂谈/serviceWorker)
     * [web worker](杂谈/webWorker)
     * [docker](杂谈/docker)
