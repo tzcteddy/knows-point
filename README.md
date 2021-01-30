@@ -32,6 +32,7 @@
 + [服务器性能监控可视化工具](https://grafana.com/grafana/download)
 + [VSCode提供的代码编辑器](https://microsoft.github.io/monaco-editor/)
 + [X6(流程图、DAG 图、ER 图)](https://github.com/antvis/X6)
++ [动画插件](https://www.tweenmax.com.cn/)
 
 #### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
