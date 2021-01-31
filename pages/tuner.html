@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='referrer' content='always'>
+  <meta name='author' content='qiphon'>
+  <meta name='robots' content='none'>
+  <meta name='keywords' content=''>
+  <meta name='description' content=''>
+  <meta name='renderer' content='webkit'>
+  <meta name='revisit-after' content='7 days' >
+  <meta http-equiv=widow-target Content=_top>
+  <meta name='viewport' content='width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no, shrink-to-fit=no' viewport-fit=cover />
+  <meta http-equiv='X-UA-Compatible' content='ie=edge,chrome=1'>
+  <title></title>
+  <link rel="stylesheet" href="../static/css/base.css">
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+      list-style: none;
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+      background: 
+      linear-gradient(90deg,#333 50%,transparent 0) repeat-x,
+      linear-gradient(90deg,#333 50%,transparent 0) repeat-x,
+      linear-gradient(0deg,#333 50%,transparent 0) repeat-y,
+      linear-gradient(0deg,#333 50%,transparent 0) repeat-y;
+      
+      background-size: 4px 1px,4px 1px ,1px 4px,1px 4px;
+      background-position: 0 0,0 100%,0 0,100% 0;
+      
+    }
+    .play{
+      animation: border .3s infinite linear;
+    }
+    .type li{
+      display: inline-block;
+      padding: 3px 6px;
+      background: indianred;
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+    }
+    .type li.active{
+      background: green;
+    }
+
+    @keyframes border{
+      100%{
+        background-position: 4px 0,-4px 100%,0 -4px, 100% 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+      <ul id="type" class="type">
+        <li class="active">sine</li>
+        <li>square</li>
+        <li>triangle</li>
+        <li>sawtooth</li>
+      </ul>
+      <label for="">频率<input id="input" type="range" max="3000" min="0" value="0"><span id="value-text">0</span></label>
+      <div><button id='start'>开始</button><button id='stop'>停止</button></div>
+  </div>
+  
+</body>
+<script id="built-in">
+  console.log(document.readyState)
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+(function () {
+    if (!window.AudioContext) { 
+        alert('当前浏览器不支持Web Audio API');
+        return;
+    }
+    class A {
+      constructor(options){
+        this.audioCtx=null;
+        this.oscillator=null;
+        this.gainNode = null;
+        this.type=options.type;
+        this.value=options.value;
+      }
+      init(){
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!window.AudioContext) { 
+          alert('当前浏览器不支持Web Audio API');
+          return;
+        }
+        this.audioCtx=new AudioContext()
+        this.createOscillator()
+        this.createGainNode()
+        this.connect()
+      }
+      createOscillator(){
+        this.oscillator=this.audioCtx.createOscillator()
+      }
+      createGainNode(){
+        this.gainNode = this.audioCtx.createGain()
+      }
+      connect(){
+        // 把音量，音调和终节点进行关联
+        this.oscillator.connect(this.gainNode);
+        // audioCtx.destination返回AudioDestinationNode对象，表示当前audio context中所有节点的最终节点，一般表示音频渲染设备
+        this.gainNode.connect(this.audioCtx.destination);
+        // 指定音调的类型，其他还有square|triangle|sawtooth
+        this.oscillator.type = this.type//'sine';
+        // 设置当前播放声音的频率，也就是最终播放声音的调调
+        this.oscillator.frequency.value = this.value;
+        // 当前时间设置音量为0
+        this.gainNode.gain.setValueAtTime(0, this.audioCtx.currentTime);
+        // 0.01秒后音量为1
+        this.gainNode.gain.linearRampToValueAtTime(1, this.audioCtx.currentTime + 0.01);
+      }
+      stop(){
+        // 1秒内声音慢慢降低，是个不错的停止声音的方法
+        this.gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 1);
+         // 1秒后完全停止声音
+        this.oscillator.stop(this.audioCtx.currentTime + 1);
+        tuner=null
+      }
+      start(){
+        // 音调从当前时间开始播放
+        this.oscillator.start(this.audioCtx.currentTime);
+        console.log("开始了")
+      }
+      setValue(value){
+        this.value=value
+        this.connect()
+      }
+      setType(type){
+        if(this.type===type)return
+        this.type=type
+        this.connect()
+      }
+    }
+    // 按钮元素
+    var container = document.getElementById('container')
+    var startButton = document.getElementById('start');
+    var stopButton = document.getElementById('stop');
+    var input = document.getElementById('input')
+    var valueText = document.getElementById('value-text')
+    var typeOuter = document.getElementById('type');
+    var types = [typeOuter.children[0]]
+    var isStart = false;
+    var VALUE = 0;
+    var TYPE = 'sine'; 
+    var tuner = null;
+    tuner = new A({type:TYPE,value:VALUE})  
+    tuner.init() 
+    input.addEventListener('change',function(event){
+      var value = event.target.value
+      valueText.innerText = VALUE = value
+      tuner.setValue( value )
+    })
+    typeOuter.addEventListener('click',function(event){
+      let target = event.target
+      var type = target.innerText;
+      TYPE = type
+      tuner.setType(type)
+      if(types.length){
+        types.pop().classList = "";
+      }
+      target.classList = 'active'
+      types.push(target)
+    })
+    startButton.addEventListener('click',function(){
+      if(isStart)return
+      tuner.start();
+      container.classList = "container play"
+      isStart = true
+    })
+    stopButton.addEventListener('click',function(){
+      if(!isStart)return
+      tuner.stop()
+      tuner = new A({type:TYPE,value:VALUE})  
+      tuner.init() 
+      container.classList = "container"
+      isStart = false
+    })
+})();
+</script>
+</html>
