@@ -395,3 +395,5 @@ window.addEventListener('unhandledrejection',event=>{
   let error=event.reason;//未处理的错误对象，与 request.error 相同
 })
 ```
+
+[https://www.zhangxinxu.com/wordpress/2017/07/html5-indexeddb-js-example/](https://www.zhangxinxu.com/wordpress/2017/07/html5-indexeddb-js-example/)
