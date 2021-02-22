@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='referrer' content='always'>
+  <meta name='author' content='qiphon'>
+  <meta name='robots' content='none'>
+  <meta name='keywords' content=''>
+  <meta name='description' content=''>
+  <meta name='renderer' content='webkit'>
+  <meta name='revisit-after' content='7 days' >
+  <meta http-equiv=widow-target Content=_top>
+  <meta name='viewport' content='width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no, shrink-to-fit=no' viewport-fit=cover />
+  <meta http-equiv='X-UA-Compatible' content='ie=edge,chrome=1'>
+  <title>grid</title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+    body{
+  padding: 30px;
+  background: cornsilk;
+} 
+.wrap{
+  margin: 5px auto;
+  width: 750px;
+  padding: 10px 20px;
+  border: 2px solid gainsboro;
+}
+.box{
+  padding: 10px ;
+  display: grid;
+}
+.box-inline{
+  display: inline-grid;
+}
+h3{
+  padding: 10px 0;
+}
+pre{
+  padding: 10px 0;
+  padding-top: 0;
+  display: block;
+  background: #000;
+  color: deepskyblue;
+  tab-size: 2;
+  border-radius: 5px;
+  overflow: hidden;
+}
+pre::before{
+  content: 'css';
+  margin-bottom: 10px;
+  display: block;
+  padding: 5px 10px;
+  background: darksalmon;
+  font-size: 20px;
+  color: #fff;
+}
+code{
+ padding: 0 10px;
+  
+}
+.box div{
+  font-size: 20px;
+  text-align: center;
+  line-height: 100px;
+  border: 1px solid gainsboro;
+}
+.box div:nth-child(1){
+  background:  gold; 
+}
+.box div:nth-child(2){
+  background: cadetblue; 
+}
+.box div:nth-child(3){
+  background:  darkkhaki; 
+}
+.box div:nth-child(4){
+  background:  cornflowerblue; 
+}
+.box div:nth-child(5){
+  background:  saddlebrown; 
+}
+.box div:nth-child(6){
+  background:  aqua; 
+}
+.box div:nth-child(7){
+  background:  fuchsia; 
+}
+.box div:nth-child(8){
+  background:  teal; 
+}
+.box div:nth-child(9){
+  background:  yellowgreen; 
+}
+.box-grid-nomal{
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+}
+.box-grid-repeat{
+  grid-template-columns: repeat(3,100px);
+  grid-template-rows: 100px 100px 100px;
+}
+.box-grid-repeat-mode{
+  grid-template-columns: repeat(2,100px 50px 25px);
+  grid-template-rows: 100px 100px 100px;
+}
+.box-grid-repeat-auto-fill{
+  grid-template-columns: repeat(auto-fill,100px);
+  grid-template-rows: 100px 100px 100px;
+}
+.box-grid-fr{
+  grid-template-columns: 100px 1fr 2fr 3fr;
+  grid-template-rows: 100px 100px 100px;
+}
+.box-grid-minmax{
+  grid-template-columns: 1fr 1fr minmax(100px,1fr);
+  grid-template-rows: 100px 100px 100px;
+}
+.box-grid-auto{
+  grid-template-columns: 1fr auto minmax(100px,1fr);
+  grid-template-rows: 100px 100px 100px;
+}
+.box-grid-line-name{
+  grid-template-columns: [c1 c11] 100px [c2] 100px [c3] auto [c4];
+  grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4];
+}
+.box-grid-gap{
+  grid-row-gap:10px;
+  grid-column-gap:20px
+}
+.box-grid-areas{
+  grid-template-areas: 'a b c'
+                      'd e f'
+                      'g h i';
+}
+.box-grid-areas1{
+  grid-template-areas:  'a a a'
+                        'b b b'
+                        'c c c';
+}
+.box-grid-areas2{
+  grid-template-areas:  'a . c'
+                        'd . f'
+                        'g . i';
+}
+.box-grid-flow{
+  grid-auto-flow: column;
+}
+.box-grid-flow-row{
+  grid-auto-flow: row dense;
+}
+.box-grid-flow-column{
+  grid-auto-flow: column dense;
+}
+.item-1 {
+  background-color: #ef342a;
+  grid-column-start: 1;
+  grid-column-end: 3;  
+}
+
+.item-2 {
+  background-color: #f68f26;
+  grid-column-start: 1;
+  grid-column-end: 3; 
+}
+.box-grid-place-items{
+  place-items: center center;
+}
+.box-grid-place-content{
+  place-content: center center;
+}
+  </style>
+</head>
+<body>
+  <div>hello</div>
+  <div class="wrap">
+    <h3>普通使用</h3>
+    <pre><code>
+      .box{
+        display: grid;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px 100px;
+      }
+    </code></pre>
+    <div class="box box-grid-nomal"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>repeat</h3>
+    <pre><code>grid-template-columns: repeat(3,100px);</code></pre>
+    <div class="box box-grid-repeat"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>repeat</h3>
+    <pre><code>grid-template-columns: repeat(2,100px 50px 25px);</code></pre>
+    <div class="box box-grid-repeat-mode"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>repeat</h3>
+    <pre><code>grid-template-columns: repeat(auto-fill,100px);</code></pre>
+    <div class="box box-grid-repeat-auto-fill"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>fr</h3>
+    <pre><code>grid-template-columns: 100px 1fr 2fr 3fr;</code></pre>
+    <div class="box box-grid-fr"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>minmax</h3>
+    <pre><code>grid-template-columns: 1fr 1fr minmax(100px,1fr);</code></pre>
+    <div class="box box-grid-minmax"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>auto</h3>
+    <pre><code>grid-template-columns: 1fr auto minmax(100px,1fr)</code></pre>
+    <div class="box box-grid-auto"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>网格线的名称</h3>
+    <pre><code>
+      .box-grid-line-name{
+        grid-template-columns: [c1,c11] 100px [c2] 100px [c3] auto [c4];
+        grid-template-rows: [r1] 100px [r2] 100px [r3] auto [r4];
+      }
+    </code></pre>
+    <div class="box box-grid-line-name"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>grid-row-gap 属性，grid-column-gap 属性，grid-gap 属性</h3>
+    <pre><code>
+      .box-grid-gap{
+        grid-row-gap:10px;
+        grid-column-gap:20px;
+      }
+      //简写
+      .box-grid-gap{
+        grid-gap:10px 20px;
+      }
+    </code></pre>
+    <div class="box box-grid-nomal box-grid-gap"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>grid-template-areas 属性</h3>
+    <pre><code>
+      .box-grid-areas{
+        grid-template-areas:  'a b c'
+                              'd e f'
+                              'g h i';
+      }
+    </code></pre>
+    <div class="box box-grid-nomal box-grid-areas"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>grid-template-areas 属性</h3>
+    <pre><code>
+      .box-grid-areas{
+        grid-template-areas:  'a a a'
+                              'b b b'
+                              'c c c';
+      }
+    </code></pre>
+    <div class="box box-grid-nomal box-grid-areas1"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>grid-template-areas 属性 如果某些区域不需要利用，则使用"点"（.）表示。 </h3>
+    <pre><code>
+      .box-grid-areas{
+        grid-template-areas:  'a . c'
+                              'd . f'
+                              'g . i';
+      }
+    </code></pre>
+    <div class="box box-grid-nomal box-grid-areas2"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>grid-auto-flow 属性 默认值是row，即"先行后列"。也可以将它设成column，变成"先列后行"。</h3>
+    <pre><code>
+      .box-grid-flow{
+        grid-auto-flow: column;
+      }
+    </code></pre>
+    <div class="box box-grid-nomal box-grid-flow"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>grid-auto-flow 属性 默认值是row，即"先行后列"。也可以将它设成column，变成"先列后行"。
+      <p>设为row dense，表示"先行后列"，并且尽可能紧密填满，尽量不出现空格</p>
+      <p>设置改为column dense，表示"先列后行"，并且尽量填满空格。</p>
+    </h3>
+    <pre><code>
+      .box-grid-flow{
+        grid-auto-flow: column;
+      }
+      .box-grid-flow-row{
+        grid-auto-flow: row dense;
+      }
+      .box-grid-flow-column{
+        grid-auto-flow: column dense;
+      }
+    </code></pre>
+    <div class="box box-inline box-grid-nomal"> 
+      <div class="item-1">1</div>
+      <div class="item-2">2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+    <div class="box box-inline box-grid-nomal box-grid-flow-row"> 
+      <div class="item-1">1</div>
+      <div class="item-2">2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+    <div class="box box-inline box-grid-nomal box-grid-flow-column"> 
+      <div class="item-1">1</div>
+      <div class="item-2">2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>
+      <p>在单元格内</p>
+      <p>justify-items 属性，align-items 属性，place-items 属性</p>
+    </h3>
+    <pre><code>
+      .box-grid-place-items{
+        place-items: center center;
+      }
+    </code></pre>
+    <div class="box box-grid-nomal box-grid-place-items"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <div class="wrap">
+    <h3>
+      <p>在容器内</p>
+      <p>justify-content 属性，align-content 属性，place-content 属性</p>
+    </h3>
+    <pre><code>
+      .box-grid-place-content{
+        place-content: center center;
+      }
+    </code></pre>
+    <div class="box box-grid-nomal box-grid-place-content"> 
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+    </div>
+  </div>
+  <!-- built files will be auto injected -->
+</body></html>
