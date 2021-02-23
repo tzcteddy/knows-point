@@ -230,3 +230,29 @@ function lookupPath(all, func, path = []) {
     }
 lookupPath(tree,(data)=>data.name==='b-7-8')
 ```
+
+### 根据路径取对象上的值
+```js
+var bailRE = /[^\w.$]/;  //匹配任何字符 已点结束的字符串
+
+function parsePath(path) {
+    if (bailRE.test(path)) {  //匹配上 返回 true
+        return
+    }
+    //匹配不上  path在已点分割
+    var segments = path.split('.');
+    return function (obj) {
+
+        for (var i = 0; i < segments.length; i++) {
+            //如果有参数则返回真
+            if (!obj) {
+                return
+            }
+            //将对象中的一个key值 赋值给该对象 相当于 obj = obj[segments[segments.length-1]];
+            obj = obj[segments[i]];
+        }
+        //否则返回一个对象
+        return obj
+    }
+}
+```
