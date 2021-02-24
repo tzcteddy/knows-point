@@ -256,3 +256,82 @@ function parsePath(path) {
     }
 }
 ```
+
+### 二分法
+```js
+let ary=[1,23,46,68,83,89]
+function get(arr,target){
+  let minIndex=0;
+  let maxIndex=arr.length-1;
+  while(minIndex<=maxIndex){
+    let midIndex=Math.floor((maxIndex+minIndex)/2);
+    if(arr[midIndex]<target){
+      minIndex=midIndex+1
+    }else if(arr[midIndex]>target){
+      maxIndex=midIndex-1
+    }else{
+      return midIndex
+    }
+  }
+  return -1
+}
+console.log(get(ary,1))
+```
+
+```js
+let obj={
+  key:123,
+  name:'a',
+  child:[
+    {
+      key:123,
+      name:'b',
+      child:[
+        {
+          key:321,
+          name:'c'
+        },
+        {
+          key:321,
+          name:'d'
+        }
+      ]
+    },
+    {
+      key:234,
+      name:'e',
+      child:[
+        {
+          key:123,
+          name:'f'
+        }
+      ]
+    }
+  ]
+}
+```
+### 深度优先
+
+```js
+function dfs(node){
+  console.log(node.name)
+  if(!node.child||!node.child.length)return
+  node.child.forEach(dfs)
+}
+
+```
+### 广度优先
+
+```js
+function bfs(node){
+  const queue=[node]
+  while(queue.length>0){
+    const n=queue.shift();
+    console.log(n.name)
+    if(!n.child||!n.child.length)continue
+    n.child.forEach(child=>{
+      queue.push(child)
+    })
+  }
+}
+```
