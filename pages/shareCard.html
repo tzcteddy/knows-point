@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='referrer' content='always'>
+  <meta name='author' content='qiphon'>
+  <meta name='robots' content='none'>
+  <meta name='keywords' content=''>
+  <meta name='description' content=''>
+  <meta name='renderer' content='webkit'>
+  <meta name='revisit-after' content='7 days' >
+  <meta http-equiv=widow-target Content=_top>
+  <meta name='viewport' content='width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no, shrink-to-fit=no' viewport-fit=cover />
+  <meta http-equiv='X-UA-Compatible' content='ie=edge,chrome=1'>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <style>
+     *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+  </style>
+</head>
+<body>
+ <button id="btn">生成海报</button>
+ <img id="bg" crossOrigin='Anonymous' style=" display: none; width:350px;height:auto;" src="../static/images/sharebg.png" alt="">
+ <div id="code" style="display: none;"></div>
+ <img id="resultImg" src="" alt="">
+ <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+ <script type="text/javascript" id="built-in">
+     var qr = new QRCode(code, {
+   text: location.href,//二维码内容，可以为一个链接
+   width: 60,//宽度
+   height: 50,//高度
+   colorDark : "#e60000",
+    colorLight : "#ffffff",
+   correctLevel: 3//容错级别
+  })
+  btn.onclick=function(){
+    
+  var shareCard = new ShareCard({
+    backgroundImageEl:document.getElementById('bg'),
+    props:[
+      {
+        type:'image',
+        img:document.getElementById('code').getElementsByTagName('canvas')[0],
+        left:107,
+        top:300,
+        width:60,
+        height:60
+      },
+      // {
+      //   type:'text',
+      //   text:'文本',
+      //   left:200,
+      //   top:100,
+      //   font:'30px',
+      //   fillStyle:'center'
+      // }
+    ]
+  })
+  console.log(shareCard.start())
+  resultImg.src=shareCard.start()
+}
+  function ShareCard(options){
+    //海报宽度
+    this.width=options.width;
+    //海报高度
+    this.height=options.height;
+    //海报背景图
+    this.backgroundImageEl=options.backgroundImageEl;
+    //海报内容参数
+    this.props=options.props;
+    this.ratio=1;
+
+    this.canvas=null;
+    this.context=null;
+    this.createCanvas();
+    this.getRatio()
+}
+
+ShareCard.prototype.getRatio=function(){
+  var  devicePixelRatio = window.devicePixelRatio || 1,   
+     backingStoreRatio = this.context.webkitBackingStorePixelRatio || this.context.mozBackingStorePixelRatio || this.context.msBackingStorePixelRatio || this.context.oBackingStorePixelRatio || this.context.backingStorePixelRatio || 1; 
+     this.ratio = devicePixelRatio / backingStoreRatio; 
+}
+ShareCard.prototype.createCanvas=function(){
+  if(this.canvas)return;
+  this.canvas = document.createElement("canvas"),
+  this.context=this.canvas.getContext("2d");
+}
+ShareCard.prototype.drawBackground=function(){
+  if(this.backgroundImageEl){
+    console.log(this.backgroundImageEl)
+    this.width=this.backgroundImageEl.width
+    this.height=this.backgroundImageEl.height
+    console.log(this.width)
+    this.canvas.width =this.width*this.ratio;
+    this.canvas.height = this.height*this.ratio;
+    this.drawImage({
+      img:this.backgroundImageEl,left:0,top:0,width:this.width,height:this.height
+    })
+  }
+  
+}
+ShareCard.prototype.drawImage=function({img,left,top,width,height}){
+  console.log({img,left,top,width,height})
+  let ratio=this.ratio
+  this.context.drawImage(img,left*ratio,top*ratio,width*ratio,height*ratio);
+}
+ShareCard.prototype.drawText=function({text,fillStyle,font,textAlign,left,top}){
+  let ratio=this.ratio
+  this.context.fillStyle = fillStyle||'4b3a96';   // 文字填充颜色
+  this.context.font = font+' Baoli SC';
+  this.context.textAlign = textAlign||'right';
+  this.context.fillText(text,left * ratio,top * ratio);
+  // this.context.stroke();
+}
+ShareCard.prototype.start=function(){
+  this.drawBackground()
+  this.props.forEach(prop=>{
+    if(prop.type==="image"){
+      this.drawImage(prop)
+    }
+    if(prop.type==='text'){
+      this.drawText(prop)
+    }
+  })
+  return this.export()
+}
+ShareCard.prototype.export=function(){
+  return this.canvas.toDataURL();
+}
+
+
+ </script>
+</body>
+</html>
