@@ -60,6 +60,7 @@
     * [vue+axios下载excel](vue/vue+axios下载excel)
     * [浅谈vuex](vue/浅谈vuex)
     * [transition组件原理](vue/transition组件原理)
+    * [vue3的优化](vue/vue3的优化)
     
 * [React](react/)
     * [创建项目](react/创建项目)
