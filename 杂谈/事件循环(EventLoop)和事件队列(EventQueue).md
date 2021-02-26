@@ -191,3 +191,5 @@ process.nextTick(() => {
 https://zhuanlan.zhihu.com/p/54882306?utm_source=wechat_session&utm_medium=social&utm_oi=1157422776066502656
 
 http://www.likecs.com/show-124803.html
+
+http://www.ruanyifeng.com/blog/2013/10/event_loop.html

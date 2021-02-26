@@ -333,6 +333,8 @@ JS 有三种运行环境：
 
 **注：浏览器对同一域名的并发连接数是有限的，通常为 6 个**
 
+[图解浏览器](https://mp.weixin.qq.com/s/PvRrAmCXhqeR9RAitfIHLg)
+
 
 
 

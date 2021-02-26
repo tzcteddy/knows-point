@@ -1,5 +1,6 @@
 ## indexedDb
 
+
 IndexedDB 是一个内置的数据库，它比 localStorage 强大得多。
 
 + 键/值 储存：值（几乎）可以是任何类型，键有多种类型。
@@ -395,5 +396,7 @@ window.addEventListener('unhandledrejection',event=>{
   let error=event.reason;//未处理的错误对象，与 request.error 相同
 })
 ```
+
+介绍一个工具[GoDB](https://github.com/chenstarx/GoDB.js)
 
 [https://www.zhangxinxu.com/wordpress/2017/07/html5-indexeddb-js-example/](https://www.zhangxinxu.com/wordpress/2017/07/html5-indexeddb-js-example/)
