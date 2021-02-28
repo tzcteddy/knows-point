@@ -1,6 +1,41 @@
 # 代码实现
 
 
+## 实现call
+
+```js
+Function.prototype.myCall = function(context){
+    context =(context === null || context === undefined) ? window : context
+    context.fn = this// 其实就等价于 obj.fn = function say(){} 当指向 context.fn 时，say里面的this 指向obj [关键]
+    //obj 此时变成 var obj = {name:'innerName',fn:function say(){console.log(this.name)}}
+    let args = [...arguments].slice(1) //截取第二个开始的所有参数
+    let result= context.fn(...args)//把执行的结果赋予result变量
+    delete context.fn //删除执行上下文上的属性 （还原）由var obj = {name:'innerName',fn:function say(){console.log(this.name)}}删除fn
+    return result
+}
+var name = 'outerName'
+var obj = {
+    name:'innerName'
+}
+function say(){
+    console.log(this.name)
+}
+say()//outerName     等价于  window.say    this指向window
+say.myCall(obj)//innerName
+```
+## 实现apply
+
+```js
+Function.prototype.myApply = function(context){
+    context =(context === null || context === undefined) ? window : context
+    let result
+    context.fn = this
+    result = arguments[1] ? context.fn(...arguments[1]) : context.fn()
+    delete context.fn
+    return result
+}
+```
+
 ## 实现bind
 ```js
 if(typeof Function.prototype.bind==='undefined'){
@@ -14,8 +49,33 @@ if(typeof Function.prototype.bind==='undefined'){
     }
 }
 ```
+```js
+Function.prototype.myBind = function(context){
+    context =(context === null || context === undefined) ? window : context
+    let o = Object.create(context)
+    o.fn = this
+    let args = [...arguments].slice(1)
+    let fn= function(){
+        o.fn(...args)
+    }
+    return fn
+}
+```
 
+## 手写flat
 
+```js
+function flatDeep( arr, dep=1 ){
+    let ret = []
+    for(let i=0;i<arr.length;i++){
+        if(Array.isArray(arr[i])){
+            dep>0 ? (ret = ret.concat(flatter(arr[i],dep-1))):(ret.push(arr[i]))
+        }else{
+            ret.push(arr[i]) 
+        }
+    }
+    return ret
+```
 
 ## 深拷贝
 ```js
@@ -533,4 +593,20 @@ function fn(...args){
 fn.before(()=>{
   console.log('before fn')
 })
+```
+
+### 手写instenceof
+
+```js
+function myInstanceof(left,right){
+    let proto = left.__proto__
+    let prototype = right.prototype
+    while(true){
+        if(proto === null)return false
+        if(proto === prototype)return true
+        proto = proto.__proto__
+    }
+}
+console.log(myInstanceof([],Array))// true
+console.log(myInstanceof('',Array))// false
 ```
