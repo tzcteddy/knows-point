@@ -335,3 +335,31 @@ function bfs(node){
   }
 }
 ```
+
+### 最大公约数
+```js
+function getGCD(a, b) {
+  // get greatest common divisor(GCD)
+  //欧几里得算法
+  // GCD(a, b) = GCD(b, a % b)
+  a = Math.abs(a);
+  b = Math.abs(b);
+  let mod = a % b;
+
+  while (mod !== 0) {
+    a = b;
+    b = mod;
+    mod = a % b;
+  }
+
+  return b;
+}
+```
+
+### 最小公倍数
+      对于两个数a, b, 如果gcd是他们的最大公约数(如上)，那么存在另外两个互质的数字x, y：
+      a = x * gcd
+      b = y * gcd
+      所以他们的最小公倍数就是 x * y * gcd，也就是
+      (x * gcd) * (y * gcd) / gcd
+      = a * b / gcd
