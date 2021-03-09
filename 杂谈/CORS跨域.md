@@ -162,3 +162,5 @@ Access-Control-Max-Age: 1728000|
 
 一旦服务器通过了"预检"请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。
 
+[MDN关于跨源资源共享（CORS）的介绍](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
+

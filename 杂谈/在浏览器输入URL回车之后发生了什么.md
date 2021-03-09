@@ -335,6 +335,8 @@ JS 有三种运行环境：
 
 [图解浏览器](https://mp.weixin.qq.com/s/PvRrAmCXhqeR9RAitfIHLg)
 
+[浏览器工作原理](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/)
+
 
 
 
