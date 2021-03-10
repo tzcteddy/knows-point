@@ -15,6 +15,7 @@
     * [script标签defer和async的区别](javascript/script标签defer和async的区别)
     * [闭包](javascript/闭包)
     * [DOM](javascript/DOM)
+    * [appendChild的专一](javascript/appendChild的专一)
     * [BOM](javascript/BOM)
     * [Event](javascript/Event)
     * [面向对象](javascript/面向对象)
