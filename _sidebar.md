@@ -62,6 +62,7 @@
     * [vue使用技巧](vue/vue使用技巧)
     * [浅谈vuex](vue/浅谈vuex)
     * [transition组件原理](vue/transition组件原理)
+    * [nextTick原理](vue/nextTick原理)
     * [vue3的优化](vue/vue3的优化)
     
 * [React](react/)

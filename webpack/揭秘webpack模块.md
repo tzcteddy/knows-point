@@ -7,6 +7,7 @@ demo:
 //main.js
 import {add} from './source.js'
 console.log(add(1,2))
+export default add
 ```
 
 ```js
@@ -46,6 +47,7 @@ module.export={
         var _source_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./source.js */ "./src/source.js");
         console.log((0,_source_js__WEBPACK_IMPORTED_MODULE_0__.add)(1,2));
         import ('./css/index.css')
+        const __WEBPACK_DEFAULT_EXPORT__ = (_source_js__WEBPACK_IMPORTED_MODULE_0__.add);
         # sourceURL=webpack://demo-webpack/./src/main.js?
     }),
     "./src/source.js": ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -120,3 +122,5 @@ module.export={
 
 ```
 
+
+https://blog.csdn.net/gwdgwd123/article/details/104626274?spm=1001.2014.3001.5502
