@@ -42,6 +42,7 @@
     * [布局](css/布局)
     * [BFC是什么](css/BFC是什么)
     * [grid布局](css/grid布局)
+    * [inline-block的排版](css/inline-block的排版)
     * [谈谈flex中的direction](css/谈谈flex中的direction)
     * [margin重合和塌陷](css/margin重合和塌陷)
     * [less学习之变量](css/less学习之变量)
