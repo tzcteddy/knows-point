@@ -1,5 +1,7 @@
 ## 浅谈vuex
 
+![](https://vuex.vuejs.org/vuex.png)
+
 我们一般都这么使用：
 
 ### 一、原理
