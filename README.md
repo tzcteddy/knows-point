@@ -35,6 +35,8 @@
 + [VSCode提供的代码编辑器](https://microsoft.github.io/monaco-editor/)
 + [X6(流程图、DAG 图、ER 图)](https://github.com/antvis/X6)
 + [动画插件](https://www.tweenmax.com.cn/)
++ [notion记录工具](https://www.notion.so/)
++ [graffle画图 for MAC](https://www.omnigroup.com/download/)
 
 #### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)

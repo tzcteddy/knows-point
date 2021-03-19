@@ -1,5 +1,7 @@
 ## CORS跨域
 
+> 全称是"跨域资源共享"（Cross-origin resource sharing）
+
 + 条件：
    + CORS跨域需要浏览器和服务器的双支持 (IE>=10);
 
