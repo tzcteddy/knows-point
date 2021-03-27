@@ -37,6 +37,10 @@
 + [动画插件](https://www.tweenmax.com.cn/)
 + [notion记录工具](https://www.notion.so/)
 + [graffle画图 for MAC](https://www.omnigroup.com/download/)
++ [SortableJS](http://www.sortablejs.com/)
++ [popper.js](https://popper.js.org/)
++ [markdown-it](https://markdown-it.docschina.org/)
++ [zxing](https://zxing-js.github.io/library/)
 
 #### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
