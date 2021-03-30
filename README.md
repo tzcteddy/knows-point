@@ -15,6 +15,7 @@
 + [helloworld](https://www.helloworld.net/)
 + [爱码](http://www.likecs.com/)
 + [印记中文](https://docschina.org/)
++ [深入TS](https://jkchao.github.io/typescript-book-chinese/#how-to-contribute)
 
 #### 二、对点隧道
 + [阮一峰老师](http://www.ruanyifeng.com/home.html)
