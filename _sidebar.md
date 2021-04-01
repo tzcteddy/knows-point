@@ -166,6 +166,7 @@
     * [js现代的ObserverAPI](杂谈/js现代的ObserverAPI)
     * [mysql使用基础](杂谈/mysql使用基础)
     * [了解Babel基础](杂谈/了解Babel基础)
+    * [单元测试-Mocha](杂谈/单元测试-Mocha)
     
 * [读记](读记/)
     * [数据结构与算法](读记/数据结构与算法/)
