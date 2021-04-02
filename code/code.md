@@ -206,7 +206,7 @@ function bf(n){
 ```
 
 ## URL的解析
-```
+```js
 String.prototype.myQueryURLParameter = function () {
     var reg = /([^?=#&]+)=([^?=#&]+)/g,
         obj = {};
