@@ -388,4 +388,8 @@ module.exports=function(babel){
 }
 ```
 
+### @babel/runtime @babel/plugin-tranform-runtime
+
+`@babel/runtime`声明了所有需要用到的帮助函数，`@babel/plugin-tranform-runtime`就是将所有需要的`helper`函数文件从`@babel/plugin-tranform-runtime`引进来
+
 [参考](https://zhuanlan.zhihu.com/p/72995336?utm_source=wechat_session&utm_medium=social&utm_oi=1157422776066502656&from=singlemessage&s_r=0)

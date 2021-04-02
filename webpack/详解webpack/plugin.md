@@ -19,3 +19,4 @@
 + [webpack-build-notifier]
 + [webpack-bundle-analyzer]
 + [webpack-manifest-plugin] 服务端渲染使用
++ [fontmin-webpack] 压缩字体

@@ -31,6 +31,7 @@
 + 【vuedraggable】
 + 【vue-video-player】
 + 【vuex-persist】
++ 【vue-virtual-scroller】
 
 vdom工具：(https://github.com/snabbdom/snabbdom)
 [more](https://www.jianshu.com/p/0ef292736c9b)
