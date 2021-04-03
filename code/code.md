@@ -610,3 +610,18 @@ function myInstanceof(left,right){
 console.log(myInstanceof([],Array))// true
 console.log(myInstanceof('',Array))// false
 ```
+
+## requestIdleCallback
+```js
+var requestIdleCallback = window.requestIdleCallback || function requestIdleCallback(cb) {
+  var start = Date.now();
+  return setTimeout(function () {
+    cb({
+      didTimeout: false,
+      timeRemaining: function timeRemaining() {
+        return Math.max(0, 50 - (Date.now() - start));
+      }
+    });
+  }, 1);
+};
+```

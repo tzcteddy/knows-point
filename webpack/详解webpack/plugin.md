@@ -20,3 +20,6 @@
 + [webpack-bundle-analyzer]
 + [webpack-manifest-plugin] 服务端渲染使用
 + [fontmin-webpack] 压缩字体
++ [add-asset-html-cdn-webpack-plugin] 插入我们特定script的引用 注入全局变量 挂到window
++ [html-webpack-tags-plugin] 插入我们特定script的引用 注入全局变量 挂到window
++ [webpack.ProvidePlugin] 插入我们特定script的引用 注入全局变量 不会挂到window
