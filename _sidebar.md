@@ -52,6 +52,8 @@
     * [sass学习之进阶](css/sass学习之进阶)
     * [position和transform](css/position和transform)
     * [原生js获取设置样式](css/原生js获取设置样式)
+    * [让元素居中有哪些方法](css/让元素居中有哪些方法)
+    * [绘制三角形有哪些方法](css/绘制三角形有哪些方法)
 * [VUE](vue/)
     * [init](vue/init)
     * [浅谈vuex原理](vue/浅谈vuex原理)
