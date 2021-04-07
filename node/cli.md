@@ -7,6 +7,10 @@ inquirer ：交互式命令行工具，可以实现命令行的选择功能
 download-git-repo ：在git中下载模板
 metalsmith ：读取所有文件，实现模板渲染
 consolidate ：统一模板引擎
+chalk: 打印
+execa: 改进了child_process方法
+globby: glob的增强
+
 ```
 <a name="xoScB"></a>
 

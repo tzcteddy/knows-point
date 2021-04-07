@@ -105,6 +105,7 @@
     * [nestjs](node/nestjs)
     * [一些问题](node/一些问题)
     * [资源文件包](node/资源文件包)
+    * [inquirer.js-用户命令行交互工具](node/inquirer.js-用户命令行交互工具)
 * [TypeScript](typescript/ts-简介)
     * [基础](typescript/ts-基础)
     * [进阶](typescript/ts-进阶)
