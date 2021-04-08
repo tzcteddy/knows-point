@@ -69,12 +69,13 @@ function flatDeep( arr, dep=1 ){
     let ret = []
     for(let i=0;i<arr.length;i++){
         if(Array.isArray(arr[i])){
-            dep>0 ? (ret = ret.concat(flatter(arr[i],dep-1))):(ret.push(arr[i]))
+            dep>0 ? (ret = ret.concat(flatDeep(arr[i],dep-1))):(ret.push(arr[i]))
         }else{
             ret.push(arr[i]) 
         }
     }
     return ret
+}
 ```
 
 ## 深拷贝
