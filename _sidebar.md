@@ -38,6 +38,7 @@
         * [适配器模式](javascript/模式/适配器模式)
 * [ES6](ES6/)
     * [深入babel](ES6/深入babel)
+    * [Map和WeakMap](ES6/Map和WeakMap)
 * [CSS](css/)
     * [布局](css/布局)
     * [BFC是什么](css/BFC是什么)
