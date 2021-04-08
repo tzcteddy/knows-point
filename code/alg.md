@@ -221,7 +221,7 @@ function lookupPath(all, func, path = []) {
         path.push(item);
         if (func(item)) return path;
         if (item.children) {
-          const findChildren = this.getNavs(item.children, func, path);
+          const findChildren = lookupPath(item.children, func, path);
           if (findChildren.length) return findChildren;
         }
         path.pop();
