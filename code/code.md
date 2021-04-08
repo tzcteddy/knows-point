@@ -625,3 +625,28 @@ var requestIdleCallback = window.requestIdleCallback || function requestIdleCall
   }, 1);
 };
 ```
+
+## 获取dom节点数量 最大嵌套层级，最大子元素个数
+```js
+function getDomInfo(root){
+   root=root||document.documentElement
+  let childrens=[...root.childNodes].filter(node=>node.nodeType===1);
+  let totalElementCount=0,maxDomTreeDepth=0,maxChildrenCount=0;
+  totalElementCount+=childrens.length;
+  if(childrens.length){
+    childrens.forEach(node=>{
+      totalElementCount+=getDomInfo(node)
+  })
+  }
+  
+  return totalElementCount
+}
+function getMaxNestLevel() {
+    var i = 1, sel = '* > *'; /* html > body is always present */
+    while(document.querySelector(sel)) {
+        sel += ' > *';
+        i++;
+    }
+    return i;
+}
+```
