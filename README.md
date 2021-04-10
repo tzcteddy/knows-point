@@ -4,6 +4,7 @@
 + [travis](https://travis-ci.org/)
 + [circleci](https://circleci.com/)
 + [appveyor](https://ci.appveyor.com/login)
++ [vercel托管](https://vercel.com/)
 
 #### 一、阔问苍穹
 + [掘金](https://juejin.im/)
