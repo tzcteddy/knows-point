@@ -5,6 +5,7 @@
 + [circleci](https://circleci.com/)
 + [appveyor](https://ci.appveyor.com/login)
 + [vercel托管](https://vercel.com/)
++ [Netlify托管](https://www.netlify.com/)
 
 #### 一、阔问苍穹
 + [掘金](https://juejin.im/)
