@@ -1,5 +1,10 @@
 # 对点
 
+#### CI
++ [travis](https://travis-ci.org/)
++ [circleci](https://circleci.com/)
++ [appveyor](https://ci.appveyor.com/login)
+
 #### 一、阔问苍穹
 + [掘金](https://juejin.im/)
 + [CSDN](https://www.csdn.net/)
