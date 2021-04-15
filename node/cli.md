@@ -10,6 +10,8 @@ consolidate ：统一模板引擎
 chalk: 打印
 execa: 改进了child_process方法
 globby: glob的增强
+ora:loading状态
+figlet:大字体
 
 ```
 <a name="xoScB"></a>

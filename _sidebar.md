@@ -16,6 +16,7 @@
     * [闭包](javascript/闭包)
     * [DOM](javascript/DOM)
     * [appendChild的专一](javascript/appendChild的专一)
+    * [深拷贝和浅拷贝的区别](javascript/深拷贝和浅拷贝的区别)
     * [BOM](javascript/BOM)
     * [Event](javascript/Event)
     * [面向对象](javascript/面向对象)
