@@ -76,6 +76,7 @@
     * [创建项目](react/创建项目)
     * [从0到1实现虚拟dom](react/从0到1实现虚拟dom)
     * [Fiber](react/Fiber)
+    * [redux](react/redux)
 * [WebPack](webpack/)
     * [流程图](webpack/流程图)
     * [模块打包](webpack/模块打包)
