@@ -1,12 +1,12 @@
 ## 了解Blob
 
-![blob](../../static/images/zatan/blob/blob.png)
+![blob](../static/images/zatan/blob/blob.png)
 
 开发过程中经常遇到的Blob对象是个啥，今天一探究竟
 
 ### 什么是Blob
 Blob（Binary Large Object）表示二进制类型的大对象。在数据库管理系统中，将二进制数据存储为一个单一个体的集合。Blob 通常是影像、声音或多媒体文件。在 JavaScript 中 Blob 类型的对象表示不可变的类似文件对象的原始数据。 为了更直观的感受 Blob 对象，我们先来使用 Blob 构造函数，创建一个 myBlob 对象
-![blob](../../static/images/zatan/blob/blob1.png)
+![blob](../static/images/zatan/blob/blob1.png)
 
 如你所见，myBlob 对象含有两个属性：`size` 和 `type`。其中 size 属性用于表示数据的大小（以字节为单位），type 是 `MIME` 类型的字符串。Blob 表示的不一定是 JavaScript 原生格式的数据。比如 File 接口基于 Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。
 
