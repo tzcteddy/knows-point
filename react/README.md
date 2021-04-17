@@ -13,6 +13,7 @@
 + react-text-loop
 + react-hotkeys-hook
 
++ redux-actions
 + redux-thunk
 + redux-logger 一个很便捷的 middleware，用来打印 action 日志
 + redux-saga 中间件来创建更加复杂的异步 action
