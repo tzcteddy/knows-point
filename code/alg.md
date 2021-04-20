@@ -257,6 +257,38 @@ function parsePath(path) {
 }
 ```
 
+### 大整数相加
+```js
+  /**
+   * 大整数相加. 正常相加会溢出的两个整数, 以字符串方式相加
+   * @param num1 加数, 字符串, 例 '123456789123456789'
+   * @param num2 加数, 字符串, 例 '987654321987654321'
+   * @return 和, 例             '1111111111111111110'
+   */
+  var addStrings=(num1, num2) => {
+    //TODO your code goes here...
+    const len = Math.max(num1.length, num2.length)
+      num1 = num1.padStart(len, '0')
+      num2 = num2.padStart(len, '0')
+      let flag = 0
+      let res = ''
+      for(let i = len - 1; i>=0; i--){
+        const item1= Number(num1[i]) || 0
+        const item2 = Number(num2[i]) || 0
+        // console.log(item1,item2)
+        const t = item1 + item2 + flag
+        const total = t%10
+        flag = Math.floor(t / 10)
+        res = total + res
+      }
+
+      if(flag > 0){
+        res = flag + res
+      }
+      return res
+  },
+}
+```
 ### 二分法
 ```js
 let ary=[1,23,46,68,83,89]
@@ -276,6 +308,90 @@ function get(arr,target){
   return -1
 }
 console.log(get(ary,1))
+```
+### 动态规划 查找最长回文子串
+```js
+var main=(str)=>{
+  var len=str.length;
+  var dp=Array(len).fill().map(()=>Array(len).fill(null))
+  if(len<2)return str
+  var maxlen=1,begin=0;
+  for (var i=0;i<len;i++){
+    dp[i][i]=true;
+  }
+  for(var j=1;j<len;j++){
+    for(var i=0;i<j;i++){
+      if(str[i]!=str[j]){
+        dp[i][j]=false
+      }else{
+        if(j-i<3){
+          dp[i][j]=true
+        }else{
+          dp[i][j]=dp[i+1][j-1]
+        }
+      }
+      if(dp[i][j] && j-i+1 > maxlen){
+        maxlen=j-i+1;
+        begin=i;
+      }
+    }
+  }
+  return str.substring(begin,begin+maxlen)
+}
+```
+### 数组全排列
+
+```js
+function permute(input) {
+  var permArr = [],
+  usedChars = [];
+  function main(input){
+    var i, ch;
+    for (i = 0; i < input.length; i++) {
+      ch = input.splice(i, 1)[0];
+      usedChars.push(ch);
+      if (input.length == 0) {
+        permArr.push(usedChars.slice());
+      }
+      main(input);
+      input.splice(i, 0, ch);
+      usedChars.pop();
+    }
+    return permArr
+  }
+  return main(input);
+};
+console.log(permute([5, 3, 7, 1]))
+```
+### 会议室
+```js
+/**
+   * 会议室, 输入是一个数组, 所有会议的开始和结束时间. 输出一共需要多少个会议室
+   * @param meetings: 二维数组, 例 [[10, 20], [20, 30]],
+   * @return int: 需要的会议室的个数, 例 1
+   * 另一个测试用例: [[10,20], [19,30]] => 2
+   */
+  var minRequiredMeetingsRooms = meetings => {
+    //TODO your code goes here...
+    if(!meetings.length){
+      return 0
+    }
+    const res = [meetings[0]]
+    for(let i = 1; i < meetings.length; i++){
+      const startTime = meetings[i][0]
+      let flag = false
+      for(let j = 0; j< res.length; j++){
+        if(startTime >= res[j][1]){
+          flag = true
+          break
+        }
+      }
+      if(!flag){
+        res.push(meetings[i])
+      }
+    }
+    return res.length
+  },
 ```
 
 ```js
@@ -374,27 +490,3 @@ function getIntersection(){
 }
 ```
 
-### 数组全排列
-
-```js
-function permute(input) {
-  var permArr = [],
-  usedChars = [];
-  function main(input){
-    var i, ch;
-    for (i = 0; i < input.length; i++) {
-      ch = input.splice(i, 1)[0];
-      usedChars.push(ch);
-      if (input.length == 0) {
-        permArr.push(usedChars.slice());
-      }
-      main(input);
-      input.splice(i, 0, ch);
-      usedChars.pop();
-    }
-    return permArr
-  }
-  return main(input);
-};
-console.log(permute([5, 3, 7, 1]))
-```
