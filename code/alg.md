@@ -393,7 +393,17 @@ console.log(permute([5, 3, 7, 1]))
     return res.length
   },
 ```
-
+### 去掉路径中第N个斜杠
+```js
+let fn = (n) => {
+  let index = 0;
+  var a='/num/abs/123/re'
+  return a.replace(/([^\/]+)/g, (...args) => {
+        index ++;
+        return index === n ? '': args[0]
+    });
+}
+```
 ```js
 let obj={
   key:123,
