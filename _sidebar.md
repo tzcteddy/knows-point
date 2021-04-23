@@ -15,6 +15,7 @@
     * [script标签defer和async的区别](javascript/script标签defer和async的区别)
     * [闭包](javascript/闭包)
     * [DOM](javascript/DOM)
+    * [事件流机制](javascript/事件流机制)
     * [appendChild的专一](javascript/appendChild的专一)
     * [深拷贝和浅拷贝的区别](javascript/深拷贝和浅拷贝的区别)
     * [BOM](javascript/BOM)
