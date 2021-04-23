@@ -236,24 +236,23 @@ lookupPath(tree,(data)=>data.name==='b-7-8')
 var bailRE = /[^\w.$]/;  //匹配任何字符 已点结束的字符串
 
 function parsePath(path) {
-    if (bailRE.test(path)) {  //匹配上 返回 true
+  if (bailRE.test(path)) {  //匹配上 返回 true
+    return
+  }
+  //匹配不上  path在已点分割
+  var segments = path.split('.');
+  return function (obj) {
+    for (var i = 0; i < segments.length; i++) {
+      //如果有参数则返回真
+      if (!obj) {
         return
+      }
+      //将对象中的一个key值 赋值给该对象 相当于 obj = obj[segments[segments.length-1]];
+      obj = obj[segments[i]];
     }
-    //匹配不上  path在已点分割
-    var segments = path.split('.');
-    return function (obj) {
-
-        for (var i = 0; i < segments.length; i++) {
-            //如果有参数则返回真
-            if (!obj) {
-                return
-            }
-            //将对象中的一个key值 赋值给该对象 相当于 obj = obj[segments[segments.length-1]];
-            obj = obj[segments[i]];
-        }
-        //否则返回一个对象
-        return obj
-    }
+    //否则返回一个对象
+    return obj
+  }
 }
 ```
 
@@ -309,6 +308,21 @@ function get(arr,target){
 }
 console.log(get(ary,1))
 ```
+### 无重复最长字串
+```js
+function maxStr(s){
+  var arr=[];
+  var max=0;
+  for(var i=0;i<s.length;i++){
+    let index=arr.indexOf(s[i])
+    if(index!==-1){
+      arr.splice(0,index+1)
+    }
+    arr.push(s.charAt(i))
+    max=Math.max(max,arr.length)
+  }
+}
+```
 ### 动态规划 查找最长回文子串
 ```js
 var main=(str)=>{
@@ -347,8 +361,8 @@ function permute(input) {
   usedChars = [];
   function main(input){
     var i, ch;
-    for (i = 0; i < input.length; i++) {
-      ch = input.splice(i, 1)[0];
+    for (i = 0; i < input.length; i++) { //循环
+      ch = input.splice(i, 1)[0]; //依次取
       usedChars.push(ch);
       if (input.length == 0) {
         permArr.push(usedChars.slice());
