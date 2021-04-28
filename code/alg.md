@@ -255,7 +255,22 @@ function parsePath(path) {
   }
 }
 ```
-
+### 验证是否出现(){}[]成对出现
+```js
+function fnQ(str){
+  var ary=[];
+  var map={'{':'}','(':')','[':']'}
+  for(v of str){
+    if(map[v]){ //如果是左括号
+      ary.push(v)//左括号推入栈
+    }else if(Object.values(map).includes(v)){//如果是右侧的括号
+      let last=ary.pop();//取栈顶进行比对
+      if(v!==map[last]) return false
+    }else{continue}
+  }
+  return ary.length===0
+}
+```
 ### 大整数相加
 ```js
   /**
