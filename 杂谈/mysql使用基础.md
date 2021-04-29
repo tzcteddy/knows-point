@@ -168,7 +168,7 @@ Enter password:*******
 
 2. net stop mysql 管理员模式
 
-3. mysqld --skip-grant-tables
+3. mysqld --skip-grant-tables   8.0上使用 mysqld --console --skip-grant-tables --shared-memory
 
     输入：mysqld --skip-grant-tables 回车
 
