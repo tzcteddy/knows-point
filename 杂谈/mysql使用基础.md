@@ -164,6 +164,8 @@ Enter password:*******
 
 ### 忘记密码
 
+#### 8.0一下
+
 1. 进入mysql的bin目录
 
 2. net stop mysql 管理员模式
@@ -204,6 +206,46 @@ Enter password:*******
 
       net start mysql
 
+#### 8.0
+1.打开命令窗口cmd，输入命令：net stop mysql，停止MySQL服务，
+
+2.开启跳过密码验证登录的MySQL服务
+
+        输入命令  
+
+        mysqld --console --skip-grant-tables --shared-memory 
+
+3.再打开一个新的cmd，无密码登录MySQL，输入登录命令：mysql -u root -p
+
+ 
+
+4. 密码置为空，命令如下：
+
+    use mysql
+
+    update user set authentication_string='' where user='root';
+
+5. 退出mysql，执行命令：
+
+    quit
+
+6. 关闭以-console --skip-grant-tables --shared-memory 启动的MySQL服务，
+
+7. 打开命令框，输入：net start mysql  启动MySQL服务。
+
+8. 步骤4密码已经置空，所以无密码状态登录MySQL，输入登录命令：mysql -u root -p
+
+9. 利用上一篇博客中更改密码的命令，成功修改密码，如下图：
+
+    //ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码';
+
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '111111';
+
+10.验证更改后密码正确登录
+
+    输入quit，退出当前登录，输入登录命令：mysql -u root -p
+
+    输入密码，成功登录，到此，重置密码结束。
 
 ### net start mysql 服务名无效问题
 
