@@ -160,3 +160,46 @@ Enter password:*******
 + 您可以在单个表中一次性删除记录。
 
 当你想删除数据表中指定的记录时 WHERE 子句是非常有用的。
+
+
+### 忘记密码
+
+1. 进入mysql的bin目录
+
+2. net stop mysql 管理员模式
+
+3. mysqld --skip-grant-tables
+
+    输入：mysqld --skip-grant-tables 回车
+
+    （--skip-grant-tables 的意思是启动 MySQL 服务的时候跳过权限表认证）
+
+    注意：这时候，刚刚打开的 cmd 窗口已经不能使用了。重新再 bin 目录下打开一个新的 cmd 窗口进行下面的操作
+
+4. 重新打开一个cmd窗口，输入 mysql 回车。
+
+5. 连接权限数据库：use mysql
+
+    use mysql
+
+6. 修改数据库连接密码
+
+　  update user set password=password("123456") where user="root";
+
+    注意这里最后的分号一定不能丢
+
+7. 刷新权限（必须步骤）
+
+      flush privileges;（注意分号）
+
+8. 退出mysql
+
+      quit（这里没有分号）
+
+9. 修改root 密码后，需要执行下面的语句和新修改的密码。不然开启 mysql 时会出错。
+
+      mysqladmin -u root -p shutdow   根据提示输入刚刚修改的密码
+
+10. 重启 mysql
+
+      net start mysql
