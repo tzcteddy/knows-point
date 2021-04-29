@@ -203,3 +203,24 @@ Enter password:*******
 10. 重启 mysql
 
       net start mysql
+
+
+### net start mysql 服务名无效问题
+
+1. 环境变量配置过，并且在对应目录下执行命令
+
+  如： C:\mysql-5.6.50\bin>
+
+2. 在命令行中输入mysqld --install
+
+    出现Service successfully install代表你已经安装成功
+
+    不成功： Install/Remove of the Service Denied!  解决：使用管理员身份运行
+
+3. 再次执行 net start mysql
+
+    MySQL 服务正在启动
+
+    MySQL 服务无法启动
+
+    并无报错 删除mysql下的data文件， 重新执行 mysqld --initialize 就可以在当前路径下生成data文件夹，再执行net start mysql 就可以启动mysql
