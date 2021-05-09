@@ -651,3 +651,214 @@ function getMaxNestLevel() {
     return i;
 }
 ```
+
+
+### React中的事务机制
+```js
+//监听错误
+var OBSERVED_ERROR={}
+//事务对象
+var TransactionImpl={
+  
+  reinitializeTransaction:function(){
+    //获取wrapper
+    this.transactionWrappers=this.getTransactionWrappers();
+    console.log(this.transactionWrappers)
+    //初始化
+    if(this.wrapperInitData){
+      this.wrapperInitData.length=0;
+    }else{
+      this.wrapperInitData=[]
+    }
+    this._isInTransaction=false
+  },
+  //是否在事务中
+  _isInTransaction:false,
+  //获取wrapper 会被外名定义的覆盖
+  getTransactionWrappers:null,
+  //获取事务状态
+  isInTransaction:function () {
+    return !!this._isInTransaction
+  },
+  //核心
+  perform:function (method,scope,a,b,c,d) {
+    var errorThrow;//错误标志
+    var ret;//method返回结果
+    try{
+      this._isInTransaction=true;//进入到事务中
+      errorThrow=true            //标志位
+      this.initializeAll(0)       //执行所有前置
+      ret=method.call(scope,a,b,c,d) //执行当前
+      errorThrow=false;
+    }catch(e){
+
+    }finally{
+      try {
+        if(errorThrow){
+         try {
+           this.closeAll(0)
+         } catch (error) {
+           
+         }
+        }else{
+          this.closeAll(0)
+        }
+      } finally {
+        this._isInTransaction=false
+      }
+    }
+    return ret
+  },
+  initializeAll:function(startIndex){
+    var transactionWrappers=this.transactionWrappers;
+    for(var i=startIndex;i<transactionWrappers.length;i++){
+      var wrapper=transactionWrappers[i]
+      try{
+        this.wrapperInitData[i]=OBSERVED_ERROR;
+        this.wrapperInitData[i]=wrapper.initialize?wrapper.initialize.call(this):null
+      }finally{
+        if(this.wrapperInitData[i]===OBSERVED_ERROR){
+          try {
+            this.initializeAll(i+1)
+          } catch (error) {
+            
+          }
+        }
+      }
+    }
+  },
+  closeAll:function (startIndex) {
+    var transactionWrappers=this.transactionWrappers;
+    for(var i=startIndex;i<transactionWrappers.length;i++){
+      var wrapper=transactionWrappers[i]
+      var initData=this.wrapperInitData[i]
+      var errorThrow;
+      try{
+        errorThrow=true
+        if(initData!==OBSERVED_ERROR&&wrapper.close){
+          wrapper.close.call(this)
+        }
+        errorThrow=false
+      }finally{
+        if(errorThrow){
+          try {
+            this.closeAll(i+1)
+          } catch (error) {
+            
+          }
+        }
+      }
+    }
+    this.wrapperInitData.length=0
+  }
+}
+
+function log(){
+  console.log('我是要执行的方法',a)
+  throw new Error('123')
+
+}
+
+TransactionImpl.getTransactionWrappers=function(){
+  return [
+    {
+      initialize:function(){console.log('前置1',a)},
+      close:function(){console.log('后置1')}
+    },
+    {
+      initialize:function(){console.log('前置2')},
+      close:function(){console.log('后置2')}
+    }
+  ]
+}
+TransactionImpl.reinitializeTransaction()
+TransactionImpl.perform(log)
+```
+
+### 自执行器
+```js
+function sleep(time) {
+  return new Promise((resolve, reject) => {
+  setTimeout(() => {
+   resolve(1);
+  }, time);
+  });
+ }
+let test = function () {
+  // ret 为一个Promise对象，因为ES6语法规定 async 函数的返回值必须是一个 promise 对象
+  let ret = _asyncToGenerator(function* () {
+  for (let i = 0; i < 10; i++) {
+   let result = yield sleep(1000);
+   console.log(result);
+  }
+  });
+  return ret;
+ }();
+  
+ // generator 自执行器
+ function _asyncToGenerator(genFn) {
+  return new Promise((resolve, reject) => {
+    let gen = genFn();
+    function step(key, arg) {
+      console.log(arg,'q')
+      let info = {};
+      try {
+        info = gen[key](arg);
+        console.log(info)
+      } catch (error) {
+        reject(error);
+        return;
+      }
+      if (info.done) {
+        resolve(info.value);
+      } else {
+        return Promise.resolve(info.value).then((v) => {
+          return step('next', v);
+        }, (error) => {
+          return step('throw', error);
+        });
+      }
+    }
+    step('next');
+  });
+ }
+```
+
+### 中间件原理
+
+```js
+function express() {
+  var funcs = []; // 待执行的函数数组
+  var app = function (req, res) {
+      var i = 0;
+      function next() {
+          var task = funcs[i++];  // 取出函数数组里的下一个函数
+          if (!task) {    // 如果函数不存在,return
+              return;
+          }
+          task(req, res, next);   // 否则,执行下一个函数
+      }
+      next();
+  }
+
+  /**
+   * use方法就是把函数添加到函数数组中
+   * @param task
+   */
+  app.use = function (task) {
+      funcs.push(task);
+  }
+  return app;    // 返回实例
+}
+
+var app=express()
+var m1=function(req,res,next){
+  console.log('m1')
+  next()
+}
+var m2=function(req,res,next){
+  console.log('m2')
+}
+app.use(m1,m2)
+app('req','res')
+```
