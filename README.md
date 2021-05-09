@@ -49,6 +49,7 @@
 + [popper.js](https://popper.js.org/)
 + [markdown-it](https://markdown-it.docschina.org/)
 + [zxing](https://zxing-js.github.io/library/)
++ [ffmpeg转换音视频工具](https://www.ffmpeg.org/)
 
 #### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
