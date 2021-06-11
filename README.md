@@ -52,6 +52,17 @@
 + [ffmpeg转换音视频工具](https://www.ffmpeg.org/)
 + [在线画图流程图](https://app.diagrams.net/)
 
+### VsCode好用的插件
++ [CodeRunner] 执行js
++ [Draw.io] 画流程图
++ [Prettier]
++ [GitLens]
++ [Themes]自定义配色方案
++ [vscode-leetcode] 做做题吧
++ [PartialDiff] 文件比较
++ [ Markdown All in One]
+
+
 #### 四、集成文档
 + [腾讯云开发手册](https://cloud.tencent.com/developer/devdocs)
 + [Break易站](https://www.breakyizhan.com/)
