@@ -51,6 +51,7 @@
 + [zxing](https://zxing-js.github.io/library/)
 + [ffmpeg转换音视频工具](https://www.ffmpeg.org/)
 + [在线画图流程图](https://app.diagrams.net/)
++ [IDE](https://stackblitz.com/)
 
 ### VsCode好用的插件
 + [CodeRunner] 执行js
