@@ -1,4 +1,24 @@
 
+### 查看配置
+
+      git config --list
+
+### 生成密钥
+
+      git config --global user.name 'name'
+      git config --global user.email 'user@qq.com'
+
+      ssh-keygen -t rsa -C 'user@qq.com'
+
+### 查看远程仓库地址
+
+      git remote -v
+
+### 修改远程仓库地址
+
+      git remote rm origin
+      git remote add origin url
+
 ### 创建新分支
 当前master
 
