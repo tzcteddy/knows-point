@@ -108,6 +108,7 @@
         * [实现一个简易的webpack](webpack/源码解读/实现一个简易的webpack)
 * [NodeJs](node/)
     * [聊聊npm](node/聊聊npm)
+    * [package.json](node/package.json)
     * [简单实现koa洋葱模型](node/简单实现koa洋葱模型)
     * [使用egg开发一个服务](node/使用egg开发一个服务)
     * [nestjs](node/nestjs)
