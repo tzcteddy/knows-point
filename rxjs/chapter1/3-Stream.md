@@ -14,6 +14,6 @@
 
 
 
-![stream](https://images.gitee.com/uploads/images/2021/0813/101833_227baac7_1720749.png "stream.png")
+![stream](../../static/images/rxjs/stream.png)
 
 上图可以看出，通过订阅`observer`的`next,error,complete`方法来控制流状态，关于`observable`，后续有1个篇幅会细讲，这里对流有了解即可

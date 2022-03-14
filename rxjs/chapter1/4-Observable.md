@@ -87,7 +87,7 @@ for(let i = 0; i < data.length; ++i){
 
 如果今天我们的数据结构不是数组类型，而是一个树状结构呢？或者尽管是数组类型，但必须着不同的访问规则。这时候就需要自己针对需要的数据结构或访问规则书写代码。虽之而来的问题，如何共享这些规则？这个就是迭代器`Iterator`要处理的问题
 
-![iteration](https://images.gitee.com/uploads/images/2021/0813/094345_e76f65de_1808543.jpeg "iterator.jpeg")
+![iteration](../../static/images/rxjs/interator.jpeg)
 
 图片来自：https://en.wikipedia.org/wiki/Iterator_pattern
 
