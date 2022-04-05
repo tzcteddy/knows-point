@@ -103,6 +103,7 @@
 * [TypeScript](typescript/ts-简介)
     * [基础](typescript/ts-基础)
     * [进阶](typescript/ts-进阶)
+    * [详细介绍TypeScript](typescript/详细介绍TypeScript)
 * [杂谈](杂谈/)
     * [常用的高度获取Height](杂谈/常用的高度获取Height)
     * [http](杂谈/http)
