@@ -369,7 +369,7 @@ point[0] = 1;
 
 ### void
 
-`void`表示没有任何类型，和其他类型是平等关系，不能直接赋值:
+`void`类型与 `any` 类型相反，`void`表示没有任何类型，和其他类型是平等关系，不能直接赋值:
 
 ```ts
 let a: void;
@@ -524,6 +524,12 @@ let uncertain: unknown = notSure; // OK
 let notSure: unknown = 4;
 let uncertain: number = notSure; // Error
 ```
+
+不建议使用 any，当我们不知道一个类型具体是什么时，该怎么办？
+
+可以使用 unknown 类型
+
+unknown 类型代表任何类型，它的定义和 any 定义很像，但是它是一个安全类型，使用 unknown 做任何事情都是不合法的。
 
 如果不缩小类型，就无法对`unknown`类型执行任何操作：
 
