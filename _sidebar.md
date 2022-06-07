@@ -213,6 +213,7 @@
     * [vueRouter](code/vue-router)
     * [防抖节流](code/防抖节流)
     * [entry](code/entry)
+    * [常用颜色操作](code/常用颜色操作)
 * [Rxjs](rxjs/)
     * [chapter1](rxjs/chapter1)
         * [Rxjs](rxjs/chapter1/1-Rxjs)
