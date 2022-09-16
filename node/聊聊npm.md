@@ -165,17 +165,49 @@ npm publish
 
 更新 npm 包也是使用 npm publish 命令发布，不过必须更改 npm 包的版本号，同时我们应该遵 Semver(语义化版本号) 规范，npm 提供了 npm version 给我们升级版本
 
+正式发布
 ```
 # 升级补丁版本号
-$ npm version patch
+$ npm version patch //# 版本号从 0.1.0 变成 0.1.1，即修订版本号加一。
 
 # 升级小版本号
-$ npm version minor
+$ npm version minor //# 版本号从 0.1.1 变成 0.2.0，即子版本号加一。 
 
 # 升级大版本号
-$ npm version major
+$ npm version major //# 版本号从 0.2.0 变成 1.0.0，即主版本号加一。
+```
+预发布
+```
+$ npm version prepatch  # 版本号从 1.2.3 变成 1.2.4-0，即 1.2.4 版本的第一个预发布版本。
+
+$ npm version preminor  # 版本号从 1.2.4-0 变成 1.3.0-0，即 1.3.0 版本的第一个预发布版本。
+
+$ npm version premajor  # 版本号从 1.2.3 变成 2.0.0-0，即 2.0.0 版本的第一个预发布版本。
+
+$ npm version prerelease# 版本号从 2.0.0-0 变成 2.0.0-1，即预发布版本号加1。
 ```
 
+#### 版本号控制
+`^`指明的版本范围，只要不修改 **[major, minor, patch]** 三元组中，**最左侧的第一个非0位**，都是可以的。也就是说，要确定 `^`版本包含的范围，先要找到 **最左侧的第一个非0位** ，只有在这一位右侧的变动，才被包含在这个 `^` 指定的范围内。举个 ：
++ ^1.2.3版本包括：>= 1.2.3 并且 < 2.0.0
++ ^0.2.3版本包括：>= 0.2.3 并且 < 0.3.0
++ ^0.0.3版本包括：>= 0.0.3 并且 < 0.0.4
+
+|value|desc|
+|--:|:--|
+|~version	|~1.2.3会匹配所有1.2.x版本，但是不包括1.3.0 。 Approximately equivalent to version, i.e., only accept new patch versions|
+|^version	|比如^1.2.3会匹配所有1.x.x的包，包括1.3.0，但是不包括2.0.0。 Compatible with version, i.e., accept new minor and patch versions|
+|version	|Must match version exactly|
+|>version	|Must be greater than version|
+|>=version|	etc|
+|<version	||
+|<=version	||
+|1.2.x	|1.2.0, 1.2.1, etc., but not 1.3.0|
+|*	|Matches any version|
+|latest	|Obtains latest release|
+
+[npm](https://docs.npmjs.com/cli/v8/commands/npm-version)
+[semver](https://semver.org/lang/zh-CN/)
 #### 本地调试
 
 可以使用 npm link 调试

@@ -78,6 +78,48 @@
       # 删除最近的一次stash
       git stash drop
 
+
+
+### 修改已经提交的commit信息
+      1.修改最近一次提交commit message
+      直接使用命令 
+      git commit --amend 
+      进入 vi编辑模式，按i进入编辑模式，直接修改commit信息， 按esc再:wq保存退出
+
+      git push 到远程仓库
+
+
+      2.修改历史commit message
+      先使用
+      git log 
+      查出你所需要修改的commit位置，比如倒数第三条
+      git rebase -i HEAD~3
+
+      其中git log中倒数第n条就显示在该编辑页面的最新第1条
+
+      按i进入编辑模式，将需要更改的commit的pick改成e/edit， 按esc再:wq保存退出
+
+      如遇到：(dev|REBASE 1/3)，则只需在需要修改的rebase序号(此处就是1)是执行
+      git commit --amend
+      进入VI编辑页面，修改commit信息， 按esc再:wq保存退出
+
+      然后执行
+      git rebase --skip
+      跳过不需要修改的rebase分支，执行成功。
+
+      最后执行
+      git rebase --continue
+      命令完成rebase修改
+
+      最终push 到远程，至此，修改完成。
+
+      若进行到(dev|REBASE 1/3),中的一个阶段想退出此流程，执行命令
+      git rebase --abort
+      退出rebase 到主分支
+
+      push 到远端时，若执行git push, 则只会在之前的commit记录后追加一条记录，但不会更新之前的commit信息
+      若执行git push -f ，强制推送，则会更新之前的旧commit信息，进行覆盖
+
 ## 图解Git
 
 
