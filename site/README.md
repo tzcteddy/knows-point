@@ -28,6 +28,7 @@
 - [nestjs](https://www.itying.com/nestjs/)
 - [Docker-从入门到实践](https://yeasy.gitbook.io/docker_practice/)
 - [wenjiangs](https://www.wenjiangs.com/)
+- [图解操作系统](https://xiaolincoding.com/)
 
 ### 组件或库
 
@@ -113,11 +114,16 @@
 - [深言达意](https://shenyandayi.com/)
 - [记单词](https://danci.0231019.top)
 - [Visuwords:输入要查的单词，它会把和这个单词有关的全部家族词都帮你分解出来](https://visuwords.com/)
+- [大辞典](https://www.dacidian.net)
+- [反向词典](https://wantwords.net)
+- [文言文字典](https://wyw.hwxnet.com)
+
 - [算术表生成](https://eva.hoothin.com/)
 - [儿童着色网站 Coloring](https://www.coloring.ws/)
 - [中文写作校对工具:提供文本纠错、文本润色、文本改写](https://effidit.qq.com/demo)
 - [秘塔写作猫:可以校对字词错误、标点错误、语序错误、语法问题、同意混淆等](https://www.xiezuocat.com/)
 - [元素周期表](https://periodic-table-pro.netlify.app/)
+- [数字帝国](https://zh.numberempire.com)
 
 ### 娱乐
 
