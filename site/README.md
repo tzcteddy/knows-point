@@ -60,35 +60,16 @@
 - [ffmpeg 转换音视频工具](https://www.ffmpeg.org/)
 - [在线画图流程图](https://app.diagrams.net/)
 - [IDE](https://stackblitz.com/)
-
-#### 技术工具
-
-- [katex](https://katex.org/)
-- [数学公式编辑器](http://www.wiris.com/editor/demo/en/developers#mathml-latex)
-- [正则可视化工具](<https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24>)
-- [飞冰](https://ice.work/)
-- [再见 excel,在线表格](https://mengshukeji.gitee.io/luckysheetdocs/zh/)
-- [贝塞尔曲线](https://cubic-bezier.com/#.17,.67,.83,.67)
-- [自定义字体](https://fontello.com/) [源码](https://github.com/fontello/fontello)
-- [服务器性能监控可视化工具](https://grafana.com/grafana/download)
-- [VSCode 提供的代码编辑器](https://microsoft.github.io/monaco-editor/)
-- [X6(流程图、DAG 图、ER 图)](https://github.com/antvis/X6)
-- [动画插件](https://www.tweenmax.com.cn/)
-- [notion 记录工具](https://www.notion.so/)
-- [graffle 画图 for MAC](https://www.omnigroup.com/download/)
-- [SortableJS](http://www.sortablejs.com/)
-- [popper.js](https://popper.js.org/)
-- [markdown-it](https://markdown-it.docschina.org/)
-- [zxing](https://zxing-js.github.io/library/)
-- [ffmpeg 转换音视频工具](https://www.ffmpeg.org/)
-- [在线画图流程图](https://app.diagrams.net/)
-- [IDE](https://stackblitz.com/)
 - [一个用写代码的方式来生成终端 gif 动画的工具](https://github.com/charmbracelet/vhs)
+- [LLM 可视化](https://bbycroft.net/llm)
 
-### 文档工具
+### 在线工具
 
 - [PDF 转换](https://tools.pdf24.org/zh/)
 - [日历](https://www.calendarpedia.com/)
+- [在线词云生成器](https://wordart.com/)
+- [抖动文字生成器](https://aidn.jp/ugomoji/)
+- [免费简历模板下载](https://jianlixiazai.cn/jianlizhongxin.html)
 
 ### 好玩的
 
