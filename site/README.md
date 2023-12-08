@@ -62,6 +62,7 @@
 - [IDE](https://stackblitz.com/)
 - [一个用写代码的方式来生成终端 gif 动画的工具](https://github.com/charmbracelet/vhs)
 - [LLM 可视化](https://bbycroft.net/llm)
+- [light chaser 是一款开源免费的数据可视化设计工具，基于 React 技术栈实现](https://xiaopujun.github.io/light-chaser-app/#/list)
 
 ### 在线工具
 
