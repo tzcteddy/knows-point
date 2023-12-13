@@ -101,6 +101,8 @@
 - [文言文字典](https://wyw.hwxnet.com)
 
 - [算术表生成](https://eva.hoothin.com/)
+- [图形计算器，有案例](https://www.desmos.com/calculator?lang=zh-CN)
+- [图形计算器，可打印](https://www.geogebra.org/graphing?lang=zh_CN)
 - [儿童着色网站 Coloring](https://www.coloring.ws/)
 - [中文写作校对工具:提供文本纠错、文本润色、文本改写](https://effidit.qq.com/demo)
 - [秘塔写作猫:可以校对字词错误、标点错误、语序错误、语法问题、同意混淆等](https://www.xiezuocat.com/)
