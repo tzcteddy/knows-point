@@ -76,10 +76,9 @@
 
 - [cssbattle](https://cssbattle.dev/)
 - [css-doodle](https://css-doodle.com/)
-- [设计模式](https://www.patterns.dev/posts/)
 - [git 起飞](https://github.com/k88hudson/git-flight-rules/blob/master/README_zh-CN.md)
 - [图解 react](https://7kms.github.io/react-illustration-series/)
-- [设计模式(有视图)](https://www.patterns.dev/posts/)
+- [设计模式(有视图)](https://www.patterns.dev/)
 - [js(有好图)](https://github.com/mechaniac/Map-of-Javascript)
 - [地图天气](https://earth.nullschool.net/zh-cn/#current/wind/surface/level/orthographic=-243.82,21.35,173)
 - [韦伯望远镜](https://webbtelescope.org/resource-gallery/images?continueFlag=3a73de48bbeb06166797ffdd65ef6ed4)
