@@ -113,6 +113,9 @@
 - [下载歌曲](https://xiageba.com/)
 - [小破站下载工具](http://zhouql.vip/bilibili/)
 - [小破站下载工具](https://bili.iiilab.com/)
+- [在线视频解析下载工具](https://dlpanda.com/zh-CN)
+- [各种声音搜索下载](https://www.findsounds.com/mtypesChinese.html)
+- [AI 背景音乐生成器](https://bgmcat.com/home)
 
 ### 钢琴谱
 
