@@ -67,10 +67,12 @@
 ### 在线工具
 
 - [PDF 转换](https://tools.pdf24.org/zh/)
+- [webptopng](https://webptopng.com/cn)
 - [日历](https://www.calendarpedia.com/)
 - [在线词云生成器](https://wordart.com/)
 - [抖动文字生成器](https://aidn.jp/ugomoji/)
 - [免费简历模板下载](https://jianlixiazai.cn/jianlizhongxin.html)
+- [可画设计](https://www.canva.cn/)
 
 ### 好玩的
 
