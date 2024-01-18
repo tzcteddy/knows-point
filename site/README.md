@@ -84,6 +84,7 @@
 - [js(有好图)](https://github.com/mechaniac/Map-of-Javascript)
 - [地图天气](https://earth.nullschool.net/zh-cn/#current/wind/surface/level/orthographic=-243.82,21.35,173)
 - [韦伯望远镜](https://webbtelescope.org/resource-gallery/images?continueFlag=3a73de48bbeb06166797ffdd65ef6ed4)
+- [windows 系统下载，提供所有版本 windows 系统下载，简洁干净，无多余内容](https://lab.liuzhijin.cn/)
 
 ### 书籍
 
@@ -100,6 +101,8 @@
 - [大辞典](https://www.dacidian.net)
 - [反向词典](https://wantwords.net)
 - [文言文字典](https://wyw.hwxnet.com)
+- [中医大辞典](http://www.zydcd.com/)
+- [读者阁，一个读者杂志免费在线阅读和下载的网站](https://duzhege.cn/)
 
 - [算术表生成](https://eva.hoothin.com/)
 - [图形计算器，有案例](https://www.desmos.com/calculator?lang=zh-CN)
@@ -113,11 +116,15 @@
 ### 娱乐
 
 - [下载歌曲](https://xiageba.com/)
+- [网易云音乐 NCM 转换 MP3](https://ncm.worthsee.com/)
+- [加密的 NCM 转换 MP3](https://mp3.aoleiao.com/)
 - [小破站下载工具](http://zhouql.vip/bilibili/)
 - [小破站下载工具](https://bili.iiilab.com/)
 - [在线视频解析下载工具](https://dlpanda.com/zh-CN)
 - [各种声音搜索下载](https://www.findsounds.com/mtypesChinese.html)
 - [AI 背景音乐生成器](https://bgmcat.com/home)
+- [QQ 音乐-在线音频分离](https://y.qq.com/tme_studio/)
+- [提供各种声音搜索和下载，如办公室声音、动物叫声、乐器声音、自然声音等。 ​](https://www.findsounds.com/mtypesChinese.html)
 
 ### 钢琴谱
 
@@ -224,6 +231,7 @@
 - [7. NB Maps：快速生成三维地图的免费工具，可以调整颜色、修改地图的厚度和角度、更换字体的样式，可下载。](https://www.nbcharts.com/map/map.php)
 - [8. 诗人地理分布信息：历代诗人地域分布，可查看诗人一生的轨迹 。](https://sou-yun.cn/IndexByMap.aspx)
 - [9. 中国历史地图集：一个历史地图网站，可按年份、年号查询。](http://www.ccamc.co/chinese_historical_map/index.php)
+- [在线地图卡片制作工具【Mapsain】](https://www.mapsain.com/builder)
 
 ### 配色
 
