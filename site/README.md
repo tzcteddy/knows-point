@@ -73,6 +73,7 @@
 - [抖动文字生成器](https://aidn.jp/ugomoji/)
 - [免费简历模板下载](https://jianlixiazai.cn/jianlizhongxin.html)
 - [可画设计](https://www.canva.cn/)
+- [开源画板，提供各种笔触](https://songlh.top/paint-board/)
 
 ### 好玩的
 
@@ -91,6 +92,7 @@
 - [无名图书(电子书资源)](https://www.book123.info)
 - [搬书匠(编程开发类书籍)](http://www.banshujiang.cn)
 - [KoodoReader(电子书阅读器)](https://reader.960960.xyz)
+- [读者阁，一个读者杂志免费在线阅读和下载的网站](https://duzhege.cn/)
 
 ### 学习
 
@@ -102,7 +104,6 @@
 - [反向词典](https://wantwords.net)
 - [文言文字典](https://wyw.hwxnet.com)
 - [中医大辞典](http://www.zydcd.com/)
-- [读者阁，一个读者杂志免费在线阅读和下载的网站](https://duzhege.cn/)
 
 - [算术表生成](https://eva.hoothin.com/)
 - [图形计算器，有案例](https://www.desmos.com/calculator?lang=zh-CN)
