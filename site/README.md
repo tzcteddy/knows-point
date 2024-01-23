@@ -67,6 +67,7 @@
 ### 在线工具
 
 - [PDF 转换](https://tools.pdf24.org/zh/)
+- [在线文件格式转换！支持图片、视频、音频、文本、电子书等类型的格式转换。](https://www.freeconvert.com/)
 - [webptopng](https://webptopng.com/cn)
 - [日历](https://www.calendarpedia.com/)
 - [在线词云生成器](https://wordart.com/)
@@ -74,6 +75,8 @@
 - [免费简历模板下载](https://jianlixiazai.cn/jianlizhongxin.html)
 - [可画设计](https://www.canva.cn/)
 - [开源画板，提供各种笔触](https://songlh.top/paint-board/)
+- [网站提供了各种在线工具，分为视频工具、音频工具、PDF 工具、转换器和其他工具。这些工具可以帮助您在视频、音频、PDF 和图像等不同格式之间进行编辑、转换和创建内容。最重要的，无需翻墙无需登陆无需注册即可使用！ ​](https://123apps.com/cn/)
+- [Lordicon：提供很多免费的动态图标，有插画、双色、渐变、线条等类型，不用注册就可以下载](https://lordicon.com/icons)
 
 ### 好玩的
 
@@ -97,6 +100,7 @@
 ### 学习
 
 - [全唐诗](https://www.quantangshi.cn)
+- [温故:收集中国古代诗词，可以按照诗词的不同分类进行查看，例如按朝代、作者、类型等。](https://shici.honmaple.com/#/)
 - [深言达意](https://shenyandayi.com/)
 - [记单词](https://danci.0231019.top)
 - [Visuwords:输入要查的单词，它会把和这个单词有关的全部家族词都帮你分解出来](https://visuwords.com/)
@@ -126,6 +130,7 @@
 - [AI 背景音乐生成器](https://bgmcat.com/home)
 - [QQ 音乐-在线音频分离](https://y.qq.com/tme_studio/)
 - [提供各种声音搜索和下载，如办公室声音、动物叫声、乐器声音、自然声音等。 ​](https://www.findsounds.com/mtypesChinese.html)
+- [一个在线播放白噪音的网站，多种音效可选](https://moodist.java666.cn/)
 
 ### 钢琴谱
 
