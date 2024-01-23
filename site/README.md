@@ -53,6 +53,7 @@
 - [动画插件](https://www.tweenmax.com.cn/)
 - [notion 记录工具](https://www.notion.so/)
 - [graffle 画图 for MAC](https://www.omnigroup.com/download/)
+- [一款极简的 uptime 监控工具](https://demo.kuma.pet/dashboard)
 - [SortableJS](http://www.sortablejs.com/)
 - [popper.js](https://popper.js.org/)
 - [markdown-it](https://markdown-it.docschina.org/)
@@ -73,10 +74,12 @@
 - [在线词云生成器](https://wordart.com/)
 - [抖动文字生成器](https://aidn.jp/ugomoji/)
 - [免费简历模板下载](https://jianlixiazai.cn/jianlizhongxin.html)
+- [一款强大的在线设计图片工具](https://xp.palxp.cn/#/)
 - [可画设计](https://www.canva.cn/)
 - [开源画板，提供各种笔触](https://songlh.top/paint-board/)
 - [网站提供了各种在线工具，分为视频工具、音频工具、PDF 工具、转换器和其他工具。这些工具可以帮助您在视频、音频、PDF 和图像等不同格式之间进行编辑、转换和创建内容。最重要的，无需翻墙无需登陆无需注册即可使用！ ​](https://123apps.com/cn/)
 - [Lordicon：提供很多免费的动态图标，有插画、双色、渐变、线条等类型，不用注册就可以下载](https://lordicon.com/icons)
+- [在线编辑、转换、预览字体文件，支持多种字体格式](https://kekee000.github.io/fonteditor/)
 
 ### 好玩的
 
