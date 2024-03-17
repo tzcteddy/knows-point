@@ -65,6 +65,12 @@
 - [LLM 可视化](https://bbycroft.net/llm)
 - [light chaser 是一款开源免费的数据可视化设计工具，基于 React 技术栈实现](https://xiaopujun.github.io/light-chaser-app/#/list)
 
+### AI 工具
+
+- [秘塔 AI 搜索](https://metaso.cn/)
+- [AI 背景音乐生成器](https://bgmcat.com/home)
+- [AI 春联](https://ai-sfc.yunyoujun.cn/)
+
 ### 在线工具
 
 - [PDF 转换](https://tools.pdf24.org/zh/)
@@ -80,6 +86,7 @@
 - [网站提供了各种在线工具，分为视频工具、音频工具、PDF 工具、转换器和其他工具。这些工具可以帮助您在视频、音频、PDF 和图像等不同格式之间进行编辑、转换和创建内容。最重要的，无需翻墙无需登陆无需注册即可使用！ ​](https://123apps.com/cn/)
 - [Lordicon：提供很多免费的动态图标，有插画、双色、渐变、线条等类型，不用注册就可以下载](https://lordicon.com/icons)
 - [在线编辑、转换、预览字体文件，支持多种字体格式](https://kekee000.github.io/fonteditor/)
+- [沉浸式翻译,在线文档翻译工具！支持 pdf、epub、html、txt 等文件](https://app.immersivetranslate.com/)
 
 ### 好玩的
 
@@ -99,6 +106,7 @@
 - [搬书匠(编程开发类书籍)](http://www.banshujiang.cn)
 - [KoodoReader(电子书阅读器)](https://reader.960960.xyz)
 - [读者阁，一个读者杂志免费在线阅读和下载的网站](https://duzhege.cn/)
+- [24h 搜书网](https://24hbook.com/)
 
 ### 学习
 
@@ -130,7 +138,7 @@
 - [小破站下载工具](https://bili.iiilab.com/)
 - [在线视频解析下载工具](https://dlpanda.com/zh-CN)
 - [各种声音搜索下载](https://www.findsounds.com/mtypesChinese.html)
-- [AI 背景音乐生成器](https://bgmcat.com/home)
+
 - [QQ 音乐-在线音频分离](https://y.qq.com/tme_studio/)
 - [提供各种声音搜索和下载，如办公室声音、动物叫声、乐器声音、自然声音等。 ​](https://www.findsounds.com/mtypesChinese.html)
 - [一个在线播放白噪音的网站，多种音效可选](https://moodist.java666.cn/)
@@ -246,3 +254,4 @@
 
 - [uiGradients：漂亮的渐变色彩](https://uigradients.com/#SublimeLight)
 - [中国传统色彩：](https://hao.uisdc.com/color/)
+- [背景神器，你可以 10 秒钟做出一张好看的背景图](http://www.bg-painter.com/)
