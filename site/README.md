@@ -98,6 +98,7 @@
 - [js(有好图)](https://github.com/mechaniac/Map-of-Javascript)
 - [地图天气](https://earth.nullschool.net/zh-cn/#current/wind/surface/level/orthographic=-243.82,21.35,173)
 - [韦伯望远镜](https://webbtelescope.org/resource-gallery/images?continueFlag=3a73de48bbeb06166797ffdd65ef6ed4)
+- [stellarium-web 一款开源的天象模拟软件](https://stellarium-web.org/)
 - [windows 系统下载，提供所有版本 windows 系统下载，简洁干净，无多余内容](https://lab.liuzhijin.cn/)
 
 ### 书籍
