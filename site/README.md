@@ -100,6 +100,7 @@
 - [韦伯望远镜](https://webbtelescope.org/resource-gallery/images?continueFlag=3a73de48bbeb06166797ffdd65ef6ed4)
 - [stellarium-web 一款开源的天象模拟软件](https://stellarium-web.org/)
 - [windows 系统下载，提供所有版本 windows 系统下载，简洁干净，无多余内容](https://lab.liuzhijin.cn/)
+- [免费 3d 模型的网站](https://www.cpengx.cn/moxing/%e5%9c%ba%e6%99%af%e6%a8%a1%e5%9e%8b)
 
 ### 书籍
 
