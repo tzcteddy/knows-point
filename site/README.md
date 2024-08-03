@@ -76,7 +76,9 @@
 - [PDF 转换](https://tools.pdf24.org/zh/)
 - [在线文件格式转换！支持图片、视频、音频、文本、电子书等类型的格式转换。](https://www.freeconvert.com/)
 - [webptopng](https://webptopng.com/cn)
+- [证件照](https://zhengjianzhao.com/index.php)
 - [日历](https://www.calendarpedia.com/)
+- [手写体文稿生成器](https://vtool.pro/handwriting/index.html?continueFlag=2b81e86542bf6b04b4d22f7f1a4bee03)
 - [在线词云生成器](https://wordart.com/)
 - [抖动文字生成器](https://aidn.jp/ugomoji/)
 - [免费简历模板下载](https://jianlixiazai.cn/jianlizhongxin.html)
@@ -140,7 +142,7 @@
 - [小破站下载工具](https://bili.iiilab.com/)
 - [在线视频解析下载工具](https://dlpanda.com/zh-CN)
 - [各种声音搜索下载](https://www.findsounds.com/mtypesChinese.html)
-
+- [费的商用素材库，提供图片、音乐音效、视频素材、字体等内容。 ​​​](https://www.mfsc123.com/​)
 - [QQ 音乐-在线音频分离](https://y.qq.com/tme_studio/)
 - [提供各种声音搜索和下载，如办公室声音、动物叫声、乐器声音、自然声音等。 ​](https://www.findsounds.com/mtypesChinese.html)
 - [一个在线播放白噪音的网站，多种音效可选](https://moodist.java666.cn/)
@@ -257,3 +259,59 @@
 - [uiGradients：漂亮的渐变色彩](https://uigradients.com/#SublimeLight)
 - [中国传统色彩：](https://hao.uisdc.com/color/)
 - [背景神器，你可以 10 秒钟做出一张好看的背景图](http://www.bg-painter.com/)
+
+
+### PPT
+首先，搭建框架，梳理思路。
+
+思路搭建的辅助工具：X-Mind、幕布、飞书、Mindmaneger。
+ㅤ
+其次，选择PPT模板，找素材，完善内容。
+
+1.模板网站：
+- [演示星球](pop-ppt.com)
+- [第一PPT](1ppt.com)
+- [51PPT](51pptmoban.com)
+- [优品PPT](ypppt.com)
+- [HiPPTER](hippter.com)
+
+2.找高清图片素材：
+- [Pixabay](pixabay.com/zh)
+- [Unsplash](unsplash.com)
+- [Pexels](pexels.com/zh-cn)
+
+3.加入可视化图表，用这几个工具：
+- [文图](wentu.yimian.com.cn)
+- [图说](tushuo.baidu.com)
+- [Echarts](echarts.apache.org)
+- [镝数图表](dycharts.com)
+
+4.需要完善数据，找这里：
+
+- [国家统计局](www.stats.gov.cn)
+- [国家数据](data.stats.gov.cn)
+- [嫡数聚](dydata.io)
+- [易观分析](analysys.cn)
+- [199IT](199it.com)
+
+5.找字体：
+- [字体天下](fonts.net.cn)
+- [猫啃网](maoken.com)
+- [字体搬运工](font.sucai999.com)
+- [喵闪字库](miao3.cn)
+- [Fonts Space](fontspace.com)
+
+6.AI文字润色工具：
+- [秘塔写作猫](xiezuocat.com)
+- [火山写作](writingo.net)
+- [文心一言](yiyan.baidu.com)
+- [WPS AI](ai.wps.cn)
+- [火龙果写作](web.mypitaya.com)
+
+最后的最后，时间超紧的话，还可以试试这几个AI自动生成PPT工具 ：
+
+- [Mind Show](mindshow.vip)
+- [AiPPT](aippt.cn)
+- [闪击PPT](ppt.sankki.com)
+- [秒出办公](zxznppt.com/pptx)
+- [MotionGo](motion.yoo-ai.com/)
