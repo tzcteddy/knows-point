@@ -269,49 +269,49 @@
 其次，选择PPT模板，找素材，完善内容。
 
 1.模板网站：
-- [演示星球](pop-ppt.com)
-- [第一PPT](1ppt.com)
-- [51PPT](51pptmoban.com)
-- [优品PPT](ypppt.com)
-- [HiPPTER](hippter.com)
+- [演示星球](https://pop-ppt.com)
+- [第一PPT](https://1ppt.com)
+- [51PPT](https://51pptmoban.com)
+- [优品PPT](https://ypppt.com)
+- [HiPPTER](https://hippter.com)
 
 2.找高清图片素材：
-- [Pixabay](pixabay.com/zh)
-- [Unsplash](unsplash.com)
-- [Pexels](pexels.com/zh-cn)
+- [Pixabay](https://pixabay.com/zh)
+- [Unsplash](https://unsplash.com)
+- [Pexels](https://pexels.com/zh-cn)
 
 3.加入可视化图表，用这几个工具：
-- [文图](wentu.yimian.com.cn)
-- [图说](tushuo.baidu.com)
-- [Echarts](echarts.apache.org)
-- [镝数图表](dycharts.com)
+- [文图](https://wentu.yimian.com.cn)
+- [图说](https://tushuo.baidu.com)
+- [Echarts](https://echarts.apache.org)
+- [镝数图表](https://dycharts.com)
 
 4.需要完善数据，找这里：
 
-- [国家统计局](www.stats.gov.cn)
-- [国家数据](data.stats.gov.cn)
-- [嫡数聚](dydata.io)
-- [易观分析](analysys.cn)
-- [199IT](199it.com)
+- [国家统计局](https://www.stats.gov.cn)
+- [国家数据](https://data.stats.gov.cn)
+- [嫡数聚](https://dydata.io)
+- [易观分析](https://analysys.cn)
+- [199IT](https://199it.com)
 
 5.找字体：
-- [字体天下](fonts.net.cn)
-- [猫啃网](maoken.com)
-- [字体搬运工](font.sucai999.com)
-- [喵闪字库](miao3.cn)
-- [Fonts Space](fontspace.com)
+- [字体天下](https://https://fonts.net.cn)
+- [猫啃网](https://maoken.com)
+- [字体搬运工](https://font.sucai999.com)
+- [喵闪字库](https://miao3.cn)
+- [Fonts Space](https://fontspace.com)
 
 6.AI文字润色工具：
-- [秘塔写作猫](xiezuocat.com)
-- [火山写作](writingo.net)
-- [文心一言](yiyan.baidu.com)
-- [WPS AI](ai.wps.cn)
-- [火龙果写作](web.mypitaya.com)
+- [秘塔写作猫](https://xiezuocat.com)
+- [火山写作](https://writingo.net)
+- [文心一言](https://yiyan.baidu.com)
+- [WPS AI](https://ai.wps.cn)
+- [火龙果写作](https://web.mypitaya.com)
 
 最后的最后，时间超紧的话，还可以试试这几个AI自动生成PPT工具 ：
 
-- [Mind Show](mindshow.vip)
-- [AiPPT](aippt.cn)
-- [闪击PPT](ppt.sankki.com)
-- [秒出办公](zxznppt.com/pptx)
-- [MotionGo](motion.yoo-ai.com/)
+- [Mind Show](https://mindshow.vip)
+- [AiPPT](https://aippt.cn)
+- [闪击PPT](https://ppt.sankki.com)
+- [秒出办公](https://zxznppt.com/pptx)
+- [MotionGo](https://motion.yoo-ai.com/)
