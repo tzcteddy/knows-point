@@ -315,3 +315,6 @@
 - [闪击PPT](https://ppt.sankki.com)
 - [秒出办公](https://zxznppt.com/pptx)
 - [MotionGo](https://motion.yoo-ai.com/)
+
+
+[logo](/pages/logo.html)
