@@ -94,6 +94,7 @@
 
 - [cssbattle](https://cssbattle.dev/)
 - [css-doodle](https://css-doodle.com/)
+- [css-shape](https://css-shape.com/)
 - [git 起飞](https://github.com/k88hudson/git-flight-rules/blob/master/README_zh-CN.md)
 - [图解 react](https://7kms.github.io/react-illustration-series/)
 - [设计模式(有视图)](https://www.patterns.dev/)
