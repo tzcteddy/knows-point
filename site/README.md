@@ -143,7 +143,7 @@
 - [小破站下载工具](https://bili.iiilab.com/)
 - [在线视频解析下载工具](https://dlpanda.com/zh-CN)
 - [各种声音搜索下载](https://www.findsounds.com/mtypesChinese.html)
-- [费的商用素材库，提供图片、音乐音效、视频素材、字体等内容。 ​​​](https://www.mfsc123.com/​)
+- [费的商用素材库，提供图片、音乐音效、视频素材、字体等内容。 ​​​](https://www.mfsc123.com​)
 - [QQ 音乐-在线音频分离](https://y.qq.com/tme_studio/)
 - [提供各种声音搜索和下载，如办公室声音、动物叫声、乐器声音、自然声音等。 ​](https://www.findsounds.com/mtypesChinese.html)
 - [一个在线播放白噪音的网站，多种音效可选](https://moodist.java666.cn/)
