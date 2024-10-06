@@ -110,6 +110,7 @@
 - [git](git/)
   - [常用命令](git/git常用命令.md)
   - [cherry-pick](git/cherry-pick.md)
+  - [git多账号](git/git多账号.md)
 - [杂谈](杂谈/)
   - [常用的高度获取 Height](杂谈/常用的高度获取Height)
   - [http](杂谈/http)
