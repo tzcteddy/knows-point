@@ -108,7 +108,7 @@
   - [系统目录](linux/系统中的目录.md)
   - [通配符](linux/通配符.md)
 - [git](git/)
-  - [常用命令](git/git常用命令.md)
+  - [常用命令](git/git常用命令.mcdd)
   - [cherry-pick](git/cherry-pick.md)
   - [git多账号](git/git多账号.md)
 - [杂谈](杂谈/)
