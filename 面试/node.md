@@ -389,3 +389,24 @@ PM2还支持通过配置文件管理应用，这种方式可以提供更丰富�
 ## pm2守护进程的原理
 PM2 守护进程的原理主要是通过创建一个子进程来执行你的应用程序，然后父进程会监控子进程的运行状态，一旦子进程挂掉，父进程就会立即重新启动一个新的子进程，这样就可以保证应用程序一直处于运行状态。
 
+## 不实用pm2怎么管理进程
+- node-forever：其原理就是崩溃就重启一个。
+- shell 脚本启动守护 node
+```shell
+WEB_DIR='/var/www/ourjs'
+WEB_APP='svr/ourjs.js'
+
+#location of node you want to use
+NODE_EXE=/root/local/bin/node
+
+while true; do
+    {
+        $NODE_EXE $WEB_DIR/$WEB_APP config.magazine.js
+        echo "Stopped unexpected, restarting \r\n\r\n"
+    } 2>> $WEB_DIR/error.log
+    sleep 1
+done
+```
+
+- cluster API:Node 原生提供了 cluster，可以创建共享服务器端口的子进程.可以再业务代码之上起一个 master 进程，他 fork 出多个 worker 进程来处理任务，每当一个 worker 挂了，会有事件传回给 master，master 就能重新 fork 一份新的 worker。那么只要 master 不挂，就能达到守护进程的目的。
+
