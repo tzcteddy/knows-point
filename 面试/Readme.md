@@ -1,6 +1,9 @@
 # 面试总结
-[https://lgwebdream.github.io/FE-Interview/node/#node-%E4%B8%8D%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B-es6-%E8%AF%AD%E6%B3%95](https://lgwebdream.github.io/FE-Interview/node/#node-%E4%B8%8D%E6%94%AF%E6%8C%81%E5%93%AA%E4%BA%9B-es6-%E8%AF%AD%E6%B3%95)
-[https://vue3js.cn/interview/](https://vue3js.cn/interview/)
+- [https://lgwebdream.github.io/FE-Interview/](https://lgwebdream.github.io/FE-Interview/)
+- [https://vue3js.cn/interview/](https://vue3js.cn/interview/)
+- [https://q.shanyue.tech/fe](https://q.shanyue.tech/fe)
+- [https://www.explainthis.io/zh-hans/swe-questions/frontend](https://www.explainthis.io/zh-hans/swe-questions/frontend)
+
 ## 1、什么是外边距重叠？结果是什么？
 外边距重叠就是margin-collapse
 在CSS中，相邻的两个盒子（可能是兄弟关系，也可能是祖先关系）的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距成为折叠外边距。

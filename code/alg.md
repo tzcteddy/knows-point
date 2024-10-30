@@ -18,6 +18,7 @@ function qc(ary){
     return ary;
 }
 ```
+
 ### 冒泡排序
 ```js
 function mp(ary){
