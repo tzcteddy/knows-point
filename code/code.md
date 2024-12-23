@@ -862,3 +862,35 @@ var m2=function(req,res,next){
 app.use(m1,m2)
 app('req','res')
 ```
+
+### 控制并发
+
+```js
+class MyFetch {
+    constructor() {
+        this.queue = []
+        this.count = 0
+        this.maxCount = 5
+    }
+
+    fetch(url, options = {}, priority = 0) {
+        return new Promise((resolve, reject) => {
+            this.queue.push([priority, url, options, resolve, reject])
+            this._run()
+        })
+    }
+
+    _run() {
+        if (this.count >= this.maxCount || this.queue.length === 0) return
+        this.count++
+        while (this.queue.length) {
+            this.queue.sort((a, b) => a[0] - b[0])
+            const [_, url, options, resolve, reject] = this.queue.shift()
+            fetch(url, options).then(resolve).catch(reject).finally(() => {
+                this.count--
+                this._run()
+            })
+        }
+    }
+}
+```

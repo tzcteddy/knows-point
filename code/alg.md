@@ -1,5 +1,26 @@
 ## 算法
+### 生成括号
+```js
+function generator(n){
+  const result=[]
+  function bank(left,right,str){
+    if(str.length===2*n){
+      result.push(str)
+      return
+    }
+    if(left<n){
+      bank(left+1,right,str+'(')
+    }
+    if(right<left){
+      bank(left,right+1,str+')')
+    }
+  }
+  bank(0,0,'')
+  return result
+}
+console.log(generator(3)) //['((()))', '(()())', '(())()', '()(())', '()()()']
 
+```
 ### 去重
 
 ```js
