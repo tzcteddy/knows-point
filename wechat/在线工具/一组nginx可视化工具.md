@@ -10,5 +10,5 @@ Nginx 网络管理界面的新选择，简单、强大、高速
 
 ## nginx-proxy-manager
 它开箱即用支持 Docker 一键部署，可以让用户通过 Web 界面在线配置、管理 Nginx 服务，支持转发、重定向、SSL 证书、高级配置等功能
-![]()
+![](https://foruda.gitee.com/images/1737341099503330426/ecfdcfc9_8031453.png)
 在线地址：[https://nginxui.com/zh_CN/](https://nginxui.com/zh_CN/)

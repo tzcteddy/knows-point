@@ -404,3 +404,79 @@ try {
   console.log('Risk control failed: ' + e.message);
 }
 ```
+
+
+## 责任链模式
+```js
+class Handler {
+    constructor(nextHandler) {
+        this.nextHandler = nextHandler;
+    }
+
+    setNext(nextHandler) {
+        this.nextHandler = nextHandler;
+        return this;
+    }
+
+    handle(request) {
+        if (this.canHandle(request)) {
+            return this.doHandle(request);
+        } else if (this.nextHandler) {
+            return this.nextHandler.handle(request);
+        }
+        return null;
+    }
+
+    canHandle(request) {
+        throw new Error('canHandle method must be implemented');
+    }
+
+    doHandle(request) {
+        throw new Error('doHandle method must be implemented');
+    }
+}
+
+class ConcreteHandler1 extends Handler {
+    canHandle(request) {
+        return request >= 1 && request <= 10;
+    }
+
+    doHandle(request) {
+        return `ConcreteHandler1 handled request ${request}`;
+    }
+}
+
+class ConcreteHandler2 extends Handler {
+    canHandle(request) {
+        return request >= 11 && request <= 20;
+    }
+
+    doHandle(request) {
+        return `ConcreteHandler2 handled request ${request}`;
+    }
+}
+
+class ConcreteHandler3 extends Handler {
+    canHandle(request) {
+        return request >= 21 && request <= 30;
+    }
+
+    doHandle(request) {
+        return `ConcreteHandler3 handled request ${request}`;
+    }
+}
+
+// 创建责任链
+const handler1 = new ConcreteHandler1();
+const handler2 = new ConcreteHandler2();
+const handler3 = new ConcreteHandler3();
+
+handler1.setNext(handler2).setNext(handler3);
+
+// 测试请求
+const requests = [5, 15, 25];
+requests.forEach((request) => {
+    const result = handler1.handle(request);
+    console.log(result);
+});
+```
