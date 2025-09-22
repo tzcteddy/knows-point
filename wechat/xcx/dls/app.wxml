@@ -1,0 +1,4 @@
+<view class="app-container">
+  <!-- 全局活动弹框 -->
+  <activity-popup id="globalActivityPopup"></activity-popup>
+</view>

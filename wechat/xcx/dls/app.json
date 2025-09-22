@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index"
+    // 其他页面...
+  ],
+  "usingComponents": {
+    "activity-popup": "components/activity-popup/activity-popup"
+  },
+  "window": {
+    // 窗口配置...
+  }
+}
