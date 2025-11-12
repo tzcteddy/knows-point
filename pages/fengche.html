@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas风车动画</title>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+        }
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <script type="text/javascript">
+        // 创建动画对象，封装所有功能
+        const WindmillAnimation = {
+            // 初始化属性
+            canvas: null,
+            ctx: null,
+            // 基础尺寸，作为参考
+            baseWidth: 800,
+            baseHeight: 600,
+            // 当前实际尺寸
+            width: 0,
+            height: 0,
+            // 缩放因子
+            scale: 1,
+            rotationSpeed: 0.5, // 旋转速度
+            rotationAngle: 0, // 当前旋转角度
+            animationId: null,
+            // 黄金分割比例
+            goldenRatio: (1 + Math.sqrt(5)) / 2,
+            // 旋转轴位置（中心偏上的黄金位置）
+            pivotX: 0,
+            pivotY: 0,
+            // 预计算的山脉高度值，避免每帧随机生成导致抖动
+            mountainHeights: [],
+            
+            // 初始化函数
+            init() {
+                try {
+                    this.canvas = document.getElementById('canvas');
+                    
+                    // 检查Canvas支持
+                    if (!this.canvas || !this.canvas.getContext) {
+                        throw new Error('您的浏览器不支持Canvas');
+                    }
+                    
+                    this.ctx = this.canvas.getContext('2d');
+                    this.setupCanvas();
+                    // 初始化固定的山脉高度，避免抖动
+                    this.initializeMountainHeights();
+                    this.startAnimation();
+                    
+                    // 添加窗口大小变化监听
+                    window.addEventListener('resize', () => this.handleResize());
+                } catch (error) {
+                    console.error('初始化风车动画失败:', error);
+                    alert('无法启动风车动画: ' + error.message);
+                }
+            },
+            
+            // 初始化固定的山脉高度值
+            initializeMountainHeights() {
+                // 为远处山脉预计算固定的高度值
+                this.farMountainHeights = [];
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        // 使用确定性的计算方法，避免随机性
+                        const height = Math.sin(i * 0.7 + j * 0.3) * 0.3 + 1.1; // 范围在0.8到1.4之间
+                        this.farMountainHeights.push(height);
+                    }
+                }
+                
+                // 为近处山脉预计算固定的高度值
+                this.nearMountainHeights = [];
+                for (let i = 0; i < 5; i++) {
+                    // 使用确定性的计算方法
+                    const height = Math.sin(i * 0.5) * 0.2 + 1.0; // 范围在0.8到1.2之间
+                    this.nearMountainHeights.push(height);
+                }
+            },
+            
+            // 设置Canvas尺寸和位置
+            setupCanvas() {
+                // 获取窗口可用尺寸
+                this.width = window.innerWidth;
+                this.height = window.innerHeight;
+                
+                // 设置Canvas的实际像素大小
+                this.canvas.width = this.width;
+                this.canvas.height = this.height;
+                
+                // 设置CSS尺寸
+                this.canvas.style.width = `${this.width}px`;
+                this.canvas.style.height = `${this.height}px`;
+                
+                // 计算缩放因子 - 根据窗口尺寸和基础尺寸计算
+                const scaleX = this.width / this.baseWidth;
+                const scaleY = this.height / this.baseHeight;
+                // 取较小值以确保完全可见
+                this.scale = Math.min(scaleX, scaleY, 1.5); // 最大放大到1.5倍
+                
+                // 设置旋转轴位置 - 水平居中，垂直方向为中心偏上的黄金位置
+                this.pivotX = this.width / 2;
+                this.pivotY = this.height * 0.4;
+            },
+            
+            // 处理窗口大小变化
+            handleResize() {
+                // 取消当前动画
+                this.stopAnimation();
+                
+                // 重新设置Canvas
+                this.setupCanvas();
+                
+                // 重新启动动画
+                this.startAnimation();
+            },
+            
+            // 绘制绿色山水背景
+            drawBackground() {
+                const ctx = this.ctx;
+                
+                // 天空渐变 - 从浅蓝到深蓝
+                const skyGradient = ctx.createLinearGradient(0, 0, 0, this.pivotY - 100 * this.scale);
+                skyGradient.addColorStop(0, '#87CEEB');
+                skyGradient.addColorStop(1, '#4169E1');
+                ctx.fillStyle = skyGradient;
+                ctx.fillRect(0, 0, this.width, this.pivotY - 100 * this.scale);
+                
+                // 远山 - 修复：添加beginPath并正确设置渐变
+                // ctx.beginPath();
+                // // 暂时使用一个固定颜色
+                // ctx.fillStyle = '#2E8B57';
+                
+                // // 绘制远处的山 - 使用固定高度值避免抖动
+                // for (let i = 0; i < 3; i++) {
+                //     const x = i * 300 * this.scale;
+                //     const baseHeight = 80 * this.scale;
+                //     // 使用预计算的固定高度因子
+                //     const height = baseHeight * this.farMountainHeights[i * 3];
+                //     ctx.moveTo(x, this.pivotY - 100 * this.scale);
+                //     this.drawMountainRange(ctx, x, this.pivotY - 100 * this.scale, 250 * this.scale, height, 3, true, i);
+                // }
+                // ctx.closePath(); // 确保路径闭合
+                // ctx.fill();
+                
+                // 近山/地面
+                // ctx.beginPath();
+                // const nearMountainGradient = ctx.createLinearGradient(0, this.pivotY, 0, this.height);
+                // nearMountainGradient.addColorStop(0, '#388E3C');
+                // nearMountainGradient.addColorStop(0.5, '#4CAF50');
+                // nearMountainGradient.addColorStop(1, '#66BB6A');
+                // ctx.fillStyle = nearMountainGradient;
+                
+                // // 绘制近处的地面和山 - 使用固定高度值避免抖动
+                // ctx.moveTo(0, this.pivotY);
+                // this.drawMountainRange(ctx, 0, this.pivotY, this.width, 150 * this.scale, 5, false);
+                // ctx.lineTo(this.width, this.height);
+                // ctx.lineTo(0, this.height);
+                // ctx.closePath();
+                // ctx.fill();
+                
+                // 绘制一些树木
+                this.drawTrees();
+            },
+            
+            // 绘制山脉函数 - 使用固定高度值避免抖动
+            drawMountainRange(ctx, startX, startY, width, height, peaks, isFarMountain, mountainIndex = 0) {
+                let x = startX;
+                const peakWidth = width / peaks;
+                
+                ctx.moveTo(startX, startY); // 确保从起点开始
+                
+                for (let i = 0; i < peaks; i++) {
+                    // 使用固定的高度因子，不再使用随机值
+                    let heightFactor = 1.0;
+                    if (isFarMountain && this.farMountainHeights) {
+                        // 使用预计算的固定高度因子
+                        const index = mountainIndex * peaks + i;
+                        heightFactor = this.farMountainHeights[index] || 1.0;
+                    } else if (!isFarMountain && this.nearMountainHeights) {
+                        // 使用预计算的固定高度因子
+                        heightFactor = this.nearMountainHeights[i] || 1.0;
+                    }
+                    
+                    x += peakWidth / 2;
+                    ctx.lineTo(x, startY - height * heightFactor);
+                    x += peakWidth / 2;
+                }
+                
+                ctx.lineTo(startX + width, startY); // 确保闭合到终点
+            },
+            
+            // 绘制树木 - 使用固定位置避免抖动
+            drawTrees() {
+                const ctx = this.ctx;
+                // 相对位置的树位置数组，将根据缩放比例调整
+                const treePositions = [
+                    {x: 100, y: 550},
+                    {x: 180, y: 570},
+                    {x: 250, y: 560},
+                    {x: 550, y: 540},
+                    {x: 620, y: 565},
+                    {x: 700, y: 555}
+                ];
+                
+                // 将相对位置转换为实际位置
+                const scaledPositions = treePositions.map(pos => ({
+                    x: pos.x * this.scale / this.baseWidth * this.width,
+                    y: pos.y * this.scale / this.baseHeight * this.height
+                }));
+                
+                scaledPositions.forEach(pos => {
+                    // 边界检查，确保树木在画布范围内
+                    if (pos.x < -15 * this.scale || pos.x > this.width + 15 * this.scale || 
+                        pos.y < 35 * this.scale || pos.y > this.height + 15 * this.scale) {
+                        return;
+                    }
+                    
+                    // 树干
+                    ctx.beginPath();
+                    ctx.fillStyle = '#8B4513';
+                    const trunkWidth = 6 * this.scale;
+                    const trunkHeight = 15 * this.scale;
+                    ctx.fillRect(pos.x - trunkWidth/2, pos.y - trunkHeight, trunkWidth, trunkHeight);
+                    
+                    // 树冠
+                    ctx.beginPath();
+                    ctx.fillStyle = '#2E7D32';
+                    ctx.moveTo(pos.x, pos.y - 35 * this.scale);
+                    ctx.lineTo(pos.x - 15 * this.scale, pos.y - 5 * this.scale);
+                    ctx.lineTo(pos.x + 15 * this.scale, pos.y - 5 * this.scale);
+                    ctx.closePath();
+                    ctx.fill();
+                });
+            },
+            
+            // 绘制风车基座
+            drawBase() {
+                const ctx = this.ctx;
+                ctx.beginPath();
+                
+                // 创建线性渐变
+                const gradient = ctx.createLinearGradient(
+                    this.pivotX - 5 * this.scale, 
+                    this.pivotY, 
+                    this.pivotX + 5 * this.scale, 
+                    this.height
+                );
+                gradient.addColorStop(0, "#ccc");                            //设置起点颜色
+                gradient.addColorStop(0.5, "#fff");                            //设置中点颜色
+                gradient.addColorStop(1, "#ccc");    
+                
+                ctx.fillStyle = gradient;
+                
+                // 绘制梯形基座，从旋转轴到底部
+                const baseTopWidth = 10 * this.scale;
+                const baseBottomWidth = 20 * this.scale;
+                ctx.moveTo(this.pivotX - baseTopWidth/2, this.pivotY);
+                ctx.lineTo(this.pivotX + baseTopWidth/2, this.pivotY);
+                ctx.lineTo(this.pivotX + baseBottomWidth/2, this.height);
+                ctx.lineTo(this.pivotX - baseBottomWidth/2, this.height);
+                ctx.closePath();
+                ctx.fill();
+            },
+            
+            // 绘制单叶片形状
+            drawBlade() {
+                const ctx = this.ctx;
+                const s = this.scale; // 简写缩放因子
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(10 * s, -12 * s, 30 * s, -12 * s);
+                ctx.lineTo(190 * s, -3 * s);
+                ctx.quadraticCurveTo(200 * s, 0, 190 * s, 3 * s);
+                ctx.lineTo(30 * s, 12 * s);
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(10 * s, 12 * s, 30 * s, 12 * s);
+                ctx.fill();
+            },
+            
+            // 绘制风车叶片
+            drawBlades() {
+                const ctx = this.ctx;
+                
+                // 保存当前状态
+                ctx.save();
+                
+                // 移动到旋转中心
+                ctx.translate(this.pivotX, this.pivotY);
+                
+                // 应用旋转
+                ctx.rotate((Math.PI / 180) * this.rotationAngle);
+                
+                // 创建叶片渐变
+                const s = this.scale; // 简写缩放因子
+                const bladeGradient = ctx.createLinearGradient(30 * s, -12 * s, 30 * s, 12 * s);
+                bladeGradient.addColorStop(0, '#ccc');
+                bladeGradient.addColorStop(0.5, '#fff');
+                bladeGradient.addColorStop(1, '#ccc');
+                ctx.fillStyle = bladeGradient;
+                
+                // 绘制三个叶片（间隔120度）
+                for (let i = 0; i < 3; i++) {
+                    ctx.beginPath();
+                    // 每次循环单独旋转120度，绘制一个叶片
+                    ctx.rotate((Math.PI / 180) * 120);
+                    this.drawBlade();
+                }
+                
+                // 绘制叶片中心圆圈
+                ctx.beginPath();
+                const centerGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 16 * s);
+                centerGradient.addColorStop(0, '#ccc');
+                centerGradient.addColorStop(0.1, '#fff');
+                centerGradient.addColorStop(1, '#ccc');
+                ctx.arc(0, 0, 10 * s, 0, Math.PI * 2);
+                ctx.fillStyle = centerGradient;
+                ctx.fill();
+                
+                // 恢复状态
+                ctx.restore();
+                
+                // 更新旋转角度
+                this.rotationAngle = (this.rotationAngle + this.rotationSpeed) % 360;
+            },
+            
+            // 渲染单帧
+            render() {
+                // 清除画布
+                this.ctx.clearRect(0, 0, this.width, this.height);
+                
+                // 绘制背景
+                // this.drawBackground();
+                this.drawTrees();
+                // 绘制风车组件
+                this.drawBase();
+                this.drawBlades();
+                
+                // 继续下一帧
+                this.animationId = requestAnimationFrame(() => this.render());
+            },
+            
+            // 开始动画
+            startAnimation() {
+                if (!this.animationId) {
+                    this.render();
+                }
+            },
+            
+            // 停止动画
+            stopAnimation() {
+                if (this.animationId) {
+                    cancelAnimationFrame(this.animationId);
+                    this.animationId = null;
+                }
+            }
+        };
+        
+        // 当页面加载完成后初始化动画
+        window.addEventListener('load', () => {
+            WindmillAnimation.init();
+        });
+        
+        // 页面卸载时清理资源
+        window.addEventListener('unload', () => {
+            WindmillAnimation.stopAnimation();
+        });
+    </script>
+</body>
+</html>
