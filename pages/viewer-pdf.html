@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF.js 快速预览</title>
+  <style>
+    #pdf-container {
+      width: 800px;
+      margin: 0 auto;
+    }
+    canvas {
+      border: 1px solid #e5e7eb;
+      margin: 10px 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="pdf-container"></div>
+
+  <script id src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.min.js"></script>
+  <script id="built-in">
+    function dynamicLoadScript(url, callback) {
+      const script = document.createElement('script');
+      script.src = url;
+      script.onload = callback;
+      document.head.appendChild(script);
+    }
+    function getHashParams() {
+    const hash = location.hash.split('?')[1]; // 去掉开头的#
+    const params = new URLSearchParams(hash);
+    return params.get('file');
+   
+}
+    dynamicLoadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js', () => {
+          // 配置 worker 路径
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
+
+    // 核心渲染函数
+    async function renderPDF() {
+      const pdfContainer = document.getElementById('pdf-container');
+      // 1. 加载 PDF 文件（支持本地文件、远程 URL、ArrayBuffer）
+      // 示例1：加载远程 PDF（需跨域支持）
+      const pdfUrl = getHashParams();
+      // 示例2：加载本地文件（需通过 input[type="file"] 选择）
+      // const file = document.querySelector('input[type="file"]').files[0];
+      // const pdfData = await file.arrayBuffer();
+
+      //fetch 获取pdf数据 转为blob
+    //   const file=getHashParams()
+
+    //   const response = await fetch(file+Date.now());
+    //   console.log(response);
+    //   const pdfBlob = await response.blob();
+
+        console.log('pdfUrl',pdfUrl);
+      // 2. 获取 PDF 文档实例
+      const pdfDoc = await pdfjsLib.getDocument({ url: pdfUrl }).promise;
+      console.log('PDF 总页数：', pdfDoc.numPages);
+
+      // 3. 渲染第一页（可循环渲染所有页）
+      for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+        const page = await pdfDoc.getPage(pageNum);
+
+        // 设置渲染尺寸（按比例缩放）
+        const viewport = page.getViewport({ scale: 1.5 }); // scale 为缩放比例
+
+        // 创建 Canvas 元素
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        pdfContainer.appendChild(canvas);
+
+        // 渲染页面到 Canvas
+        await page.render({
+          canvasContext: ctx,
+          viewport: viewport
+        }).promise;
+      }
+    }
+
+    // 执行渲染
+    renderPDF();
+    })
+  
+  </script>
+</body>
+</html>
