@@ -43,16 +43,23 @@ window.onload=function(){
     }
   })
   window.onpopstate=function(){
-    if (document.readyState === "complete") {
+      if (document.readyState === "complete") {
       setTimeout(()=>{
         var script=document.getElementById('built-in');
-      if(script){
-        eval(console.log('内置页面js执行'))
-        eval(script.innerText)
-      }
+        if(script){
+          eval(console.log('内置页面js执行'))
+          eval(script.innerText)
+        }
       },0)
     }
   }
+  setTimeout(()=>{
+        var script=document.getElementById('built-in');
+        if(script){
+          eval(console.log('内置页面js执行'))
+          eval(script.innerText)
+        }
+      },0)
 }
 
 // * ![对点](static/logo.png)

@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <title>PDF.js 快速预览</title>
   <style>
+    #main.markdown-section{
+        max-width: 100%;
+    }
     #pdf-container {
-      width: 800px;
+      /* width: 800px; */
       margin: 0 auto;
     }
     canvas {
@@ -17,8 +20,6 @@
 </head>
 <body>
   <div id="pdf-container"></div>
-
-  <script id src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.min.js"></script>
   <script id="built-in">
     function dynamicLoadScript(url, callback) {
       const script = document.createElement('script');
@@ -32,9 +33,9 @@
     return params.get('file');
    
 }
-    dynamicLoadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js', () => {
+    dynamicLoadScript('/static/lib/pdf.min.js', () => {
           // 配置 worker 路径
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '/static/lib/pdf.worker.min.js';
 
     // 核心渲染函数
     async function renderPDF() {
@@ -63,7 +64,7 @@
         const page = await pdfDoc.getPage(pageNum);
 
         // 设置渲染尺寸（按比例缩放）
-        const viewport = page.getViewport({ scale: 1.5 }); // scale 为缩放比例
+        const viewport = page.getViewport({ scale: devicePixelRatio }); // scale 为缩放比例
 
         // 创建 Canvas 元素
         const canvas = document.createElement('canvas');
