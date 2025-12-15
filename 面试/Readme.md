@@ -5,6 +5,7 @@
 - [https://www.explainthis.io/zh-hans/swe-questions/frontend](https://www.explainthis.io/zh-hans/swe-questions/frontend)
 
 ## 1、什么是外边距重叠？结果是什么？
+
 外边距重叠就是margin-collapse
 在CSS中，相邻的两个盒子（可能是兄弟关系，也可能是祖先关系）的外边距可以结合成一个单独的外边距。这种合并外边距的方式被称为折叠，并且因而所结合成的外边距成为折叠外边距。
 
