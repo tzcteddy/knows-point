@@ -44,15 +44,22 @@ window.onload=function(){
   })
   window.onpopstate=function(){
       if (document.readyState === "complete") {
-      setTimeout(()=>{
+      // setTimeout(()=>{
+      //   var script=document.getElementById('built-in');
+      //   if(script){
+      //     eval(console.log('内置页面js执行'))
+      //     eval(script.innerText)
+      //   }
+      // },1000)
+    }
+  }
+  setTimeout(()=>{
         var script=document.getElementById('built-in');
         if(script){
           eval(console.log('内置页面js执行'))
           eval(script.innerText)
         }
-      },800)
-    }
-  }
+      },1000)
 }
 
 // * ![对点](static/logo.png)
