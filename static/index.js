@@ -53,6 +53,13 @@ window.onload=function(){
     //   },0)
     // }
   }
+    setTimeout(()=>{
+        var script=document.getElementById('built-in');
+        if(script){
+          eval(console.log('内置页面js执行'))
+          eval(script.innerText)
+        }
+      },800)
 }
 
 // * ![对点](static/logo.png)
