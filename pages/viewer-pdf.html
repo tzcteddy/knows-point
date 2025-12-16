@@ -56,7 +56,7 @@
 
         console.log('pdfUrl',pdfUrl);
       // 2. 获取 PDF 文档实例
-      const pdfDoc = await pdfjsLib.getDocument({ url: pdfUrl }).promise;
+      const pdfDoc = await pdfjsLib.getDocument({ url: '/knows-point/'+pdfUrl }).promise;
       console.log('PDF 总页数：', pdfDoc.numPages);
 
       // 3. 渲染第一页（可循环渲染所有页）
