@@ -144,6 +144,7 @@
   - [service worker](杂谈/serviceWorker)
   - [web worker](杂谈/webWorker)
   - [docker](杂谈/docker)
+  - [docker常用命令](杂谈/docker常用命令)
   - [web components](杂谈/webComponents)
   - [history 记录](杂谈/history记录)
   - [图片压缩和视频截取帧图片](杂谈/图片压缩和视频截取帧图片)
