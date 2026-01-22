@@ -158,3 +158,10 @@ nsenter 是 Linux 自带的命名空间进入工具，作用是 “进入指定�
 简单说，这段命令的本质是 “借容器的壳，直接操作宿主机”。
 
 
+### 镜像
+
+- https://mirror.ccs.tencentyun.com
+- https://docker.mirrors.ustc.edu.cn
+- https://dockerproxy.net
+- https://docker.1ms.run
+- https://mirror.ccs.tencentyun.com
