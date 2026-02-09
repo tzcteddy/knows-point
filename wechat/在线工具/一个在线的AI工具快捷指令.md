@@ -12,3 +12,8 @@ AiShort 提供了一份简洁易用的 AI 指令列表，旨在帮助用户，�
 提示词优化器,需要配置自己的模型，并非打开能用
 ![](https://foruda.gitee.com/images/1764914348706607479/bde57695_8031453.jpeg)
 在线地址：[https://prompt.always200.com/](https://prompt.always200.com/)
+
+## PromptUp
+PromptUp是一款网页应用，支持Markdown格式，具备语法高亮功能，可帮助用户组织、创建和分享AI提示。
+![](https://foruda.gitee.com/images/1770628028964335837/976a8971_8031453.jpeg)
+在线地址：[https://promptup.net/](https://promptup.net/)
