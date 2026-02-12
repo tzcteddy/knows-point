@@ -8,6 +8,11 @@ Markdown 文档自动即时渲染为微信图文，让你不再为微信文章�
 ![](https://foruda.gitee.com/images/1730038567171673235/954ced7f_8031453.jpeg)
 在线地址：[https://doocs.github.io/md/](https://doocs.github.io/md/)
 
+## bm.md
+bm.md 是一个专业的 Markdown 排版工具，专为内容创作者设计
+![](https://foruda.gitee.com/images/1770882714621644226/986ff889_8031453.jpeg)
+在线地址：[https://bm.md/](https://bm.md/)
+
 ## 木及简历
 利用Markdown的形式制作你的简历,丰富的Markdown简历模板任你选。
 ![](https://foruda.gitee.com/images/1730295342404361386/5b3667d8_8031453.jpeg)

@@ -2,6 +2,10 @@
 ![](https://foruda.gitee.com/images/1769759258409346393/ebb12c65_8031453.jpeg)
 在线地址：[https://www.doubao.com/chat/](https://www.doubao.com/chat/)
 
+## 即梦
+![](https://foruda.gitee.com/images/1770631113201897830/a282726c_8031453.jpeg)
+在线地址：[https://jimeng.jianying.com/ai-tool/home](https://jimeng.jianying.com/ai-tool/home)
+
 ## deepseek
 ![](https://foruda.gitee.com/images/1769759538698003828/21e240e6_8031453.jpeg)
 在线地址：[https://chat.deepseek.com/](https://chat.deepseek.com/)

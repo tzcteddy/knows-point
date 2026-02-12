@@ -17,3 +17,8 @@ AiShort 提供了一份简洁易用的 AI 指令列表，旨在帮助用户，�
 PromptUp是一款网页应用，支持Markdown格式，具备语法高亮功能，可帮助用户组织、创建和分享AI提示。
 ![](https://foruda.gitee.com/images/1770628028964335837/976a8971_8031453.jpeg)
 在线地址：[https://promptup.net/](https://promptup.net/)
+
+## DeepSeek提示词库
+探索 DeepSeek 提示词样例，挖掘更多可能
+![](https://foruda.gitee.com/images/1770884225745202695/24eade2c_8031453.jpeg)
+https://api-docs.deepseek.com/zh-cn/prompt-library/
