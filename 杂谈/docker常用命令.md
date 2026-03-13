@@ -70,8 +70,39 @@ docker logs -f bf08b7f2cd89
 
 *                 -p：是容器内部端口绑定到指定的主机端口。
 
+### 共享网络空间
+场景：容器a部署agent，容器b部署模型，模型需要访问agent，那么就需要共享网络空间  
+
+创建名为 llm-network 的自定义网络（网段可自定义，默认即可）
+
+        docker network create llm-network
 
 
+启动容器模型容器
+
+
+        docker run -d \
+        --name ollama-server \  # 关键：指定容器名，agent 用这个名称访问
+        --network llm-network \  # 加入自定义网络
+        ollama/ollama  # 你的 ollama 镜像（如果有挂载模型目录等，保留原有参数）
+
+
+启动agent容器
+
+        docker run -d \
+          --name llm-agent \
+          --network llm-network \  # 必须和 ollama 同一网络
+          # 关键：通过环境变量/配置文件指定 ollama 地址（根据 agent 实际配置方式调整）
+          -e OLLAMA_BASE_URL=http://ollama-server:11434 \  # agent 连接 ollama 的地址
+          your-agent-image:latest  # 替换为你的 agent 镜像
+
+如果为已有容器，相关处理如下
+
+        docker network connect llm-network 已有的容器名/ID
+
+启动容器时使用 --net=host（主机网络模式），容器会直接使用宿主机的网络栈，无需端口映射(不能使用-p)，外部通过宿主机 IP + 容器内服务端口即可访问
+
+--ip 172.20.0.10 给容器指定ip IP 不会随容器重启变化
 ### 数据卷
 查看数据卷在宿主机的位置
 
