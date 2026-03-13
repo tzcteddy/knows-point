@@ -1,5 +1,12 @@
 # 一键安装工具
 
+## WorkBuddy
+腾讯版🦞 AI 办公助手
+WorkBuddy 是 AI 原生的桌面智能体工作台，可在手机主流 IM 下指令，AI 自动干活交付
+免部署·安装即用 ｜ 预集成·模型一站搞定，兼容龙虾 Skills ｜ 高安全·腾讯网关护航
+![](https://foruda.gitee.com/images/1773389977289919047/60a38da5_8031453.jpeg)
+在线地址：[https://www.codebuddy.cn/work/](https://www.codebuddy.cn/work/)
+
 ## QClcaw
 QClaw是腾讯研发的一款是基于 OpenClaw 推出的本地 AI 助手，支持 Windows / Mac 一键安装，覆盖 5000+skills。可通过微信对话，远程操控。
 
@@ -20,6 +27,11 @@ CoPaw（个人智能助理工作站）是基于AgentScope构建的开源个人AI
 ![](https://foruda.gitee.com/images/1773200747460237958/72a447aa_8031453.jpeg)
 ![](https://foruda.gitee.com/images/1773215912971528802/ddb4aff0_8031453.jpeg)
 在线地址：[https://copaw.bot/#features](https://copaw.bot/#features)
+
+## AutoClaw
+AutoClaw（澳龙）是一款支持 OpenClaw 一键安装的 AI 助手工具，支持 Windows 与 macOS，提供飞书集成、模型热插拔、50+技能与AutoGLM浏览器自动化能力，小白也能快速上手。
+![](https://foruda.gitee.com/images/1773391138983211093/26694586_8031453.jpeg)
+在线地址：[https://autoglm.zhipuai.cn/autoclaw/](https://autoglm.zhipuai.cn/autoclaw/)
 
 ## LobsterAI 有道龙虾
 LobsterAI 是有道团队开发的一个7×24小时帮你干活的全场景个人助理 Agent。,
