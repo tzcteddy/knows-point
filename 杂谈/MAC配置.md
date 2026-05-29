@@ -31,6 +31,8 @@ export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebr
 # 指定通过 Homebrew 安装的 pip 工具的默认软件源地址。当你使用 brew install python 安装的 Python 自带的 pip 下载包时，会优先从这个清华 PyPI 镜像拉取，而非官方的 pypi.org
 export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
 
+python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple duckduckgo-search
+
 # 指定新一代 Python 包管理器 uv 的默认软件源地址。uv 是 pip 的高性能替代品（速度比 pip 快 10-100 倍），这个配置让 uv 默认使用清华 PyPI 镜像加速所有包的下载、安装和解析操作。
 export UV_DEFAULT_INDEX="https://pypi.tuna.tsinghua.edu.cn/simple"
 ```
