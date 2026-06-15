@@ -23,6 +23,13 @@ export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebr
 
 # 指定 Homebrew 核心公式仓库（homebrew-core）的 Git 地址。homebrew-core 是 Homebrew 官方维护的最大软件仓库，包含绝大多数命令行工具的安装脚本，brew update 也会同步这个仓库的最新内容。
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+
+
+## 中科大镜像
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 ```
 
 ## python 配置
