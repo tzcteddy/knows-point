@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker 命令解析</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --accent3: #f472b6;
+    --accent4: #34d399;
+    --accent5: #fbbf24;
+    --accent6: #fb923c;
+    --border: #334155;
+    --code-bg: #0c1222;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+  }
+  .search-box {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 14px 20px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .search-box input:focus { border-color: var(--accent); }
+  .search-box input::placeholder { color: var(--text-muted); }
+  .stats {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-size: 0.85rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 16px 16px 0 0;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    border-color: var(--accent);
+  }
+  .card.hidden { display: none; }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .cmd-block {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .cmd-block:last-child { margin-bottom: 0; }
+  .cmd {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.88rem;
+    color: var(--accent);
+    word-break: break-all;
+    display: block;
+  }
+  .cmd-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-right: 4px;
+  }
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .filter-btn {
+    padding: 8px 18px;
+    border: 2px solid var(--border);
+    border-radius: 24px;
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+  }
+
+  /* Card color themes */
+  .card.c-image::before { background: linear-gradient(90deg, #38bdf8, #0ea5e9); }
+  .card.c-image .card-icon { background: linear-gradient(135deg, #38bdf8, #0ea5e9); }
+  .card.c-image .tag { background: rgba(56,189,248,0.15); color: #38bdf8; }
+
+  .card.c-container::before { background: linear-gradient(90deg, #818cf8, #6366f1); }
+  .card.c-container .card-icon { background: linear-gradient(135deg, #818cf8, #6366f1); }
+  .card.c-container .tag { background: rgba(129,140,248,0.15); color: #818cf8; }
+
+  .card.c-dockerfile::before { background: linear-gradient(90deg, #f472b6, #ec4899); }
+  .card.c-dockerfile .card-icon { background: linear-gradient(135deg, #f472b6, #ec4899); }
+  .card.c-dockerfile .tag { background: rgba(244,114,182,0.15); color: #f472b6; }
+
+  .card.c-registry::before { background: linear-gradient(90deg, #34d399, #10b981); }
+  .card.c-registry .card-icon { background: linear-gradient(135deg, #34d399, #10b981); }
+  .card.c-registry .tag { background: rgba(52,211,153,0.15); color: #34d399; }
+
+  .card.c-volume::before { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+  .card.c-volume .card-icon { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #1e293b; }
+  .card.c-volume .tag { background: rgba(251,191,36,0.15); color: #fbbf24; }
+
+  .card.c-network::before { background: linear-gradient(90deg, #fb923c, #f97316); }
+  .card.c-network .card-icon { background: linear-gradient(135deg, #fb923c, #f97316); }
+  .card.c-network .tag { background: rgba(251,146,60,0.15); color: #fb923c; }
+
+  .card.c-compose::before { background: linear-gradient(90deg, #a78bfa, #8b5cf6); }
+  .card.c-compose .card-icon { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+  .card.c-compose .tag { background: rgba(167,139,250,0.15); color: #a78bfa; }
+
+  .card.c-swarm::before { background: linear-gradient(90deg, #f87171, #ef4444); }
+  .card.c-swarm .card-icon { background: linear-gradient(135deg, #f87171, #ef4444); }
+  .card.c-swarm .tag { background: rgba(248,113,113,0.15); color: #f87171; }
+
+  .card.c-system::before { background: linear-gradient(90deg, #2dd4bf, #14b8a6); }
+  .card.c-system .card-icon { background: linear-gradient(135deg, #2dd4bf, #14b8a6); }
+  .card.c-system .tag { background: rgba(45,212,191,0.15); color: #2dd4bf; }
+
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Docker 命令解析</h1>
+<p class="subtitle">Docker 从入门到实践（第3版）命令速查手册</p>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="搜索命令，如：run, pull, build, volume...">
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">全部</button>
+  <button class="filter-btn" data-filter="image">镜像</button>
+  <button class="filter-btn" data-filter="container">容器</button>
+  <button class="filter-btn" data-filter="dockerfile">Dockerfile</button>
+  <button class="filter-btn" data-filter="registry">仓库</button>
+  <button class="filter-btn" data-filter="volume">数据卷</button>
+  <button class="filter-btn" data-filter="network">网络</button>
+  <button class="filter-btn" data-filter="compose">Compose</button>
+  <button class="filter-btn" data-filter="swarm">Swarm</button>
+  <button class="filter-btn" data-filter="system">系统</button>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="grid" id="grid">
+
+<!-- ========== 镜像管理 ========== -->
+<div class="card c-image" data-cat="image" data-keywords="pull,拉取,下载镜像">
+  <div class="card-header"><div class="card-icon">⬇</div><div class="card-title">docker pull 拉取镜像</div></div>
+  <span class="tag">镜像</span>
+  <div class="cmd-block">
+    <span class="cmd">docker pull ubuntu:22.04</span>
+    <div class="cmd-desc">从 Docker Hub 拉取指定标签的镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker pull --all-tags ubuntu</span>
+    <div class="cmd-desc">拉取仓库中所有标签的镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker pull myregistry.com/myapp:v1</span>
+    <div class="cmd-desc">从私有仓库拉取镜像</div>
+  </div>
+</div>
+
+<div class="card c-image" data-cat="image" data-keywords="images,ls,list,列出镜像,查看">
+  <div class="card-header"><div class="card-icon">📋</div><div class="card-title">docker image ls 列出镜像</div></div>
+  <span class="tag">镜像</span>
+  <div class="cmd-block">
+    <span class="cmd">docker image ls</span>
+    <div class="cmd-desc">列出所有顶层镜像（仓库名、标签、ID、大小）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image ls -a</span>
+    <div class="cmd-desc">列出所有镜像，包括中间层镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image ls ubuntu</span>
+    <div class="cmd-desc">按仓库名过滤</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image ls -f dangling=true</span>
+    <div class="cmd-desc">列出虚悬镜像（无标签镜像）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image ls -q</span>
+    <div class="cmd-desc">仅显示镜像 ID，常用于管道批操作</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image ls --format "{{.ID}}: {{.Repository}}" --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"</span>
+    <div class="cmd-desc">自定义输出格式（Go 模板语法）</div>
+  </div>
+</div>
+
+<div class="card c-image" data-cat="image" data-keywords="rm,rmi,delete,删除镜像">
+  <div class="card-header"><div class="card-icon">🗑</div><div class="card-title">docker image rm 删除镜像</div></div>
+  <span class="tag">镜像</span>
+  <div class="cmd-block">
+    <span class="cmd">docker image rm ubuntu:16.04</span>
+    <div class="cmd-desc">按仓库名+标签删除</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image rm 501</span>
+    <div class="cmd-desc">按镜像短 ID 删除</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image rm $(docker image ls -q redis)</span>
+    <div class="cmd-desc">批量删除所有 redis 镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image prune</span>
+    <div class="cmd-desc">删除所有虚悬镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker image prune -a</span>
+    <div class="cmd-desc">删除所有未被容器使用的镜像</div>
+  </div>
+</div>
+
+<div class="card c-image" data-cat="image" data-keywords="history,查看镜像历史,构建历史">
+  <div class="card-header"><div class="card-icon">🕐</div><div class="card-title">docker history 镜像历史</div></div>
+  <span class="tag">镜像</span>
+  <div class="cmd-block">
+    <span class="cmd">docker history nginx:v2</span>
+    <div class="cmd-desc">查看镜像各层的构建历史、大小、创建方式</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker history --no-trunc nginx</span>
+    <div class="cmd-desc">显示完整的构建命令（不截断）</div>
+  </div>
+</div>
+
+<div class="card c-image" data-cat="image" data-keywords="inspect,查看镜像详情,元数据">
+  <div class="card-header"><div class="card-icon">🔍</div><div class="card-title">docker inspect 查看详情</div></div>
+  <span class="tag">镜像</span>
+  <div class="cmd-block">
+    <span class="cmd">docker inspect ubuntu:22.04</span>
+    <div class="cmd-desc">查看镜像完整元数据（JSON 格式）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker inspect --format='{{.RootFS.Layers}}' ubuntu</span>
+    <div class="cmd-desc">提取特定字段信息</div>
+  </div>
+</div>
+
+<div class="card c-image" data-cat="image" data-keywords="tag,标签,镜像标签">
+  <div class="card-header"><div class="card-icon">🏷</div><div class="card-title">docker tag 镜像标签</div></div>
+  <span class="tag">镜像</span>
+  <div class="cmd-block">
+    <span class="cmd">docker tag ubuntu:22.04 myubuntu:latest</span>
+    <div class="cmd-desc">给镜像打新标签</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker tag nginx myregistry.com/web:v1</span>
+    <div class="cmd-desc">打标签准备推送到私有仓库</div>
+  </div>
+</div>
+
+<!-- ========== 容器操作 ========== -->
+<div class="card c-container" data-cat="container" data-keywords="run,启动,创建容器">
+  <div class="card-header"><div class="card-icon">▶</div><div class="card-title">docker run 启动容器</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker run ubuntu:22.04 echo "hello"</span>
+    <div class="cmd-desc">运行单条命令后退出</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run -it ubuntu bash</span>
+    <div class="cmd-desc">交互式终端（-i 交互 -t 终端）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run -d -p 80:80 --name web nginx</span>
+    <div class="cmd-desc">后台运行 + 端口映射 + 命名</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run -it --rm ubuntu bash</span>
+    <div class="cmd-desc">容器退出后自动删除</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run -d -v /data:/app/data -e MYSQL_ROOT_PASSWORD=123456 mysql</span>
+    <div class="cmd-desc">挂载数据卷 + 设置环境变量</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run --network mynet --memory=512m --cpus=1 myapp</span>
+    <div class="cmd-desc">指定网络 + 限制内存和 CPU</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="ls,ps,list,列出容器,查看容器">
+  <div class="card-header"><div class="card-icon">📋</div><div class="card-title">docker container ls 列出容器</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker container ls</span>
+    <div class="cmd-desc">列出运行中的容器</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker container ls -a</span>
+    <div class="cmd-desc">列出所有容器（包括已停止的）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker container ls -n 5</span>
+    <div class="cmd-desc">显示最近创建的 5 个容器</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker container ls -q</span>
+    <div class="cmd-desc">仅显示容器 ID</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker container ls --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"</span>
+    <div class="cmd-desc">自定义输出列</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="stop,停止容器">
+  <div class="card-header"><div class="card-icon">⏹</div><div class="card-title">docker stop 停止容器</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker stop web</span>
+    <div class="cmd-desc">优雅停止指定容器（发送 SIGTERM）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker stop $(docker container ls -q)</span>
+    <div class="cmd-desc">停止所有运行中的容器</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="start,启动容器,重启">
+  <div class="card-header"><div class="card-icon">🔄</div><div class="card-title">docker start / restart 启动与重启</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker start web</span>
+    <div class="cmd-desc">启动已停止的容器</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker restart web</span>
+    <div class="cmd-desc">重启运行中的容器</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="rm,delete,删除容器">
+  <div class="card-header"><div class="card-icon">🗑</div><div class="card-title">docker rm 删除容器</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker rm web</span>
+    <div class="cmd-desc">删除已停止的容器</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker rm -f web</span>
+    <div class="cmd-desc">强制删除运行中的容器</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker container prune</span>
+    <div class="cmd-desc">删除所有已停止的容器</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="exec,进入容器,执行命令">
+  <div class="card-header"><div class="card-icon">💻</div><div class="card-title">docker exec 执行命令</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker exec -it web bash</span>
+    <div class="cmd-desc">进入运行中容器的交互式终端</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker exec web ls /app</span>
+    <div class="cmd-desc">在容器内执行单条命令</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker exec -u root web whoami</span>
+    <div class="cmd-desc">指定用户执行命令</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="attach,attach,连接容器">
+  <div class="card-header"><div class="card-icon">🔗</div><div class="card-title">docker attach 连接容器</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker attach web</span>
+    <div class="cmd-desc">连接到正在运行的容器（共享标准输入输出）</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="logs,日志,查看日志">
+  <div class="card-header"><div class="card-icon">📜</div><div class="card-title">docker logs 查看日志</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker logs web</span>
+    <div class="cmd-desc">查看容器日志</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker logs -f web</span>
+    <div class="cmd-desc">实时跟踪日志输出</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker logs --tail 100 web</span>
+    <div class="cmd-desc">查看最近 100 行日志</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker logs -t web</span>
+    <div class="cmd-desc">显示日志时间戳</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="cp,复制文件,容器文件">
+  <div class="card-header"><div class="card-icon">📂</div><div class="card-title">docker cp 容器与主机间复制文件</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker cp web:/app/data.txt ./data.txt</span>
+    <div class="cmd-desc">从容器复制文件到主机</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker cp ./config.json web:/app/config.json</span>
+    <div class="cmd-desc">从主机复制文件到容器</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="diff,查看容器变化">
+  <div class="card-header"><div class="card-icon">📝</div><div class="card-title">docker diff 查看容器修改</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker diff web</span>
+    <div class="cmd-desc">查看容器存储层相比镜像的变更（A=新增 C=修改 D=删除）</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="export,import,导出,导入">
+  <div class="card-header"><div class="card-icon">📦</div><div class="card-title">docker export / import 导出导入</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker export web > web.tar</span>
+    <div class="cmd-desc">将容器文件系统导出为 tar 包</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker import web.tar myimage:v1</span>
+    <div class="cmd-desc">从 tar 包导入为镜像</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="top,stats,资源,监控">
+  <div class="card-header"><div class="card-icon">📊</div><div class="card-title">docker top / stats 资源监控</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker top web</span>
+    <div class="cmd-desc">查看容器内运行的进程</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker stats</span>
+    <div class="cmd-desc">实时查看所有容器的资源使用（CPU/内存/网络）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker stats web</span>
+    <div class="cmd-desc">查看指定容器的资源使用</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="pause,unpause,暂停,恢复">
+  <div class="card-header"><div class="card-icon">⏸</div><div class="card-title">docker pause / unpause 暂停恢复</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker pause web</span>
+    <div class="cmd-desc">暂停容器内所有进程</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker unpause web</span>
+    <div class="cmd-desc">恢复容器运行</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="rename,重命名">
+  <div class="card-header"><div class="card-icon">✏</div><div class="card-title">docker rename 重命名容器</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker rename web webserver</span>
+    <div class="cmd-desc">给容器重命名</div>
+  </div>
+</div>
+
+<div class="card c-container" data-cat="container" data-keywords="update,更新容器配置">
+  <div class="card-header"><div class="card-icon">🔧</div><div class="card-title">docker update 更新容器配置</div></div>
+  <span class="tag">容器</span>
+  <div class="cmd-block">
+    <span class="cmd">docker update --memory=256m --cpus=0.5 web</span>
+    <div class="cmd-desc">更新容器的内存和 CPU 限制</div>
+  </div>
+</div>
+
+<!-- ========== Dockerfile ========== -->
+<div class="card c-dockerfile" data-cat="dockerfile" data-keywords="build,构建镜像">
+  <div class="card-header"><div class="card-icon">🔨</div><div class="card-title">docker build 构建镜像</div></div>
+  <span class="tag">Dockerfile</span>
+  <div class="cmd-block">
+    <span class="cmd">docker build -t myapp:v1 .</span>
+    <div class="cmd-desc">用当前目录的 Dockerfile 构建镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker build -f myDockerfile -t myapp:v1 .</span>
+    <div class="cmd-desc">指定 Dockerfile 文件</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker build https://github.com/user/repo.git</span>
+    <div class="cmd-desc">从 Git 仓库构建</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker build --no-cache -t myapp:v1 .</span>
+    <div class="cmd-desc">不使用缓存构建</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker build --build-arg VERSION=1.0 -t myapp:v1 .</span>
+    <div class="cmd-desc">传递构建参数</div>
+  </div>
+</div>
+
+<div class="card c-dockerfile" data-cat="dockerfile" data-keywords="commit,提交容器为镜像">
+  <div class="card-header"><div class="card-icon">💾</div><div class="card-title">docker commit 提交容器为镜像</div></div>
+  <span class="tag">Dockerfile</span>
+  <div class="cmd-block">
+    <span class="cmd">docker commit --author "Name" --message "desc" web myimage:v1</span>
+    <div class="cmd-desc">将容器保存为新镜像（学习用，生产推荐 Dockerfile）</div>
+  </div>
+</div>
+
+<div class="card c-dockerfile" data-cat="dockerfile" data-keywords="Dockerfile指令,FROM,RUN,COPY,ADD,CMD,ENTRYPOINT,ENV,ARG,VOLUME,EXPOSE,WORKDIR,USER,HEALTHCHECK,ONBUILD,LABEL">
+  <div class="card-header"><div class="card-icon">📖</div><div class="card-title">Dockerfile 核心指令速查</div></div>
+  <span class="tag">Dockerfile</span>
+  <div class="cmd-block">
+    <span class="cmd">FROM ubuntu:22.04</span>
+    <div class="cmd-desc">指定基础镜像（必须是第一条指令）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">RUN apt-get update && apt-get install -y curl</span>
+    <div class="cmd-desc">执行命令（shell 格式），用 && 合并减少层数</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">RUN ["apt-get", "install", "-y", "curl"]</span>
+    <div class="cmd-desc">exec 格式，避免 shell 解析</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">COPY ./app /usr/src/app</span>
+    <div class="cmd-desc">复制文件到镜像（推荐优先使用 COPY）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">ADD https://example.com/file.tar.gz /tmp/</span>
+    <div class="cmd-desc">复制+自动解压（仅在需要解压时使用）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">CMD ["nginx", "-g", "daemon off;"]</span>
+    <div class="cmd-desc">容器启动命令（exec 格式优先）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">ENTRYPOINT ["docker-entrypoint.sh"]</span>
+    <div class="cmd-desc">入口点，CMD 变为其参数</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">ENV NODE_ENV=production</span>
+    <div class="cmd-desc">设置环境变量</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">ARG VERSION=1.0</span>
+    <div class="cmd-desc">构建参数（仅在构建时有效）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">VOLUME ["/data"]</span>
+    <div class="cmd-desc">定义匿名数据卷挂载点</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">EXPOSE 80 443</span>
+    <div class="cmd-desc">声明容器监听端口（仅文档作用）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">WORKDIR /app</span>
+    <div class="cmd-desc">设置后续指令的工作目录</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">USER node</span>
+    <div class="cmd-desc">指定后续指令的运行用户</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">HEALTHCHECK --interval=30s CMD curl -f http://localhost/</span>
+    <div class="cmd-desc">健康检查配置</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd=">ONBUILD COPY . /app</span>
+    <div class="cmd-desc">当此镜像被作为基础镜像时执行的指令</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">LABEL maintainer="name@email.com"</span>
+    <div class="cmd-desc">添加镜像元数据标签</div>
+  </div>
+</div>
+
+<!-- ========== 仓库 ========== -->
+<div class="card c-registry" data-cat="registry" data-keywords="login,登录仓库">
+  <div class="card-header"><div class="card-icon">🔑</div><div class="card-title">docker login 登录仓库</div></div>
+  <span class="tag">仓库</span>
+  <div class="cmd-block">
+    <span class="cmd">docker login</span>
+    <div class="cmd-desc">登录 Docker Hub</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker login -u username -p password myregistry.com</span>
+    <div class="cmd-desc">登录私有仓库</div>
+  </div>
+</div>
+
+<div class="card c-registry" data-cat="registry" data-keywords="push,推送镜像">
+  <div class="card-header"><div class="card-icon">⬆</div><div class="card-title">docker push 推送镜像</div></div>
+  <span class="tag">仓库</span>
+  <div class="cmd-block">
+    <span class="cmd">docker push myuser/myapp:v1</span>
+    <div class="cmd-desc">推送镜像到仓库</div>
+  </div>
+</div>
+
+<div class="card c-registry" data-cat="registry" data-keywords="search,搜索镜像">
+  <div class="card-header"><div class="card-icon">🔍</div><div class="card-title">docker search 搜索镜像</div></div>
+  <span class="tag">仓库</span>
+  <div class="cmd-block">
+    <span class="cmd">docker search nginx</span>
+    <div class="cmd-desc">在 Docker Hub 搜索镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker search --limit 5 nginx</span>
+    <div class="cmd-desc">限制搜索结果数量</div>
+  </div>
+</div>
+
+<div class="card c-registry" data-cat="registry" data-keywords="logout,登出">
+  <div class="card-header"><div class="card-icon">🚪</div><div class="card-title">docker logout 登出仓库</div></div>
+  <span class="tag">仓库</span>
+  <div class="cmd-block">
+    <span class="cmd">docker logout</span>
+    <div class="cmd-desc">登出 Docker Hub</div>
+  </div>
+</div>
+
+<!-- ========== 数据卷 ========== -->
+<div class="card c-volume" data-cat="volume" data-keywords="volume,数据卷,挂载">
+  <div class="card-header"><div class="card-icon">💿</div><div class="card-title">docker volume 数据卷管理</div></div>
+  <span class="tag">数据卷</span>
+  <div class="cmd-block">
+    <span class="cmd">docker volume create mydata</span>
+    <div class="cmd-desc">创建命名数据卷</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker volume ls</span>
+    <div class="cmd-desc">列出所有数据卷</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker volume inspect mydata</span>
+    <div class="cmd-desc">查看数据卷详细信息</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker volume rm mydata</span>
+    <div class="cmd-desc">删除数据卷</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker volume prune</span>
+    <div class="cmd-desc">删除所有未使用的数据卷</div>
+  </div>
+</div>
+
+<div class="card c-volume" data-cat="volume" data-keywords="-v,mount,挂载,绑定">
+  <div class="card-header"><div class="card-icon">📁</div><div class="card-title">容器挂载数据卷</div></div>
+  <span class="tag">数据卷</span>
+  <div class="cmd-block">
+    <span class="cmd">docker run -v mydata:/var/lib/mysql mysql</span>
+    <div class="cmd-desc">挂载命名数据卷</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run -v /host/path:/container/path nginx</span>
+    <div class="cmd-desc">绑定挂载主机目录</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run -v /host/path:/container/path:ro nginx</span>
+    <div class="cmd-desc">只读挂载</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run --mount type=bind,source=/data,target=/app/data nginx</span>
+    <div class="cmd-desc">使用 --mount 参数（更明确）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run --mount type=volume,source=mydata,target=/app/data:ro myapp</span>
+    <div class="cmd-desc">--mount 挂载命名卷 + 只读</div>
+  </div>
+</div>
+
+<!-- ========== 网络 ========== -->
+<div class="card c-network" data-cat="network" data-keywords="network,网络">
+  <div class="card-header"><div class="card-icon">🌐</div><div class="card-title">docker network 网络管理</div></div>
+  <span class="tag">网络</span>
+  <div class="cmd-block">
+    <span class="cmd">docker network ls</span>
+    <div class="cmd-desc">列出所有网络</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker network create --driver bridge mynet</span>
+    <div class="cmd-desc">创建自定义桥接网络</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker network inspect mynet</span>
+    <div class="cmd-desc">查看网络详细信息</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker network connect mynet web</span>
+    <div class="cmd-desc">将容器连接到网络</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker network disconnect mynet web</span>
+    <div class="cmd-desc">将容器从网络断开</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker network rm mynet</span>
+    <div class="cmd-desc">删除网络</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker network prune</span>
+    <div class="cmd-desc">删除所有未使用的网络</div>
+  </div>
+</div>
+
+<div class="card c-network" data-cat="network" data-keywords="端口映射,-p,--publish">
+  <div class="card-header"><div class="card-icon">🔌</div><div class="card-title">端口映射</div></div>
+  <span class="tag">网络</span>
+  <div class="cmd-block">
+    <span class="cmd">docker run -p 8080:80 nginx</span>
+    <div class="cmd-desc">主机端口 8080 映射到容器端口 80</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run -p 127.0.0.1:8080:80 nginx</span>
+    <div class="cmd-desc">仅监听指定主机 IP 的端口</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker run -P nginx</span>
+    <div class="cmd-desc">随机映射所有 EXPOSE 声明的端口</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker port web</span>
+    <div class="cmd-desc">查看容器的端口映射</div>
+  </div>
+</div>
+
+<!-- ========== Compose ========== -->
+<div class="card c-compose" data-cat="compose" data-keywords="compose,docker-compose,编排">
+  <div class="card-header"><div class="card-icon">🎼</div><div class="card-title">docker compose 编排命令</div></div>
+  <span class="tag">Compose</span>
+  <div class="cmd-block">
+    <span class="cmd">docker compose up -d</span>
+    <div class="cmd-desc">启动所有服务（后台模式）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose up --build</span>
+    <div class="cmd-desc">构建镜像后启动服务</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose down</span>
+    <div class="cmd-desc">停止并删除所有容器和网络</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose down -v</span>
+    <div class="cmd-desc">停止并删除容器、网络和数据卷</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose ps</span>
+    <div class="cmd-desc">查看服务状态</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose logs -f</span>
+    <div class="cmd-desc">查看所有服务日志</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose logs -f web</span>
+    <div class="cmd-desc">查看指定服务日志</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose exec web bash</span>
+    <div class="cmd-desc">在服务容器中执行命令</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose restart web</span>
+    <div class="cmd-desc">重启指定服务</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose stop</span>
+    <div class="cmd-desc">停止服务（不删除容器）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose start</span>
+    <div class="cmd-desc">启动已存在的服务容器</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose pull</span>
+    <div class="cmd-desc">拉取服务所需的镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker compose config</span>
+    <div class="cmd-desc">验证并查看 compose 文件配置</div>
+  </div>
+</div>
+
+<!-- ========== Swarm ========== -->
+<div class="card c-swarm" data-cat="swarm" data-keywords="swarm,集群,节点">
+  <div class="card-header"><div class="card-icon">🐝</div><div class="card-title">Swarm 集群管理</div></div>
+  <span class="tag">Swarm</span>
+  <div class="cmd-block">
+    <span class="cmd">docker swarm init</span>
+    <div class="cmd-desc">初始化 Swarm 集群（当前节点为管理节点）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker swarm join --token &lt;TOKEN&gt; &lt;IP&gt;:2377</span>
+    <div class="cmd-desc">工作节点加入集群</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker swarm join-token worker</span>
+    <div class="cmd-desc">获取工作节点加入令牌</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker swarm join-token manager</span>
+    <div class="cmd-desc">获取管理节点加入令牌</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker swarm leave</span>
+    <div class="cmd-desc">节点离开集群</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker swarm leave --force</span>
+    <div class="cmd-desc">管理节点强制离开</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker node ls</span>
+    <div class="cmd-desc">列出集群节点</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker node inspect node1</span>
+    <div class="cmd-desc">查看节点详情</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker node update --availability drain node1</span>
+    <div class="cmd-desc">将节点设为维护模式（不分配新任务）</div>
+  </div>
+</div>
+
+<div class="card c-swarm" data-cat="swarm" data-keywords="service,服务,部署,扩缩容">
+  <div class="card-header"><div class="card-icon">🚀</div><div class="card-title">Swarm 服务管理</div></div>
+  <span class="tag">Swarm</span>
+  <div class="cmd-block">
+    <span class="cmd">docker service create --name web --replicas 3 -p 80:80 nginx</span>
+    <div class="cmd-desc">创建服务（3 个副本）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service ls</span>
+    <div class="cmd-desc">列出所有服务</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service ps web</span>
+    <div class="cmd-desc">查看服务的任务（副本）状态</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service inspect web</span>
+    <div class="cmd-desc">查看服务详情</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service scale web=5</span>
+    <div class="cmd-desc">扩缩容到 5 个副本</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service update --image nginx:1.25 web</span>
+    <div class="cmd-desc">更新服务镜像（滚动更新）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service rollback web</span>
+    <div class="cmd-desc">回滚服务到上一版本</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service logs -f web</span>
+    <div class="cmd-desc">查看服务日志</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service rm web</span>
+    <div class="cmd-desc">删除服务</div>
+  </div>
+</div>
+
+<div class="card c-swarm" data-cat="swarm" data-keywords="stack,堆栈,compose部署">
+  <div class="card-header"><div class="card-icon">📚</div><div class="card-title">Swarm Stack 部署</div></div>
+  <span class="tag">Swarm</span>
+  <div class="cmd-block">
+    <span class="cmd">docker stack deploy -c docker-compose.yml myapp</span>
+    <div class="cmd-desc">用 compose 文件部署 stack</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker stack ls</span>
+    <div class="cmd-desc">列出所有 stack</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker stack services myapp</span>
+    <div class="cmd-desc">查看 stack 中的服务</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker stack ps myapp</span>
+    <div class="cmd-desc">查看 stack 中的任务</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker stack rm myapp</span>
+    <div class="cmd-desc">删除 stack</div>
+  </div>
+</div>
+
+<div class="card c-swarm" data-cat="swarm" data-keywords="secret,config,敏感数据,配置">
+  <div class="card-header"><div class="card-icon">🔐</div><div class="card-title">Swarm Secret & Config</div></div>
+  <span class="tag">Swarm</span>
+  <div class="cmd-block">
+    <span class="cmd">echo "mypassword" | docker secret create db_pass -</span>
+    <div class="cmd-desc">创建敏感数据（secret）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker secret ls</span>
+    <div class="cmd-desc">列出所有 secret</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker service create --secret db_pass --name web nginx</span>
+    <div class="cmd-desc">服务使用 secret（挂载到 /run/secrets/）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker config create nginx_conf ./nginx.conf</span>
+    <div class="cmd-desc">创建配置（config）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker config ls</span>
+    <div class="cmd-desc">列出所有 config</div>
+  </div>
+</div>
+
+<!-- ========== 系统 ========== -->
+<div class="card c-system" data-cat="system" data-keywords="version,info,df,system,系统信息,版本">
+  <div class="card-header"><div class="card-icon">ℹ</div><div class="card-title">系统信息与清理</div></div>
+  <span class="tag">系统</span>
+  <div class="cmd-block">
+    <span class="cmd">docker version</span>
+    <div class="cmd-desc">查看 Docker 客户端和服务端版本</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker info</span>
+    <div class="cmd-desc">查看 Docker 系统详细信息（容器数、镜像数、存储驱动等）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker system df</span>
+    <div class="cmd-desc">查看镜像、容器、数据卷占用的磁盘空间</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker system df -v</span>
+    <div class="cmd-desc">详细列出每个实体的空间占用</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker system prune</span>
+    <div class="cmd-desc">清理所有未使用的容器、网络、虚悬镜像</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker system prune -a --volumes</span>
+    <div class="cmd-desc">深度清理：包括未使用镜像和数据卷（慎用）</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker events</span>
+    <div class="cmd-desc">实时查看 Docker 引擎事件流</div>
+  </div>
+  <div class="cmd-block">
+    <span class="cmd">docker events --since '2024-01-01' --filter 'type=container'</span>
+    <div class="cmd-desc">按时间和类型过滤事件</div>
+  </div>
+</div>
+
+</div><!-- /grid -->
+
+<footer>
+  Docker 命令解析 | 基于《Docker 从入门到实践（第3版）》整理
+</footer>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const cards = document.querySelectorAll('.card');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const stats = document.getElementById('stats');
+  let currentFilter = 'all';
+
+  function updateStats(visible) {
+    stats.textContent = `显示 ${visible} / ${cards.length} 个命令`;
+  }
+
+  function filterCards() {
+    const q = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+    cards.forEach(card => {
+      const cat = card.dataset.cat;
+      const keywords = (card.dataset.keywords || '').toLowerCase();
+      const text = card.textContent.toLowerCase();
+      const matchCat = currentFilter === 'all' || cat === currentFilter;
+      const matchQ = !q || text.includes(q) || keywords.includes(q);
+      if (matchCat && matchQ) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+    updateStats(visible);
+  }
+
+  searchInput.addEventListener('input', filterCards);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      filterCards();
+    });
+  });
+
+  updateStats(cards.length);
+</script>
+</body>
+</html>
